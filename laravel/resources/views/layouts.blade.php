@@ -19,7 +19,7 @@
                             <a href="#">Artikel</a>
                             <a href="#">Tentang Kami</a>
                             <a href="#">Kontak Kami</a>
-                            <a href="#" class="py-1 px-5 bg-slate-50 hover:bg-[#6C894A] border-2 border-[#6C894A] text-[#6C894A] hover:text-neutral-50 rounded-xl transition duration-300">Masuk</a>
+                            <a href="{{route('login.view')}}" class="py-1 px-5 bg-slate-50 hover:bg-[#6C894A] border-2 border-[#6C894A] text-[#6C894A] hover:text-neutral-50 rounded-xl transition duration-300">Masuk</a>
                         </div>
                     </div>
                 </div>
