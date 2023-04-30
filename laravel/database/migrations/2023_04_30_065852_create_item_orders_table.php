@@ -13,16 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sub_kategori', function (Blueprint $table) {
-            $table->string('id',32)->primary();
-            $table->string('nama');
+        Schema::create('item_orders', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->integer('jumlah');
+            $table->timestamps();
 
 
             //FK
-            $table->string('kategori_id', 32);
-            $table->foreign('kategori_id')->references('id')->on('kategori');
-
-            $table->timestamps();
+            $table->foreignUuid('produk_id')->references('id')->on('produks');
+            $table->foreignUuid('order_id')->references('id')->on('orders');
+            
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_kategori');
+        Schema::dropIfExists('item_orders');
     }
 };

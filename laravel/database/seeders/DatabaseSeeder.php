@@ -1,6 +1,13 @@
 <?php
 
 namespace Database\Seeders;
+use App\Models\User;
+use App\Models\AlamatUser;
+use App\Models\Produk;
+use App\Models\Order;
+use App\Models\ItemOrder;
+use App\Models\Pembayaran;
+use App\Models\MetodePembayaran;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,11 +21,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call([
+            KategoriSampahSeeder::class,
+        ]);
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        User::factory(10)
+            ->has(AlamatUser::factory())
+            ->has(MetodePembayaran::factory()->count(4))
+            ->has(Produk::factory()->count(4))
+            ->has(Order::factory()
+                -> hasPembayaran()
+                -> hasItemOrder(2)
+            )
+            ->create();
+
+
+        
+            
+        // $order = Order::factory(10)
+        //     ->has(Pembayaran::factory(), 'pembayaran')
+        //     ->create();
     }
 }

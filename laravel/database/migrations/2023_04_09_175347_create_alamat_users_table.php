@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('alamat_user', function (Blueprint $table) {
-            $table->string('id',32)->primary();
+        Schema::create('alamat_users', function (Blueprint $table) {
+            $table->uuid('id')->primary();
             $table->string('alamat')->nullable();
             $table->string('kecamatan',50)->nullable();
             $table->string('kota',50)->nullable();
@@ -22,8 +22,7 @@ return new class extends Migration
             $table->string('kode_pos',5)->nullable();
 
             //FK
-            $table->string('user_id', 32);
-            $table->foreign('user_id')->references('id')->on('user');
+            $table->foreignUuid('user_id')->references('id')->on('users');
             
             $table->timestamps();
         });
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alamat_user');
+        Schema::dropIfExists('alamat_users');
     }
 };

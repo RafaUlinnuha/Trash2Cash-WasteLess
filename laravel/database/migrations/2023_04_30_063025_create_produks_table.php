@@ -13,21 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('produk', function (Blueprint $table) {
-            $table->string('id',32)->primary();
-            $table->string('nama',50);
+        Schema::create('produks', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('nama');
+            $table->string('nama_sub_kategori',255) -> nullable();
             $table->integer('jumlah');
             $table->float('harga');
             $table->text('deskripsi')->nullable();
+            $table->string('gambar')->nullable();
 
             //FK
-            $table->string('user_id', 32);
-            $table->foreign('user_id')->references('id')->on('user');
-            $table->string('sub_kategori_id', 32);
-            $table->foreign('sub_kategori_id')->references('id')->on('sub_kategori');
-
+            $table->foreignUuid('user_id')->references('id')->on('users');
+            $table->foreignUuid('kategori_id')->references('id')->on('kategori_sampahs');
             
             $table->timestamps();
+            
         });
     }
 
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produk');
+        Schema::dropIfExists('produks');
     }
 };
