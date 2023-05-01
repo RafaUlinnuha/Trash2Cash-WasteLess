@@ -8,41 +8,32 @@
         <!-- navbar sebelum login -->
         <div class="flex flex-col h-screen">
             @section('navbar')
-            <nav>
+            <nav class="fixed bg-white w-full z-[1100]">
                 <div class="py-2 px-14">
                     <div class="flex justify-between items-center">
                         <div class="logo">
                             <img src="{{ asset('img/logo orange.png') }}">
                         </div>
-<<<<<<< HEAD
-                        <div class="flex flex-wrap items-baseline space-x-7 text-sm">
+                        <div class="flex flex-wrap items-baseline space-x-7 text-sm font-medium">
                             <a href="#" class="group">Tentang Kami
                                 <span class="block mx-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-[3px] rounded bg-[#6C894A]"></span>
                             </a>
-                            <a href="#" class="group">Artikel
+                            <a href="#" class="group">Layanan
                                 <span class="block mx-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-[3px] rounded bg-[#6C894A]"></span>
                             </a>
-                            <a href="#" class="group">Marketplace
+                            <a href="#" class="group">Jenis Sampah
                                 <span class="block mx-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-[3px] rounded bg-[#6C894A]"></span>
                             </a>
-                            <a href="#" class="py-1 px-5 bg-slate-50 hover:bg-[#6C894A] border-2 border-[#6C894A] text-[#6C894A] hover:text-neutral-50 rounded-xl transition ease-in-out delay-150 hover:scale-110 duration-300">
+                            <a href="{{route('login.view')}}" class="py-1 px-5 bg-slate-50 hover:bg-[#6C894A] border-2 border-[#6C894A] text-[#6C894A] hover:text-neutral-50 rounded-xl transition ease-in-out delay-150 hover:scale-110 duration-300">
                                 Masuk
                             </a>
-=======
-                        <div class="space-x-7 text-sm">
-                            <a href="#">Layanan</a>
-                            <a href="#">Artikel</a>
-                            <a href="#">Tentang Kami</a>
-                            <a href="#">Kontak Kami</a>
-                            <a href="{{route('login.view')}}" class="py-1 px-5 bg-slate-50 hover:bg-[#6C894A] border-2 border-[#6C894A] text-[#6C894A] hover:text-neutral-50 rounded-xl transition duration-300">Masuk</a>
->>>>>>> 272d6aaaad6dc20c827b6941c33b5446cb5a1877
                         </div>
                     </div>
                 </div>
             </nav>
             @show
      
-            <div class="mb-auto mt-16">
+            <div class="mb-auto mt-32 px-32">
                 @yield('content')
             </div>
     
