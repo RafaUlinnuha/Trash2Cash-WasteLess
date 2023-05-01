@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('order', function (Blueprint $table) {
-            $table->string('id',32)->primary();
-
-            //FK
-            $table->string('user_id', 32);
-            $table->foreign('user_id')->references('id')->on('user');
-
-            
+        Schema::create('kategori_sampahs', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('nama',20);
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('kategori_sampahs');
     }
 };

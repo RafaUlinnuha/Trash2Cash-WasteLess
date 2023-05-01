@@ -13,17 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('item_order', function (Blueprint $table) {
-            $table->string('id',32)->primary();
-            $table->integer('jumlah');
-
+        Schema::create('orders', function (Blueprint $table) {
+            $table->uuid('id')->primary();
 
             //FK
-            $table->string('produk_id', 32);
-            $table->foreign('produk_id')->references('id')->on('produk');
-            $table->string('order_id', 32);
-            $table->foreign('order_id')->references('id')->on('order');
+            $table->foreignUuid('user_id')->references('id')->on('users');
 
+            
             $table->timestamps();
         });
     }
@@ -35,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('item_order');
+        Schema::dropIfExists('orders');
     }
 };

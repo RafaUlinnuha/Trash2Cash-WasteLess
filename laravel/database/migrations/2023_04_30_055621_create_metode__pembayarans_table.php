@@ -13,12 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kategori', function (Blueprint $table) {
-            $table->string('id',32)->primary();
-            $table->string('nama',20);
-
-
+        Schema::create('metode_pembayarans', function (Blueprint $table) {
+            $table->uuid('id')->primary();
+            $table->string('nama_metode', 128);
+            $table->string('atas_nama', 255);
+            $table->string('no_rek', 255);
             $table->timestamps();
+
+            //FK
+            $table->foreignUuid('user_id')->references('id')->on('users');
         });
     }
 
@@ -29,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori');
+        Schema::dropIfExists('metode_pembayarans');
     }
 };
