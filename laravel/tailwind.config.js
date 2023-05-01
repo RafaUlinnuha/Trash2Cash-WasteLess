@@ -8,12 +8,12 @@ module.exports = {
     "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+    },
   },
   plugins: [
     iconsPlugin({
-      // Select the icon collections you want to use
-      collections: getIconCollections(["mdi", "lucide"]),
-    }),
+      collections: getIconCollections(["mdi", "bi", "carbon", "ri", "material-symbols", "ion"]),
+    })
   ],
 }
