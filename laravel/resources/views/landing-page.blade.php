@@ -1,4 +1,4 @@
-@extends('layouts')
+@extends('layouts.base')
  
 @section('title', 'Home | ')
  
@@ -8,12 +8,11 @@
         <div class="about-text flex flex-wrap">
             <h1 class="text-5xl text-[#FF8833] font-extrabold">WasteLess</h1>
             <p class="mt-4 mb-10 lg:text-lg">Platform untuk masyarakat Indonesia melakukan jual beli sampah agar dapat membantu rumah tangga dan industri dalam masalah pengelolaan sampah.</p>
-            <a href="#" class="py-3 px-8 font-medium text-center text-lg bg-slate-50 hover:bg-[#FF8833] border-2 border-[#FF8833] text-[#FF8833] hover:text-neutral-50 rounded-3xl transition ease-in-out delay-150 hover:scale-110 duration-300">
+            <a href="{{route('login.view')}}" class="py-3 px-8 font-medium text-center text-lg bg-slate-50 hover:bg-[#FF8833] border-2 border-[#FF8833] text-[#FF8833] hover:text-neutral-50 rounded-3xl transition ease-in-out delay-150 hover:scale-110 duration-300">
                 Mari Bergabung 
              </a>
         </div>
     </div>
-    {{-- <span class="block bg-black h-[2px] w-full rounded my-16"></span> --}}
     <div class="layanan mt-24">
         <h1 class="text-4xl font-semibold">Layanan</h1>
         <div class="grid grid-cols-2 lg:grid-cols-3 gap-16">
@@ -37,7 +36,7 @@
                         <h1 class="md:text-xl lg:text-2xl font-medium">Marketplace</h1>
                     </div>
                     <p class="mt-6 font-light">Tempat untuk kamu melakukan transaksi sampah yang belum diolah dan sudah diolah.</p>
-                    <a href="#" class="text-center w-full text-lg py-1 bg-slate-50 hover:bg-[#FF8833] border-2 border-[#FF8833] text-[#FF8833] hover:text-neutral-50 rounded-xl transition ease-in-out delay-150 duration-300 mt-auto">
+                    <a href="{{ route('home-page') }}" class="text-center w-full text-lg py-1 bg-slate-50 hover:bg-[#FF8833] border-2 border-[#FF8833] text-[#FF8833] hover:text-neutral-50 rounded-xl transition ease-in-out delay-150 duration-300 mt-auto">
                        Kunjungi
                     </a>
                 </div>
@@ -56,7 +55,6 @@
             </div>
         </div>
     </div>
-    {{-- <span class="block bg-black h-[1.5px] w-full rounded my-16"></span> --}}
     <div class="jenis-sampah mt-24">
         <h1 class="text-4xl font-semibold">Jenis Sampah</h1>
         <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">

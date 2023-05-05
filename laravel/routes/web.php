@@ -16,8 +16,7 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('landing-page');
-});
+    return view('landing-page');})->name('/');
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -26,7 +25,33 @@ Route::get('/login', function () {
 Route::get('/register', function () {
     return view('auth.register');
 });
+
+Route::get('/home-page', function () {
+    return view('marketplace.home-page');})->name('home-page');
  
+Route::get('/detail-produk', function () {
+    return view('marketplace.detail-produk');
+});
+
+Route::get('/semua-kategori', function () {
+    return view('marketplace.semua-kategori');})->name('semua-kategori');
+
+Route::get('/kategori-plastik', function () {
+    return view('marketplace.kategori-plastik');})->name('kategori-plastik');
+
+Route::get('/kategori-kaca-kaleng', function () {
+    return view('marketplace.kategori-kaca-kaleng');})->name('kategori-kaca-kaleng');
+    
+Route::get('/kategori-elektronik', function () {
+    return view('marketplace.kategori-elektronik');})->name('kategori-elektronik');
+
+Route::get('/kategori-kertas', function () {
+    return view('marketplace.kategori-kertas');})->name('kategori-kertas');
+
+Route::get('/edit-profil', function () {
+    return view('user.edit-profil');
+});
+
 // login route
 Route::get('/login', [LoginController::class, 'index'])->name('login.view');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');

@@ -1,6 +1,8 @@
 <html>
     <head>
         <title>@yield('title')WasteLess</title>
+        <link rel = "icon" href ="{{ asset('img/logo bulet 1.png') }}" 
+        type = "image/x-icon">
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
     </head>
@@ -11,9 +13,9 @@
             <nav class="fixed bg-white w-full z-[1100]">
                 <div class="py-2 px-14">
                     <div class="flex justify-between items-center">
-                        <div class="logo">
+                        <a href="/" class="logo">
                             <img src="{{ asset('img/logo orange.png') }}">
-                        </div>
+                        </a>
                         <div class="flex flex-wrap items-baseline space-x-7 text-sm font-medium">
                             <a href="#" class="group">Tentang Kami
                                 <span class="block mx-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-[3px] rounded bg-[#6C894A]"></span>
@@ -33,12 +35,12 @@
             </nav>
             @show
      
-            <div class="mb-auto mt-32 px-32">
+            <div class="mb-auto mt-28 px-32">
                 @yield('content')
             </div>
     
             @section('footer')
-            <footer class="bg-[#6C894A] mt-32">
+            <footer class="bg-[#6C894A] mt-28">
                 <div class="pt-8 pb-5 px-24">
                     <div class="flex flex-wrap justify-between">
                         <div>
@@ -53,7 +55,7 @@
                         </div>
                         <div>
                             <h2 class="py-4 text-lg font-semibold text-white">Kontak Kami</h2>
-                            <div class="flex flex-wrap space-x-4  mb-4">
+                            <div class="flex flex-wrap space-x-4 mb-4">
                                 <a href="#" class="text-white hover:text-gray-900">
                                     <span class="i-mdi-linkedin text-2xl">Linkedin page</span>
                                 </a>
