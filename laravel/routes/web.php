@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProdukController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,28 +20,14 @@ use App\Http\Controllers\Auth\RegisterController;
 Route::get('/', function () {
     return view('landing-page');})->name('landing-page');
 
-Route::get('/home-page', function () {
-    return view('marketplace.home-page');})->name('home-page');
- 
+Route::get('/home-page', [ProdukController::class, 'homepage'])->name('home-page');
+
+Route::get('/kategori/{kategori_slug}', [ProdukController::class, 'perKategori']);
+
+Route::get('/semua-kategori', [ProdukController::class, 'semuaKategori'])->name('semua-kategori');
 Route::get('/detail-produk', function () {
     return view('marketplace.detail-produk');
 });
-
-Route::get('/semua-kategori', function () {
-    return view('marketplace.semua-kategori');})->name('semua-kategori');
-
-Route::get('/kategori-plastik', function () {
-    return view('marketplace.kategori-plastik');})->name('kategori-plastik');
-
-Route::get('/kategori-kaca-kaleng', function () {
-    return view('marketplace.kategori-kaca-kaleng');})->name('kategori-kaca-kaleng');
-    
-Route::get('/kategori-elektronik', function () {
-    return view('marketplace.kategori-elektronik');})->name('kategori-elektronik');
-
-Route::get('/kategori-kertas', function () {
-    return view('marketplace.kategori-kertas');})->name('kategori-kertas');
-
 Route::get('/edit-profil', function () {
     return view('user.edit-profil');
 });
