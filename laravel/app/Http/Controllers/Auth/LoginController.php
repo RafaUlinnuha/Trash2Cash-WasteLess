@@ -32,20 +32,37 @@ class LoginController extends Controller
     public function authenticate(Request $request)
     {
         //$request->dd();
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-        ]);
+        $credentials = $request->only('email', 'password');
  
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            echo ('yoo mantap');
-            //return redirect()->intended('dashboard');
+            // Authentication passed...
+            //echo ('yoo mantap baby');
+            return redirect()->route('landing-page');
         }
+
+        // $credentials = $request->validate([
+        //     'email' => ['required', 'email'],
+        //     'password' => ['required'],
+        // ]);
  
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        // if (Auth::attempt($credentials)) {
+        //     $request->session()->regenerate();
+        //     echo ('yoo mantap');
+        //     //return redirect()->intended('dashboard');
+        // }
+        else{
+            echo('gagal euy');
+        // return back()->withErrors([
+        //     'email' => 'The provided credentials do not match our records.',
+        // ])->onlyInput('email');
+        }
+        
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('landing-page');
     }
 
 

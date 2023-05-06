@@ -26,9 +26,14 @@
                             <a href="#" class="group">Jenis Sampah
                                 <span class="block mx-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-[3px] rounded bg-[#6C894A]"></span>
                             </a>
+                            @if(Auth::guest())
                             <a href="{{route('login.view')}}" class="py-1 px-5 bg-slate-50 hover:bg-[#6C894A] border-2 border-[#6C894A] text-[#6C894A] hover:text-neutral-50 rounded-xl transition ease-in-out delay-150 hover:scale-110 duration-300">
                                 Masuk
                             </a>
+                            @else
+                                <a href="#">{{Auth::user()->nama }}</a>
+                                <a href="{{route('logout.post')}}">Logout</a>
+                            @endif
                         </div>
                     </div>
                 </div>

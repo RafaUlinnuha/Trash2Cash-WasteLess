@@ -16,15 +16,7 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 Route::get('/', function () {
-    return view('landing-page');})->name('/');
-
-Route::get('/login', function () {
-    return view('auth.login');
-});
-
-Route::get('/register', function () {
-    return view('auth.register');
-});
+    return view('landing-page');})->name('landing-page');
 
 Route::get('/home-page', function () {
     return view('marketplace.home-page');})->name('home-page');
@@ -55,6 +47,9 @@ Route::get('/edit-profil', function () {
 // login route
 Route::get('/login', [LoginController::class, 'index'])->name('login.view');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
+
+// logout route
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout.post');
 
 //register route
 Route::get('/register', [RegisterController::class, 'index'])->name('register.view');
