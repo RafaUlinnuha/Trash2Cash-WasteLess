@@ -21,10 +21,11 @@ return new class extends Migration
             $table->float('harga');
             $table->text('deskripsi')->nullable();
             $table->string('gambar')->nullable();
+            $table->string('slug');
 
             //FK
             $table->foreignUuid('user_id')->references('id')->on('users');
-            $table->foreignUuid('kategori_id')->references('id')->on('kategori_sampahs');
+            $table->foreignUuid('kategori_sampah_id')->references('id')->on('kategori_sampahs');
             
             $table->timestamps();
             

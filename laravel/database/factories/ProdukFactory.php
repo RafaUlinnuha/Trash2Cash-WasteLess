@@ -30,14 +30,48 @@ class ProdukFactory extends Factory
         //     $table->foreignUuid('kategori_id')->references('id')->on('kategori_sampahs');
             
         //     $table->timestamps();
+        $randomImages =[
+            'img/marketplace/produk-1.png',
+            'img/marketplace/produk-2.png',
+            'img/marketplace/produk-3.png',
+            'img/marketplace/produk-4.png',
+            'img/marketplace/produk-5.jpeg',
+        ];
+
+        $kategoriId = fake()->randomElement(KategoriSampah::query()->get('id'));
+        $kategori = KategoriSampah::where('id', $kategoriId['id'])->pluck('nama');
+        //$out = new \Symfony\Component\Console\Output\ConsoleOutput();
+        //$out->writeln($kategori);
+        if ($kategori == '["Plastik"]')
+        {
+            $gambar = $randomImages[3];
+        } 
+        else if($kategori == '["Kertas"]')
+        {
+            $gambar = $randomImages[1];
+        } 
+        else if($kategori == '["Elektronik"]')
+        {
+            $gambar = $randomImages[2];
+        } 
+        else if ($kategori == '["Kaca dan Kaleng"]')
+        {
+            $gambar = $randomImages[4];
+        }
+
+        $nama = fake()->sentence();
+        $slug = \Str::slug($nama);
+        
         return [
             'id' => fake()->uuid(),
-            'nama' => fake()->sentence(),
+            'nama' => $nama,
             'nama_sub_kategori' => fake()->sentence(2),
             'jumlah' => fake()->numberBetween(10,150),
             'harga' => fake()->numberBetween(500,6000),
             'deskripsi' => fake()->paragraph(),
-            'kategori_id' => fake()->randomElement(KategoriSampah::query()->get('id'))
+            'slug' => $slug,
+            'kategori_sampah_id' => $kategoriId,
+            'gambar' => $gambar,
         ];
     }
 }

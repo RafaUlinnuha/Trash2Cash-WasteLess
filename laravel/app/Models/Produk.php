@@ -18,7 +18,8 @@ class Produk extends Model
         'jumlah',
         'harga',
         'deskripsi',
-        'gambar'
+        'gambar',
+        'slug'
     ];
 
     public function kategoriSampah() : BelongsTo

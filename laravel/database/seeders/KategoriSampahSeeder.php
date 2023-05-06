@@ -19,19 +19,23 @@ class KategoriSampahSeeder extends Seeder
     {
         //kategori 1
         KategoriSampah::create([
-            'nama' => 'Plastik'
+            'nama' => 'Plastik',
+            'slug' => 'plastik'
         ]);
         //kategori 2
         KategoriSampah::create([
-            'nama' => 'Kertas'
+            'nama' => 'Kertas',
+            'slug' => 'kertas'
         ]);
         //kategori 3
         KategoriSampah::create([
-            'nama' => 'Elektronik'
+            'nama' => 'Elektronik',
+            'slug' => 'elektronik'
         ]);
         //kategori 4
         KategoriSampah::create([
-            'nama' => 'Kaca'
+            'nama' => 'Kaca dan Kaleng',
+            'slug' => 'kaca-dan-kaleng'
         ]);
 
     }
