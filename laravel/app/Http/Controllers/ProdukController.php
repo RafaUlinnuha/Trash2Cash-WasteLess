@@ -31,7 +31,7 @@ class ProdukController extends Controller
         $judul = 'Sampah';
         $produk = Produk::with('user', 'user.alamatUser')->get();
         //dd($produk);
-        return view('marketplace.kategori-produk', compact('judul','produk'));
+        return view('marketplace.produk', compact('judul','produk'));
     }
 
     public function perKategori($kategori_slug)
@@ -42,7 +42,7 @@ class ProdukController extends Controller
             //dd($produk);
         }
         $judul = $kategori->nama;
-        return view('marketplace.kategori-produk', compact('judul','produk'));
+        return view('marketplace.produk', compact('judul','produk'));
     }
 
     /**
