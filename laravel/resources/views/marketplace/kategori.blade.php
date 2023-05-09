@@ -10,16 +10,16 @@
             <span class="text-lg">Semua Kategori</span>
          </a>
          <div class="mt-2">
-            <x-sidebar href="{{ route('kategori-plastik') }}" :active="request()->routeIs('kategori-plastik')">
+            <x-sidebar href="{{ url('/kategori/plastik')}}" :active="request()->segment(2) == 'plastik'">
                Plastik
             </x-sidebar>
-            <x-sidebar href="{{ route('kategori-kaca-kaleng') }}" :active="request()->routeIs('kategori-kaca-kaleng')">
+            <x-sidebar href="{{ url('/kategori/kaca-dan-kaleng')}}" :active="request()->segment(2) == 'kaca-dan-kaleng'">
                Kaca dan Kaleng
             </x-sidebar>
-            <x-sidebar href="{{ route('kategori-elektronik') }}" :active="request()->routeIs('kategori-elektronik')">
+            <x-sidebar href="{{ url('/kategori/elektronik')}}" :active="request()->segment(2) == 'elektronik'">
                Elektronik
             </x-sidebar>
-            <x-sidebar href="{{ route('kategori-kertas') }}" :active="request()->routeIs('kategori-kertas')">
+            <x-sidebar href="{{ url('/kategori/kertas')}}" :active="request()->segment(2) == 'kertas'">
                Kertas
             </x-sidebar>
          </div>

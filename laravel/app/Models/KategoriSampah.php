@@ -13,7 +13,8 @@ class KategoriSampah extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $fillable = [
-        'nama'
+        'nama',
+        'slug'
     ];
 
     public function produk() : HasMany

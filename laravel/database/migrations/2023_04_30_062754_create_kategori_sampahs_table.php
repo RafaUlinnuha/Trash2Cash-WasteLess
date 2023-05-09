@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('kategori_sampahs', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nama',20);
+            $table->string('slug');
             $table->timestamps();
         });
     }
