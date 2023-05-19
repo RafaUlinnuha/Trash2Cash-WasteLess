@@ -20,7 +20,7 @@ class ItemKeranjangFactory extends Factory
     {
         return [
             'id' => fake()->uuid(),
-            'jumlah' => fake()->numberBetween(1-5),
+            'jumlah' => fake()->numberBetween(1, 5),
             'produk_id' => fake()->randomElement(Produk::query()->get('id'))
         ];
     }

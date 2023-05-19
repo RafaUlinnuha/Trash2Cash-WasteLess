@@ -19,7 +19,7 @@ class ItemOrderFactory extends Factory
     {
         return [
             'id' => fake()->uuid(),
-            'jumlah' => fake()->numberBetween(1-20),
+            'jumlah' => fake()->numberBetween(1,50),
             'produk_id' => fake()->randomElement(Produk::query()->get('id'))
         ];
     }
