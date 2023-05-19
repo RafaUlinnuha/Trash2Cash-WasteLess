@@ -7,6 +7,8 @@ use App\Models\Produk;
 use App\Models\Order;
 use App\Models\ItemOrder;
 use App\Models\Pembayaran;
+use App\Models\Keranjang;
+use App\Models\ItemKeranjang;
 use App\Models\MetodePembayaran;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -33,13 +35,9 @@ class DatabaseSeeder extends Seeder
                 -> hasPembayaran()
                 -> hasItemOrder(2)
             )
+            ->has(Keranjang::factory()
+                -> hasItemKeranjang(2)
+            )
             ->create();
-
-
-        
-            
-        // $order = Order::factory(10)
-        //     ->has(Pembayaran::factory(), 'pembayaran')
-        //     ->create();
     }
 }
