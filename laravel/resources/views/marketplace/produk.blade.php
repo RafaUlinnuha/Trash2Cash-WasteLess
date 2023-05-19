@@ -7,7 +7,7 @@
 <div class="ml-64">
     <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
       @foreach ($produk as $item)
-       <a href="" class="produk-4">
+       <a href="{{ route('detail-produk', ['id' => $item->id]) }}" class="produk-4">
           <div class="items-center bg-white border border-gray-200">
               <img src="{{ asset($item->gambar) }}" class="w-full">
               <h1 class="m-2 text-lg">{{$item->nama}}</h1>

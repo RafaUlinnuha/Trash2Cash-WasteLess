@@ -20,14 +20,12 @@ use App\Http\Controllers\ProdukController;
 Route::get('/', function () {
     return view('landing-page');})->name('landing-page');
 
-Route::get('/home-page', [ProdukController::class, 'homepage'])->name('home-page');
+Route::get('/home-page', [ProdukController::class, 'index'])->name('home-page');
 
 Route::get('/kategori/{kategori_slug}', [ProdukController::class, 'perKategori']);
 
 Route::get('/semua-kategori', [ProdukController::class, 'semuaKategori'])->name('semua-kategori');
-Route::get('/detail-produk', function () {
-    return view('marketplace.detail-produk');
-});
+Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
 Route::get('/edit-profil', function () {
     return view('user.edit-profil');
 });

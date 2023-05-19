@@ -16,12 +16,7 @@ class ProdukController extends Controller
      */
     public function index()
     {
-       //
-    }
-
-    public function homepage()
-    {
-        $produk = Produk::with('user', 'user.alamatUser')->take(4)->get();
+       $produk = Produk::with('user', 'user.alamatUser')->take(4)->get();
         // dd($produk);
         return view('marketplace.home-page', compact('produk'));
     }
@@ -43,6 +38,19 @@ class ProdukController extends Controller
         }
         $judul = $kategori->nama;
         return view('marketplace.produk', compact('judul','produk'));
+    }
+
+    public function detailProduk($id)
+    {
+        $produk = Produk::with('user', 'user.alamatUser')->where('id', $id)->first();
+        //dd($produk);
+        // $kategori = KategoriSampah::where('slug', $kategori_slug)->first();
+        // if ($kategori){
+        //    $produk = Produk::with('user', 'user.alamatUser')->where('kategori_sampah_id',$kategori->id)->get();
+        //     //dd($produk);
+        // }
+        // $judul = $kategori->nama;
+        return view('marketplace.detail-produk', compact('produk'));
     }
 
     /**
