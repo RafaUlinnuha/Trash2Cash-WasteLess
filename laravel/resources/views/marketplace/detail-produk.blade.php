@@ -63,25 +63,30 @@
                     </div>
                 </div>
             </div>
-            <div class="jumlah flex items-center mt-10 space-x-4">
-                <h1>Jumlah</h1>
-                <div class="border border-gray-200 rounded">
-                    <div class="flex flex-row h-8 w-24 bg-transparent">
-                        <button data-action="decrement" class="btn-minus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-full rounded-l cursor-pointer">
-                            <span class="m-auto text-2xl font-thin">−</span>
-                        </button>
-                        <!-- <input type="number" class="text-center w-full font-semibold text-md hover:text-black focus:text-black items-center text-gray-700" name="jumlah" value="0"> -->
-                        <input type="number" step="1" min="1" value="1" class="text-center w-full font-semibold text-md hover:text-black focus:text-black items-center text-gray-700" name="jumlah">
-                        <button data-action="increment" class="btn-plus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-full rounded-r cursor-pointer">
-                            <span class="m-auto text-2xl font-thin">+</span>
-                        </button>
+            <form method="post" action="{{route('keranjang.post', ['id' => $produk->id])}}">
+            @csrf    
+                <div class="jumlah flex items-center mt-10 space-x-4">
+                    <h1>Jumlah</h1>
+                    <div class="border border-gray-200 rounded">
+                        <div class="flex flex-row h-8 w-24 bg-transparent">
+                            <button type="button" data-action="decrement" class="btn-minus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-full rounded-l cursor-pointer">
+                                <span class="m-auto text-2xl font-thin">−</span>
+                            </button>
+                            <!-- <input type="number" class="text-center w-full font-semibold text-md hover:text-black focus:text-black items-center text-gray-700" name="jumlah" value="0"> -->
+                            <input type="number" step="1" min="1" value="1" class="text-center w-full font-semibold text-md hover:text-black focus:text-black items-center text-gray-700" name="jumlah">
+                            <button type="button" data-action="increment" class="btn-plus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-full rounded-r cursor-pointer">
+                                <span class="m-auto text-2xl font-thin">+</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="mt-6">
-                <button class="items-center py-2 px-8 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button>
-                <button class="items-center py-2 px-8 border border-[#FF8833] text-[#FF8833] rounded-lg">Keranjang</button>
-            </div>
+                <div class="mt-6">
+                    <!-- <button type="submit" formaction="" class="items-center py-2 px-8 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button> -->
+                    <!-- <button type="submit" formaction="{{route('keranjang.post', ['id' => $produk->id])}}" class="items-center py-2 px-8 border border-[#FF8833] text-[#FF8833] rounded-lg">Keranjang</button> -->
+                    <button type="submit" name="action" value="beli_skrg" class="items-center py-2 px-8 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button>
+                    <button type="submit" name="action" value="tambah_keranjang" class="items-center py-2 px-8 border border-[#FF8833] text-[#FF8833] rounded-lg">Keranjang</button>
+                </div>
+            </form>
         </div>
     </div>
     

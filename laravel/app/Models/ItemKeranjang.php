@@ -12,7 +12,9 @@ class ItemKeranjang extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $fillable = [
-        'jumlah'
+        'jumlah',
+        'produk_id',
+        'keranjang_id'
     ];
 
     public function keranjang(): BelongsTo
