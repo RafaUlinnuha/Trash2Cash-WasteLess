@@ -36,7 +36,7 @@
         <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mt-4">
             <?php $i=1; ?>
         @foreach ($produk as $item)
-            <a href="" class="produk-<?= $i; ?>">
+            <a href="{{ route('detail-produk', ['id' => $item->id]) }}" class="produk-<?= $i; ?>">
                 <div class="items-center bg-white border border-gray-200 transition ease-in-out delay-150 hover:scale-105 duration-300">
                     <img src="{{ asset($item->gambar) }}" class="w-full">
                     <h1 class="m-2 text-lg">{{$item->nama}}</h1>

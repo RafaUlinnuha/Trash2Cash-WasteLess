@@ -5,10 +5,11 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Produk;
 
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Item_order>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ItemKeranjang>
  */
-class ItemOrderFactory extends Factory
+class ItemKeranjangFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +20,7 @@ class ItemOrderFactory extends Factory
     {
         return [
             'id' => fake()->uuid(),
-            'jumlah' => fake()->numberBetween(1,50),
+            'jumlah' => fake()->numberBetween(1, 5),
             'produk_id' => fake()->randomElement(Produk::query()->get('id'))
         ];
     }
