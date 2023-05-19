@@ -51,10 +51,10 @@ class LoginController extends Controller
         //     //return redirect()->intended('dashboard');
         // }
         else{
-            echo('gagal euy');
-        // return back()->withErrors([
-        //     'email' => 'The provided credentials do not match our records.',
-        // ])->onlyInput('email');
+            //echo('gagal euy');
+            return back()
+            // ->withErrors(['email' => 'The provided credentials do not match our records.',])
+            ->onlyInput('email');
         }
         
     }
