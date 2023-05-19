@@ -15,7 +15,8 @@ class MetodePembayaran extends Model
     protected $fillable = [
         'nama_metode',
         'atas_nama',
-        'no_rek'
+        'no_rek',
+        'user_id'
     ];
 
     public function user() : BelongsTo

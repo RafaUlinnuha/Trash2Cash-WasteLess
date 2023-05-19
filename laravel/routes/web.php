@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KeranjangController;
 
@@ -40,7 +41,7 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login.pos
 Route::middleware(['auth'])->group(function () {
     Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');
     Route::post('keranjang/add/{id}',[KeranjangController::class,'store'])->name('keranjang.post');
-    //Route::post('profile/{user}',[ProfileController::class,'update'])->name('profile.update');
+    Route::get('profil',[UserController::class,'index'])->name('profil.view');
   });
 
 // logout route
