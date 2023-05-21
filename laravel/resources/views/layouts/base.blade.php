@@ -75,7 +75,7 @@
                                                 <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Pembelian</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('profil') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Profil</a>
+                                                <a href="{{ route('profil.view') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Profil</a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('logout.post') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Log out</a>

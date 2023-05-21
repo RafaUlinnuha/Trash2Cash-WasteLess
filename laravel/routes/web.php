@@ -34,8 +34,8 @@ Route::get('/detail-produk', function () {
 
 Route::get('/profil/edit', function () {
     return view('user.edit-profil');})->name('/profil/edit');
-Route::get('/profil', function () {
-    return view('user.lihat-profil');})->name('profil');
+// Route::get('/profil', function () {
+//     return view('user.lihat-profil');})->name('profil');
 Route::get('/pembayaran', function () {
     return view('marketplace.pembayaran');})->name('pembayaran');
 Route::get('/keranjang', function () {

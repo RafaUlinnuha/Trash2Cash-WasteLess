@@ -25,13 +25,13 @@
             <h1 class="text-4xl font-semibold">Produk</h1>
             <a href="{{ route('semua-kategori') }}" class="hover:underline">See All</a>
         </div>
-        <div class="grid xl:grid-cols-4 grid-cols-2 gap-8 mt-8">
+        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mt-4">
             <?php $i=1; ?>
         @foreach ($produk as $item)
             <a href="{{ route('detail-produk', ['id' => $item->id]) }}" class="produk-<?= $i; ?>">
-                <div class="items-center bg-white border border-gray-200 transition ease-in-out delay-150 hover:scale-105 duration-300">
-                    <img src="{{ asset($item->gambar) }}" class="w-full">
-                    <h1 class="m-2 text-lg">{{$item->nama}}</h1>
+                <div class="items-center bg-white border border-gray-200">
+                    <img src="{{ asset($item->gambar) }}" class="w-full h-[250px]">
+                    <h1 class="m-2 text-lg line-clamp-1">{{$item->nama}}</h1>
                     <h2 class="mx-2 my-4 text-[#FF8833]">Rp {{number_format($item->harga,2,',','.')}}</h2>
                     <h3 class="m-2 text-right">{{$item->user->alamatUser->kota}}</h3>
                 </div>
