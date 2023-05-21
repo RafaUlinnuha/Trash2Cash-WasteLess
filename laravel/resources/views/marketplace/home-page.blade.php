@@ -28,10 +28,10 @@
         <div class="grid xl:grid-cols-4 grid-cols-2 gap-8 mt-8">
             <?php $i=1; ?>
         @foreach ($produk as $item)
-            <a href="" class="produk-<?= $i; ?>">
-                <div class="items-center bg-white border border-gray-200">
-                    <img src="{{ asset($item->gambar) }}" class="w-full h-[250px]">
-                    <h1 class="m-2 text-lg line-clamp-1">{{$item->nama}}</h1>
+            <a href="{{ route('detail-produk', ['id' => $item->id]) }}" class="produk-<?= $i; ?>">
+                <div class="items-center bg-white border border-gray-200 transition ease-in-out delay-150 hover:scale-105 duration-300">
+                    <img src="{{ asset($item->gambar) }}" class="w-full">
+                    <h1 class="m-2 text-lg">{{$item->nama}}</h1>
                     <h2 class="mx-2 my-4 text-[#FF8833]">Rp {{number_format($item->harga,2,',','.')}}</h2>
                     <h3 class="m-2 text-right">{{$item->user->alamatUser->kota}}</h3>
                 </div>

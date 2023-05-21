@@ -3,21 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Model;
 
-class MetodePembayaran extends Model
+class Keranjang extends Model
 {
     use HasFactory, HasUuids;
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $fillable = [
-        'nama_metode',
-        'atas_nama',
-        'no_rek',
-        'user_id'
     ];
+
+    public function itemKeranjang() : HasMany
+    {
+        return $this->hasMany('App\Models\ItemKeranjang');
+    }
 
     public function user() : BelongsTo
     {
