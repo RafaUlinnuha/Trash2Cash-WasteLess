@@ -13,6 +13,6 @@ class Kategori extends Component
      */
     public function render()
     {
-        return view('marketplace.kategori');
+        return view('components.kategori');
     }
 }

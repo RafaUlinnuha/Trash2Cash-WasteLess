@@ -28,9 +28,17 @@ Route::get('/semua-kategori', [ProdukController::class, 'semuaKategori'])->name(
 Route::get('/detail-produk', function () {
     return view('marketplace.detail-produk');
 });
-Route::get('/edit-profil', function () {
-    return view('user.edit-profil');
-});
+
+Route::get('/profil/edit', function () {
+    return view('user.edit-profil');})->name('/profil/edit');
+Route::get('/profil', function () {
+    return view('user.lihat-profil');})->name('profil');
+Route::get('/pembayaran', function () {
+    return view('marketplace.pembayaran');})->name('pembayaran');
+Route::get('/keranjang', function () {
+    return view('marketplace.keranjang');})->name('keranjang');
+Route::get('/status-order', function () {
+    return view('user.status-order');})->name('status-order');
 
 // login route
 Route::get('/login', [LoginController::class, 'index'])->name('login.view');
