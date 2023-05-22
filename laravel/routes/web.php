@@ -43,6 +43,8 @@ Route::get('/keranjang', function () {
 Route::get('/status-order', function () {
     return view('user.status-order');})->name('status-order');
 Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
+Route::get('/penjualan', function () {
+    return view('toko.penjualan');})->name('penjualan');
 
 
 // login route
