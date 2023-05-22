@@ -34,8 +34,8 @@ Route::get('/detail-produk', function () {
 
 Route::get('/profil/edit', function () {
     return view('user.edit-profil');})->name('/profil/edit');
-// Route::get('/profil', function () {
-//     return view('user.lihat-profil');})->name('profil');
+Route::get('/profil', function () {
+    return view('user.lihat-profil');})->name('profil.view');
 Route::get('/pembayaran', function () {
     return view('marketplace.pembayaran');})->name('pembayaran');
 Route::get('/keranjang', function () {
@@ -50,9 +50,9 @@ Route::get('/login', [LoginController::class, 'index'])->name('login.view');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');
+    // Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');
     Route::post('keranjang/add/{id}',[KeranjangController::class,'store'])->name('keranjang.post');
-    Route::get('profil',[UserController::class,'index'])->name('profil.view');
+    // Route::get('profil',[UserController::class,'index'])->name('profil.view');
   });
 
 // logout route

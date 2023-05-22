@@ -4,6 +4,7 @@
         <link rel = "icon" href ="{{ asset('img/logo bulet 1.png') }}" 
         type = "image/x-icon">
         @vite(['resources/css/app.css','resources/js/app.js'])
+        {{-- <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script> --}}
     </head>
     <body>
         <!-- navbar sebelum login -->

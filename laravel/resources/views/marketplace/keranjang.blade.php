@@ -39,22 +39,69 @@
                 Rp 3.000,-
             </td>
             <td class="align-text-top">
-                <div class="jumlah">
-                    <div class="border border-gray-200 rounded">
-                        <div class="flex flex-row h-8 w-24 bg-transparent">
-                            <button data-action="decrement" class="bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-full rounded-l cursor-pointer">
-                                <span class="m-auto text-2xl font-thin">−</span>
-                            </button>
-                            <input type="number" class="text-center w-full font-semibold text-md hover:text-black focus:text-black items-center text-gray-700" name="jumlah" value="0">
-                            <button data-action="increment" class="bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-full rounded-r cursor-pointer">
-                                <span class="m-auto text-2xl font-thin">+</span>
-                            </button>
+                <div class="border border-gray-200 rounded">
+                    {{-- <div class="flex flex-row h-8 w-24 bg-transparent">
+                        <button type="button" data-action="decrement" class="btn-minus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 rounded-l cursor-pointer">
+                            <span class="m-auto text-2xl font-thin">−</span>
+                        </button>
+                        <input type="number" step="1" min="1" value="1" class="text-center  font-semibold text-md hover:text-black focus:text-black items-center text-gray-700" name="jumlah">
+                        <button type="button" data-action="increment" class="btn-plus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 rounded-r cursor-pointer">
+                            <span class="m-auto text-2xl font-thin">+</span>
+                        </button>
+                    </div> --}}
+
+                    <div x-data="{count:0}">
+                        <div class="flex items-center justify-center">
+                            <button x-on:click="count++"
+                                class="text-white bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-900">+</button>
+                            <span class="m-5" x-text="count">0</span>
+                            <button x-on:click="count--"
+                                class="text-white bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-900">-</button>
                         </div>
                     </div>
-                </div>
             </td>
         </tr>
     </tbody>
 </table>
+<script>
+    function decrement(e) {
+        const btn = e.target.parentNode.parentElement.querySelector(
+        'button[data-action="decrement"]'
+        );
+        const target = btn.nextElementSibling;
+        let value = Number(target.value);
+        if(value == 1){
+            target.value = 1;
+        } else {
+            value--;
+            target.value = value;
+        }
+    }
 
+    function increment(e) {
+        const btn = e.target.parentNode.parentElement.querySelector(
+        'button[data-action="decrement"]'
+        );
+        const target = btn.nextElementSibling;
+        let value = Number(target.value);
+        value++;
+        target.value = value;
+    }
+
+    const decrementButtons = document.querySelectorAll(
+        `button[data-action="decrement"]`
+    );
+
+    const incrementButtons = document.querySelectorAll(
+        `button[data-action="increment"]`
+    );
+
+    decrementButtons.forEach(btn => {
+        btn.addEventListener("click", decrement);
+    });
+
+    incrementButtons.forEach(btn => {
+        btn.addEventListener("click", increment);
+    });
+</script>
 @endsection 

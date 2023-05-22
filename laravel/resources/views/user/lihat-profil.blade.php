@@ -14,25 +14,25 @@
             <div class="flex justify-between items-center">
                 <div class="w-1/3 text-lg">Nama</div>
                 <div class="w-2/3">
-                    <input disabled class="h-10 w-full px-3 placeholder-gray-600 border rounded-lg" type="text" placeholder="Nama sebelumnya">
+                    <input disabled class="h-10 w-full px-3 placeholder-gray-600 rounded-lg" type="text" placeholder="Nama sebelumnya">
                 </div>
             </div>
             <div class="flex justify-between items-center">
                 <div class="w-1/3 text-lg">No Telepon</div>
                 <div class="w-2/3">
-                    <input disabled class="h-10 w-full px-3 text-base placeholder-gray-600 border rounded-lg" type="text" placeholder="No telepon sebelumnya">
+                    <input disabled class="h-10 w-full px-3 placeholder-gray-600 rounded-lg" type="text" placeholder="No telepon sebelumnya">
                 </div>
             </div>
             <div class="flex justify-between">
                 <div class="w-1/3 text-lg items-start">Email</div>
                 <div class="w-2/3">
-                    <input disabled class="h-10 w-full px-3 text-base placeholder-gray-600 border rounded-lg" type="email" placeholder="Email sebelumnya">
+                    <input disabled class="h-10 w-full px-3 placeholder-gray-600 rounded-lg" type="email" placeholder="Email sebelumnya">
                 </div>
             </div>
             <div class="flex justify-between">
                 <div class="w-1/3 text-lg items-start">Alamat</div>
                 <div class="w-2/3">
-                    <textarea disabled rows="4" class="w-full px-3 pt-2 text-base placeholder-gray-600 border rounded-lg " name="alamat" id="alamat" placeholder="Alamat sebelumnya"></textarea>
+                    <textarea disabled rows="4" class="w-full px-3 pt-2 placeholder-gray-600 rounded-lg " name="alamat" id="alamat" placeholder="Alamat sebelumnya"></textarea>
                 </div>
             </div>
         </div>
