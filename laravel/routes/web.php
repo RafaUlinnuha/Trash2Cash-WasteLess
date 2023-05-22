@@ -28,11 +28,22 @@ Route::get('/home-page', [ProdukController::class, 'index'])->name('home-page');
 Route::get('/kategori/{kategori_slug}', [ProdukController::class, 'perKategori']);
 
 Route::get('/semua-kategori', [ProdukController::class, 'semuaKategori'])->name('semua-kategori');
+Route::get('/detail-produk', function () {
+    return view('marketplace.detail-produk');
+});
+
+Route::get('/profil/edit', function () {
+    return view('user.edit-profil');})->name('/profil/edit');
+// Route::get('/profil', function () {
+//     return view('user.lihat-profil');})->name('profil');
+Route::get('/pembayaran', function () {
+    return view('marketplace.pembayaran');})->name('pembayaran');
+Route::get('/keranjang', function () {
+    return view('marketplace.keranjang');})->name('keranjang');
+Route::get('/status-order', function () {
+    return view('user.status-order');})->name('status-order');
 Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
 
-Route::get('/edit-profil', function () {
-    return view('user.edit-profil');
-});
 
 // login route
 Route::get('/login', [LoginController::class, 'index'])->name('login.view');

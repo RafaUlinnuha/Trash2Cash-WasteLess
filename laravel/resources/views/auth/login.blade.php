@@ -17,7 +17,7 @@
                     <span class="i-mdi-mail-outline w-5 h-5 bg-[#C7C7C7] text-6xl"></span>
                 </div>
                 <div class="mb-6">
-                    <input class="border rounded w-full py-2 px-3 pl-10 text-gray-700 text-sm leading-tight focus:outline-none" id="email" name="email" type="text" placeholder="Email">
+                    <input class="rounded w-full py-2 px-3 pl-10 text-gray-700 text-sm leading-tight focus:outline-none" id="email" name="email" type="text" placeholder="Email">
                 </div>
             </div>
             <div class="relative">
@@ -25,7 +25,7 @@
                     <span class="i-mdi-password-outline w-5 h-5 bg-[#C7C7C7] text-6xl"></span>
                 </div>
                 <div class="mb-2">
-                    <input class="border rounded w-full py-2 px-3 pl-10 text-gray-700 text-sm leading-tight focus:outline-none" name="password" id="password" type="password" placeholder="Kata Sandi">
+                    <input class="rounded w-full py-2 px-3 pl-10 text-gray-700 text-sm leading-tight focus:outline-none" name="password" id="password" type="password" placeholder="Kata Sandi">
                 </div>
             </div>
             <div class="mb-10">

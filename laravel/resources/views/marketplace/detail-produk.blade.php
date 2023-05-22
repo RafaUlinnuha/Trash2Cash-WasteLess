@@ -3,63 +3,58 @@
 @section('title', 'Detail Produk | ')
  
 @section('content')
-    <!-- <h1 class="text-4xl font-semibold">Kertas Koran Bekas Murah Meriah Untuk Kerajinan Tangan</h1> -->
     <h1 class="text-4xl font-semibold">{{$produk->nama}}</h1>
-    <div class="flex space-x-16 mt-8">
-        <div class="flex flex-col w-full space-y-4">
-            <img src="{{ asset($produk->gambar) }}">
+    <div class="grid grid-cols-3 mt-8">
+        <div class="flex flex-col w-full space-y-4 justify-center">
+            <img src="{{ asset($produk->gambar) }}" class="w-[80%]">
             <div class="foto flex space-x-4">
                 <span class="i-bi-people-circle w-12 h-12"></span>
                 <div class="grid grid-rows-2">
-                    <!-- <h1 class="font-semibold">Nama Toko</h1>
-                    <h2>Kota Bandung</h2> -->
                     <h1 class="font-semibold">{{$produk->user->nama}}</h1>
                     <h2>{{$produk->user->alamatUser->kota}}</h2>
                 </div>
             </div>
         </div>
-        <div class="deskripsi">
-            <!-- <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos accusamus fugit deserunt nam rerum soluta quo molestias laudantium, possimus eius minima unde! Quo illo architecto sed facilis ad natus minus! Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, ea maxime accusantium esse cum rerum quis quod repudiandae tempore quaerat, natus, molestiae quos sit laborum? Consectetur veniam officiis voluptatem! Expedita?</p> -->
+        <div class="deskripsi col-span-2">
             <p>{{$produk->deskripsi}}</p>
-            <div class="grid grid-cols-4 mt-4">
-                <div class="flex flex-wrap space-x-2">
-                    <div class="box bg-[#8092C1] p-2 rounded">
+            <div class="grid xl:grid-cols-4 grid-cols-2 gap-4 mt-4">
+                <div class="flex space-x-2">
+                    <div class="bg-[#8092C1] p-2 rounded">
                         <span class="i-mdi-recycle w-8 h-8"></span>
                     </div>
                     <div>
                         <div class="h1">Kategori</div>
-                        <!-- <p class="font-semibold">Kertas</p> -->
-                        <p class="font-semibold">{{$produk->kategoriSampah->nama}}</p>
+                        <p class="font-semibold line-clamp-1">{{$produk->kategoriSampah->nama}}</p>
                     </div>
                 </div>
-                <div class="flex flex-wrap space-x-2">
-                    <div class="box bg-[#8092C1] p-2 rounded">
+                <div class="flex space-x-2">
+                    <div class="bg-[#8092C1] p-2 rounded">
                         <span class="i-carbon-category w-8 h-8"></span>
                     </div>
                     <div>
                         <div class="h1">Sub Kategori</div>
                         <!-- <p class="font-semibold">Kertas Koran</p> -->
-                        <p class="font-semibold">{{$produk->nama_sub_kategori}}</p>
+                        <p class="font-semibold line-clamp-1">{{$produk->nama_sub_kategori}}</p>
                     </div>
                 </div>
-                <div class="flex flex-wrap space-x-2">
-                    <div class="box bg-[#8092C1] p-2 rounded">
+                <div class="flex space-x-2">
+                    <div class="bg-[#8092C1] p-2 rounded">
                         <span class="i-ri-price-tag-3-line w-8 h-8"></span>
                     </div>
                     <div>
                         <div class="h1">Harga</div>
                         <!-- <p class="font-semibold">Rp 5000/kg</p> -->
-                        <p class="font-semibold">Rp {{number_format($produk->harga,2,',','.')}}/kg</p>
+                        <p class="font-semibold line-clamp-1">Rp {{number_format($produk->harga,2,',','.')}}/kg</p>
                     </div>
                 </div>
-                <div class="flex flex-wrap space-x-2">
+                <div class="flex space-x-2">
                     <div class="box bg-[#8092C1] p-2 rounded">
                         <span class="i-material-symbols-weight-outline w-8 h-8"></span>
                     </div>
                     <div>
                         <div class="h1">Kuantitas</div>
                         <!-- <p class="font-semibold">100 Kg</p> -->
-                        <p class="font-semibold">{{$produk->jumlah}} Kg</p>
+                        <p class="font-semibold line-clamp-1">{{$produk->jumlah}} Kg</p>
                     </div>
                 </div>
             </div>

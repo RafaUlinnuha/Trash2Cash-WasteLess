@@ -40,8 +40,16 @@
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <span class="i-mdi-password-outline w-5 h-5 bg-[#C7C7C7] text-6xl"></span>
                 </div>
-                <div class="mb-2">
+                <div class="mb-6">
                     <input class="shadow appearance-none border rounded w-full py-2 px-3 pl-10 text-gray-700 text-sm leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" placeholder="Kata Sandi">
+                </div>
+            </div>
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <span class="i-mdi-password w-5 h-5 bg-[#C7C7C7] text-6xl"></span>
+                </div>
+                <div class="mb-2">
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 pl-10 text-gray-700 text-sm leading-tight focus:outline-none focus:shadow-outline" name="password" type="password" placeholder="Konfirmasi Kata Sandi">
                 </div>
             </div>
             <div class="mt-10 flex flex-col items-center justify-center">
