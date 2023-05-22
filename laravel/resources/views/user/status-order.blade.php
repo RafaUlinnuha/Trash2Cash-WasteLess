@@ -3,6 +3,7 @@
 @section('title', 'Status Order | ')
  
 @section('content')
+<h1 class="text-4xl font-semibold">Status Order</h1>
 <table class="mt-12 w-full border-2 py-8 px-12 shadow">
     <thead>
       <tr class="bg-white border-b text-xl">
