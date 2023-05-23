@@ -40,11 +40,11 @@ Route::get('/pembayaran', function () {
     return view('marketplace.pembayaran');})->name('pembayaran');
 Route::get('/keranjang', function () {
     return view('marketplace.keranjang');})->name('keranjang');
-Route::get('/status-order', function () {
-    return view('user.status-order');})->name('status-order');
+Route::get('/toko/status-order', function () {
+    return view('toko.status-order');})->name('/toko/status-order');
 Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
-Route::get('/penjualan', function () {
-    return view('toko.penjualan');})->name('penjualan');
+Route::get('/toko/penjualan', function () {
+    return view('toko.penjualan');})->name('/toko/penjualan');
 
 
 // login route

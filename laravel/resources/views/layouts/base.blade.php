@@ -54,7 +54,7 @@
                                                 <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Penjualan</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('status-order') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Status Order</a>
+                                                <a href="{{ route('/toko/status-order') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Status Order</a>
                                             </li>
                                             <li>
                                                 <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Pendapatan</a>

@@ -28,12 +28,12 @@
                     <input class="rounded w-full py-2 px-3 pl-10 text-gray-700 text-sm leading-tight focus:outline-none" name="password" id="password" type="password" placeholder="Kata Sandi">
                 </div>
             </div>
-            <div class="mb-10">
+            {{-- <div class="mb-10">
                 <a class="inline-block align-baseline text-xs text-black underline hover:text-gray-50" href="#">
                     Lupa kata sandi?
                 </a>
-            </div>
-            <div class="flex flex-col items-center justify-center">
+            </div> --}}
+            <div class="flex flex-col items-center justify-center mt-10">
                 <button class="bg-[#6C894A] hover:bg-[#ABB955] text-white font-semibold py-1 px-6 rounded transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-105 duration-300" type="submit">
                     Masuk
                 </button>

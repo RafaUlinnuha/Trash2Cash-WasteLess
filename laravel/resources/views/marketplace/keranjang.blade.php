@@ -7,16 +7,16 @@
 <table class="w-full text-left mt-8">
     <thead>
         <tr class="bg-white text-lg">
-            <th scope="col"><input checked id="purple-checkbox" type="checkbox" value="" class="w-4 h-4 text-[#8092C1] bg-gray-100 border-gray-300 rounded focus:ring-[#8092C1]"></th>
+            <th scope="col"><input id="purple-checkbox" type="checkbox" value="" class="w-4 h-4 text-[#8092C1] bg-gray-100 border-gray-300 rounded focus:ring-[#8092C1]"></th>
             <th scope="col" class="py-3 font-thin w-1/2">Produk</th>
-            <th scope="col" class="py-3 font-thin">Harga</th>
-            <th scope="col" class="py-3 font-thin">Jumlah</th>
+            <th scope="col" class="py-3 font-thin text-center">Harga</th>
+            <th scope="col" class="py-3 font-thin text-center">Jumlah</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>
-                <input checked type="checkbox" value="" class="w-4 h-4 text-[#8092C1] bg-gray-100 border-gray-300 rounded focus:ring-[#8092C1]">
+                <input type="checkbox" value="" class="w-4 h-4 text-[#8092C1] bg-gray-100 border-gray-300 rounded focus:ring-[#8092C1]">
             </td>
             <td class="py-3 font-medium text-lg">
                 Anti Sampah
@@ -26,82 +26,40 @@
         </tr>
         <tr>
             <td>
-                <input checked type="checkbox" value="" class="w-4 h-4 text-[#8092C1] bg-gray-100 border-gray-300 rounded focus:ring-[#8092C1]">
+                <input type="checkbox" value="" class="w-4 h-4 text-[#8092C1] bg-gray-100 border-gray-300 rounded focus:ring-[#8092C1]">
             </td>
             <td>
                 <div class="flex flex-wrap space-x-6">
                     <img src="{{ asset('img/marketplace/produk-2.png') }}" class="rounded-xl w-[30%]">
-                    <h1 class="w-[50%]">Kertas Koran Bekas Murah Untuk Kerjainan Tangan</h1>
+                    <h1 class="w-[50%]">Kertas Koran Bekas Murah Untuk Kerajinan Tangan</h1>
                 </div> 
             </td>
-            
-            <td class="align-text-top">
+            <td class="align-text-top text-center">
                 Rp 3.000,-
             </td>
             <td class="align-text-top">
-                <div class="border border-gray-200 rounded">
-                    {{-- <div class="flex flex-row h-8 w-24 bg-transparent">
-                        <button type="button" data-action="decrement" class="btn-minus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 rounded-l cursor-pointer">
-                            <span class="m-auto text-2xl font-thin">−</span>
-                        </button>
-                        <input type="number" step="1" min="1" value="1" class="text-center  font-semibold text-md hover:text-black focus:text-black items-center text-gray-700" name="jumlah">
-                        <button type="button" data-action="increment" class="btn-plus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 rounded-r cursor-pointer">
-                            <span class="m-auto text-2xl font-thin">+</span>
-                        </button>
-                    </div> --}}
-
-                    <div x-data="{count:0}">
-                        <div class="flex items-center justify-center">
-                            <button x-on:click="count++"
-                                class="text-white bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-900">+</button>
-                            <span class="m-5" x-text="count">0</span>
-                            <button x-on:click="count--"
-                                class="text-white bg-indigo-500 px-4 py-2 rounded hover:bg-indigo-900">-</button>
+                <div class="border w-[30%] mx-auto">
+                    <div x-data="{ counter: 1 }">
+                        <div class="flex items-center justify-between">
+                            <input type="button" value="-"  class="bg-white px-2 cursor-pointer border-r py-1" data-field="quantity" x-on:click="counter--;if(counter < 1){counter = 1;}">
+                            <input type="number" name="value" id="value" class="w-[80%] text-center py-0 border-transparent focus:border-transparent focus:ring-0" required min="1" max="10" :value="counter">
+                            <input type="button" value="+"  class="bg-white px-2 cursor-pointer border-l py-1" data-field="quantity" x-on:click="counter++;if(counter > 10){counter = 10;}">
                         </div>
                     </div>
+                </div>
             </td>
         </tr>
     </tbody>
 </table>
-<script>
-    function decrement(e) {
-        const btn = e.target.parentNode.parentElement.querySelector(
-        'button[data-action="decrement"]'
-        );
-        const target = btn.nextElementSibling;
-        let value = Number(target.value);
-        if(value == 1){
-            target.value = 1;
-        } else {
-            value--;
-            target.value = value;
-        }
-    }
-
-    function increment(e) {
-        const btn = e.target.parentNode.parentElement.querySelector(
-        'button[data-action="decrement"]'
-        );
-        const target = btn.nextElementSibling;
-        let value = Number(target.value);
-        value++;
-        target.value = value;
-    }
-
-    const decrementButtons = document.querySelectorAll(
-        `button[data-action="decrement"]`
-    );
-
-    const incrementButtons = document.querySelectorAll(
-        `button[data-action="increment"]`
-    );
-
-    decrementButtons.forEach(btn => {
-        btn.addEventListener("click", decrement);
-    });
-
-    incrementButtons.forEach(btn => {
-        btn.addEventListener("click", increment);
-    });
-</script>
+<div class="flex items-center mt-8 space-x-4">
+    <div class="px-10 py-3 rounded-lg border border-gray-200 shadow flex justify-between font-medium xl:w-3/4 w-2/3">
+        <h1 class="text-lg">Total Pembayaran</h1>
+        <h1>Rp 9000.-</h1>
+    </div>
+    <div class="text-right">
+        <a href="" class="px-10 py-3 font-medium text-center text-lg bg-[#FF8833] text-neutral-50 rounded-lg transition ease-in-out delay-150 duration-300">
+            Bayar Sekarang
+         </a>
+    </div>
+</div>
 @endsection 
