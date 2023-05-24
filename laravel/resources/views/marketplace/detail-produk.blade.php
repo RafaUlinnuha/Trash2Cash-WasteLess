@@ -60,71 +60,27 @@
             </div>
             <form method="post" action="{{route('keranjang.post', ['id' => $produk->id])}}">
             @csrf    
-                <div class="jumlah flex items-center mt-10 space-x-4">
+            <div class="grid grid-cols-2">
+                <div class="jumlah flex items-center mt-10 justify-between col-span-2 w-full md:w-[70%]  xl:w-[40%]">
                     <h1>Jumlah</h1>
-                    <div class="border border-gray-200 rounded">
-                        <div class="flex flex-row h-8 w-24 bg-transparent">
-                            <button type="button" data-action="decrement" class="btn-minus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-full rounded-l cursor-pointer">
-                                <span class="m-auto text-2xl font-thin">−</span>
-                            </button>
-                            <!-- <input type="number" class="text-center w-full font-semibold text-md hover:text-black focus:text-black items-center text-gray-700" name="jumlah" value="0"> -->
-                            <input type="number" step="1" min="1" value="1" class="text-center w-full font-semibold text-md hover:text-black focus:text-black items-center text-gray-700" name="jumlah">
-                            <button type="button" data-action="increment" class="btn-plus bg-neutral-50 text-gray-600 hover:text-gray-700 hover:bg-gray-400 w-full rounded-r cursor-pointer">
-                                <span class="m-auto text-2xl font-thin">+</span>
-                            </button>
+                    <div class="border">
+                        <div x-data="{ counter: 1 }">
+                            <div class="flex items-center justify-between">
+                                <input type="button" value="-"  class="bg-white px-2 cursor-pointer border-r py-1" data-field="quantity" x-on:click="counter--;if(counter < 1){counter = 1;}">
+                                <input type="number" name="value" id="value" class="w-[30%] text-center py-0 border-transparent focus:border-transparent focus:ring-0" required min="1" max="10" :value="counter">
+                                <input type="button" value="+"  class="bg-white px-2 cursor-pointer border-l py-1" data-field="quantity" x-on:click="counter++;if(counter > 10){counter = 10;}">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="mt-6">
+                <div class="mt-6 flex justify-between col-span-2 w-full md:w-[70%] xl:w-[40%]">
                     <!-- <button type="submit" formaction="" class="items-center py-2 px-8 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button> -->
                     <!-- <button type="submit" formaction="{{route('keranjang.post', ['id' => $produk->id])}}" class="items-center py-2 px-8 border border-[#FF8833] text-[#FF8833] rounded-lg">Keranjang</button> -->
-                    <button type="submit" name="action" value="beli_skrg" class="items-center py-2 px-8 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button>
+                    <button type="submit" name="action" value="beli_skrg" class="items-center py-2 px-6 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button>
                     <button type="submit" name="action" value="tambah_keranjang" class="items-center py-2 px-8 border border-[#FF8833] text-[#FF8833] rounded-lg">Keranjang</button>
                 </div>
+            </div>
             </form>
         </div>
     </div>
-    
-    <!-- script buat kuantitas -->
-    <script>
-    function decrement(e) {
-        const btn = e.target.parentNode.parentElement.querySelector(
-        'button[data-action="decrement"]'
-        );
-        const target = btn.nextElementSibling;
-        let value = Number(target.value);
-        if(value == 1){
-            target.value = 1;
-        } else {
-            value--;
-            target.value = value;
-        }
-    }
-
-    function increment(e) {
-        const btn = e.target.parentNode.parentElement.querySelector(
-        'button[data-action="decrement"]'
-        );
-        const target = btn.nextElementSibling;
-        let value = Number(target.value);
-        value++;
-        target.value = value;
-    }
-
-    const decrementButtons = document.querySelectorAll(
-        `button[data-action="decrement"]`
-    );
-
-    const incrementButtons = document.querySelectorAll(
-        `button[data-action="increment"]`
-    );
-
-    decrementButtons.forEach(btn => {
-        btn.addEventListener("click", decrement);
-    });
-
-    incrementButtons.forEach(btn => {
-        btn.addEventListener("click", increment);
-    });
-</script>
 @endsection 
