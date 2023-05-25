@@ -4,30 +4,16 @@
  
 @section('content')
 <h1 class="text-4xl font-semibold">Status Order</h1>
-<div x-data="{ tab: '#tab1' }" class="mt-4">
-
+<div x-data="{ tab: 'tab1' }" class="mt-4">
   <div class="flex flex-row justify-between border-b-2 border-gray-900">
-
-    <a class="p-4 font-medium"
-      href="#" x-on:click.prevent="tab='#tab1'">Semua</a>
-      
-    <a class="p-4 font-medium" 
-      href="#" x-on:click.prevent="tab='#tab2'">Belum Bayar</a>
-      
-    <a class="p-4 font-medium" 
-      href="#" x-on:click.prevent="tab='#tab3'">Diproses</a>
-
-    <a class="p-4 font-medium" 
-      href="#" x-on:click.prevent="tab='#tab4'">Dikirim</a>
-      
-    <a class="p-4 font-medium" 
-      href="#" x-on:click.prevent="tab='#tab5'">Selesai</a>
-      
-    <a class="p-4 font-medium" 
-      href="#" x-on:click.prevent="tab='#tab6'">Dibatalkan</a>
-      
+    <x-tabs href="#" x-on:click.prevent="tab='tab1'">Semua</x-tabs>
+    <x-tabs href="#" x-on:click.prevent="tab='tab2'">Belum Bayar</x-tabs>
+    <x-tabs href="#" x-on:click.prevent="tab='tab3'">Diproses</x-tabs>
+    <x-tabs href="#" x-on:click.prevent="tab='tab4'">Dikirim</x-tabs>
+    <x-tabs href="#" x-on:click.prevent="tab='tab5'">Selesai</x-tabs>
+    <x-tabs href="#" x-on:click.prevent="tab='tab6'">Dibatalkan</x-tabs> 
   </div>
-  <div x-show="tab == '#tab1'" x-cloak>
+  <div x-show="tab == 'tab1'" x-cloak>
     <table class="mt-12 w-full border-2 py-8 px-12 shadow">
       <thead>
         <tr class="border text-base">
@@ -90,7 +76,7 @@
     </table>
   </div>
   
-  <div x-show="tab == '#tab2'" x-cloak>
+  <div x-show="tab == 'tab2'" x-cloak>
     <table class="mt-12 w-full border-2 py-8 px-12 shadow">
       <thead>
         <tr class="border text-base">
@@ -101,7 +87,6 @@
           <th scope="col" class="px-6 py-3 font-medium">Alamat Pengiriman</th>
           <th scope="col" class="px-6 py-3 font-medium">Total (Rp)</th>
           <th scope="col" class="px-6 py-3 font-medium">Bukti Bayar</th>
-          <th colspan="2" class="px-6 py-3 font-medium">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -116,16 +101,13 @@
           <td class="px-6 py-3">
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
           </td>
-          <td class="px-6 py-3">
-              <a href="#" class="font-medium text-red-600 hover:underline">Delete</a>
-          </td>
         </tr>
         
       </tbody>
     </table>
   </div>
   
-  <div x-show="tab == '#tab3'" x-cloak>
+  <div x-show="tab == 'tab3'" x-cloak>
     <table class="mt-12 w-full border-2 py-8 px-12 shadow">
       <thead>
         <tr class="border text-base">
@@ -135,7 +117,6 @@
           <th scope="col" class="px-6 py-3 font-medium">User Pembeli</th>
           <th scope="col" class="px-6 py-3 font-medium">Alamat Pengiriman</th>
           <th scope="col" class="px-6 py-3 font-medium">Total (Rp)</th>
-          <th colspan="2" class="px-6 py-3 font-medium">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -149,15 +130,12 @@
           <td class="px-6 py-3">
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
           </td>
-          <td class="px-6 py-3">
-              <a href="#" class="font-medium text-red-600 hover:underline">Delete</a>
-          </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <div x-show="tab == '#tab4'" x-cloak>
+  <div x-show="tab == 'tab4'" x-cloak>
     <table class="mt-12 w-full border-2 py-8 px-12 shadow">
       <thead>
         <tr class="border text-base">
@@ -167,7 +145,6 @@
           <th scope="col" class="px-6 py-3 font-medium">User Pembeli</th>
           <th scope="col" class="px-6 py-3 font-medium">Alamat Pengiriman</th>
           <th scope="col" class="px-6 py-3 font-medium">Total (Rp)</th>
-          <th colspan="2" class="px-6 py-3 font-medium">Aksi</th>
         </tr>
       </thead>
       <tbody>
@@ -181,15 +158,12 @@
           <td class="px-6 py-3">
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
           </td>
-          <td class="px-6 py-3">
-              <a href="#" class="font-medium text-red-600 hover:underline">Delete</a>
-          </td>
         </tr>
       </tbody>
     </table>
   </div>
 
-<div x-show="tab == '#tab5'" x-cloak>
+<div x-show="tab == 'tab5'" x-cloak>
   <table class="mt-12 w-full border-2 py-8 px-12 shadow">
     <thead>
       <tr class="border text-base">
@@ -214,7 +188,8 @@
   </table>
 </div>
 
-<div x-show="tab == '#tab6'" x-cloak><table class="mt-12 w-full border-2 py-8 px-12 shadow">
+<div x-show="tab == 'tab6'" x-cloak>
+  <table class="mt-12 w-full border-2 py-8 px-12 shadow">
   <thead>
     <tr class="border text-base">
       <th scope="col" class="px-3 py-3 font-medium">No</th>
