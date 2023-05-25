@@ -4,48 +4,20 @@
  
 @section('content')
 <h1 class="text-4xl font-semibold">Status Order</h1>
-{{--
-
-<div x-show="tab == 'tab6'" x-cloak>
-  <table class="mt-12 w-full border-2 py-8 px-12 shadow">
-  <thead>
-    <tr class="border text-base">
-      <th scope="col" class="px-3 py-3 font-medium">No</th>
-      <th scope="col" class="px-6 py-3 font-medium">Tanggal</th>
-      <th scope="col" class="px-6 py-3 font-medium ">Id Order</th>
-      <th scope="col" class="px-6 py-3 font-medium">User Pembeli</th>
-      <th scope="col" class="px-6 py-3 font-medium">Alamat Pengiriman</th>
-      <th scope="col" class="px-6 py-3 font-medium">Total (Rp)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="border text-center">
-      <td class="px-3 py-3">1</td>
-      <td class="px-6 py-3">14/03/2023</td>
-      <td class="px-6 py-3">00016</td>
-      <td class="px-6 py-3">Rafa Azka</td>
-      <td class="px-6 py-3">Kota Bandung</td>
-      <td class="px-6 py-3">Rp 6.000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-  
-</div> --}}
 
 <div x-data="{ current: 1 }">
   <div class="flex overflow-hidden border-b-2 mt-8">
-    <button class="px-4 py-2 w-full" x-on:click="current = 1"
+    <button class="p-2 w-full" x-on:click="current = 1"
         x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 1 }">Semua</button>
-    <button class="px-4 py-2 w-full" x-on:click="current = 2"
+    <button class="p-2 w-full" x-on:click="current = 2"
         x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 2 }">Belum Bayar</button>
-    <button class="px-4 py-2 w-full" x-on:click="current = 3"
+    <button class="p-2 w-full" x-on:click="current = 3"
         x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 3 }">Diproses</button>
-        <button class="px-4 py-2 w-full" x-on:click="current = 4"
+        <button class="p-2 w-full" x-on:click="current = 4"
         x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 4 }">Dikirim</button>
-    <button class="px-4 py-2 w-full" x-on:click="current = 5"
+    <button class="p-2 w-full" x-on:click="current = 5"
         x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 5 }">Selesai</button>
-    <button class="px-4 py-2 w-full" x-on:click="current = 6"
+    <button class="p-2 w-full" x-on:click="current = 6"
         x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 6 }">Dibatalkan</button>    
   </div>
   <div x-show="current === 1" class="p-3 text-center mt-4">
