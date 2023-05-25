@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 use App\Models\Keranjang;
 use App\Models\ItemKeranjang;
-use App\Models\ItemOrder;
-use App\Models\Order;
 use App\Models\Produk;
-
+use App\Models\Order;
+use App\Models\ItemOrder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-use Illuminate\Http\Request;
-
-class KeranjangController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,11 +19,7 @@ class KeranjangController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
-        $keranjang = Keranjang::Where('user_id',$id)->first();
-        // $items = $keranjang->itemKeranjang;
-        // dd($keranjang);
-        return view('marketplace.keranjang', compact('keranjang'));
+        //
     }
 
     /**
@@ -44,49 +38,38 @@ class KeranjangController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
-    {   
-        dd($request);
-        $produk = Produk::Where('id', $id)->first();
-        $user_id = Auth::id();
-        $keranjang = Keranjang::Where('user_id',$user_id)->first();
-        //dd($produk->id);
-        if($request->action == 'tambah_keranjang'){
-            ItemKeranjang::create([
-            'jumlah' => $request->jumlah,
-            'keranjang_id' => $keranjang->id,
-            'produk_id' => $produk->id,
-            ]);
-        }
-        else{
-            $order = Order::where('user_id', '=', $user_id)
+    public function store(Request $request)
+    {
+        $selectedCheckboxes = $request->input('checkboxes');
+        $id = Auth::id();
+        $order = Order::where('user_id', '=', $id)
                  ->where('status', '=', 'ongoing')
                  ->first();
+        // dd($selectedCheckboxes);
+
+        foreach ($selectedCheckboxes as $checkboxValue) {
+            $itemKeranjang = ItemKeranjang::find($checkboxValue);
+            // dd($itemKeranjang);
+            ItemOrder::create([
+                'jumlah' => $itemKeranjang->jumlah,
+                'produk_id' => $itemKeranjang->produk->id,
+                'order_id' => $order->id
+            ]);
+            $itemKeranjang->delete();
         }
-        return back();
-    }
 
-    public function incProduk($id)
-    {
-        $item = ItemKeranjang::find($id);
-        $jumlah = $item->jumlah + 1;
-        // dd($jumlah);
-        $item->update([
-            'jumlah' => $jumlah
+        $order->update([
+            'status' => 'selesai'
         ]);
+
+        Order::create([
+            'status' => 'ongoing',
+            'user_id' =>$id
+        ]);
+
         return redirect()->route('keranjang');
     }
 
-    public function decProduk($id)
-    {
-        $item = ItemKeranjang::find($id);
-        $jumlah = $item->jumlah - 1;
-        // dd($jumlah);
-        $item->update([
-            'jumlah' => $jumlah
-        ]);
-        return redirect()->route('keranjang');
-    }
     /**
      * Display the specified resource.
      *
@@ -94,8 +77,8 @@ class KeranjangController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
-        //return view('marketplace.keranjang', compact('keranjang'));
+    {
+        //
     }
 
     /**

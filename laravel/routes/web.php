@@ -6,6 +6,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KeranjangController;
+use App\Http\Controllers\OrderController;
+
 
 
 
@@ -52,9 +54,13 @@ Route::get('/login', [LoginController::class, 'index'])->name('login.view');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 
 Route::middleware(['auth'])->group(function () {
-    // Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');
+    Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');
     Route::post('keranjang/add/{id}',[KeranjangController::class,'store'])->name('keranjang.post');
-    // Route::get('profil',[UserController::class,'index'])->name('profil.view');
+    Route::get('keranjang/inc/{id}',[KeranjangController::class,'incProduk'])->name('produk.inc');
+    Route::get('keranjang/dec/{id}',[KeranjangController::class,'decProduk'])->name('produk.dec');
+    Route::get('keranjang/dec/{id}',[KeranjangController::class,'decProduk'])->name('produk.dec');
+    Route::post('keranjang/buat-pesanan',[OrderController::class,'store'])->name('order.post');
+    Route::get('profil',[UserController::class,'index'])->name('profil.view');
   });
 
 // logout route

@@ -17,7 +17,8 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            'id' => fake()->uuid()
+            'id' => fake()->uuid(),
+            'status' => 'ongoing'
         ];
     }
 }

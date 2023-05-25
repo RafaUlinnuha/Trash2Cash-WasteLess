@@ -13,7 +13,9 @@ class ItemOrder extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $fillable = [
-        'jumlah'
+        'jumlah',
+        'order_id',
+        'produk_id'
     ];
 
     public function order(): BelongsTo

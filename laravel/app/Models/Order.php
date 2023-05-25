@@ -16,6 +16,7 @@ class Order extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $fillable = [
+        'user_id'
     ];
 
     public function itemOrder() : HasMany

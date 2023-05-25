@@ -67,15 +67,13 @@
                         <div x-data="{ counter: 1 }">
                             <div class="flex items-center justify-between">
                                 <input type="button" value="-"  class="bg-white px-2 cursor-pointer border-r py-1" data-field="quantity" x-on:click="counter--;if(counter < 1){counter = 1;}">
-                                <input type="number" name="value" id="value" class="w-[30%] text-center py-0 border-transparent focus:border-transparent focus:ring-0" required min="1" max="10" :value="counter">
+                                <input type="number" name="jumlah" class="w-[50%] text-center py-0 border-transparent focus:border-transparent focus:ring-0" required min="1" max="10" :value="counter">
                                 <input type="button" value="+"  class="bg-white px-2 cursor-pointer border-l py-1" data-field="quantity" x-on:click="counter++;if(counter > 10){counter = 10;}">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="mt-6 flex justify-between col-span-2 w-full md:w-[70%] xl:w-[40%]">
-                    <!-- <button type="submit" formaction="" class="items-center py-2 px-8 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button> -->
-                    <!-- <button type="submit" formaction="{{route('keranjang.post', ['id' => $produk->id])}}" class="items-center py-2 px-8 border border-[#FF8833] text-[#FF8833] rounded-lg">Keranjang</button> -->
                     <button type="submit" name="action" value="beli_skrg" class="items-center py-2 px-6 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button>
                     <button type="submit" name="action" value="tambah_keranjang" class="items-center py-2 px-8 border border-[#FF8833] text-[#FF8833] rounded-lg">Keranjang</button>
                 </div>

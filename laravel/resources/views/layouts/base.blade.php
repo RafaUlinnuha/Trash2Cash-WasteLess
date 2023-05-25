@@ -51,13 +51,13 @@
                                     <div class="z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow" id="shop-dropdown">
                                         <ul class="py-2" aria-labelledby="shop-menu-button">
                                             <li>
-                                                <a href="{{ route('/toko/penjualan') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Penjualan</a>
+                                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Penjualan</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('/toko/status-order') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Status Order</a>
+                                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Status Order</a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('/toko/pendapatan') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Pendapatan</a>
+                                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Pendapatan</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -73,7 +73,7 @@
                                         <span class="px-4 py-3 block text-sm text-gray-500 truncate">{{Auth::user()->email }}</span>
                                         <ul class="py-2" aria-labelledby="user-menu-button">
                                             <li>
-                                                <a href="{{ route('/user/pembelian') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Pembelian</a>
+                                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Pembelian</a>
                                             </li>
                                             <li>
                                                 <a href="{{ route('profil.view') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Profil</a>
