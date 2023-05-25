@@ -90,6 +90,21 @@ class UserController extends Controller
         ]);
     }
 
+    public function updateFoto(Request $request)
+    {
+        $id = Auth::id();
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
+
+        $image_path = $request->file('image')->store('image', 'public');
+
+        $user = User::find($id);
+        $user->update([
+            'foto_profil' => $image_path.
+        ]);
+    }
+
     public function updateAlamat(Request $request)
     {
         $request->validate([

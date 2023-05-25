@@ -87,11 +87,13 @@ class KeranjangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //dd($request);
-        ItemKeranjang::update([
+        $user_id = Auth::id();
+        $keranjang = Keranjang::Where('user_id',$user_id)->first();
+        $item = $keranjang->itemKeranjang->find($id);
+        //update jumlah?
+        $item->update([
             'jumlah' => $request->jumlah
         ]);
-        return back();
     }
 
     /**
