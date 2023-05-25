@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Keranjang;
+use App\Models\Order;
+
 
 class RegisterController extends Controller
 {
@@ -47,11 +50,20 @@ class RegisterController extends Controller
             // 'confirm_password' => ['required', 'min:8', 'same:password']
         ]);
 
-        User::create([
+        $user = User::create([
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'nama' => $request->nama,
             'no_hp' => $request->no_hp
+        ]);
+        
+        Keranjang::create([
+            'user_id' => $user->id
+        ]);
+        
+        Order::create([
+            'user_id' => $user->id,
+            'status' => 'ongoing'
         ]);
 
         return redirect()->route('login.view')->with('status', 'Your Account Has Been Successfully Registered!');
