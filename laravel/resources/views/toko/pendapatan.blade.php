@@ -16,7 +16,7 @@
         </div>
         <div class="flex-row flex-wrap text-center items-center py-8 border border-gray-200 rounded-lg shadow-md space-y-4">
             <h1 class="text-xl font-medium">Produk yang sering dibeli</h1>
-            <p class="text-lg text-[#FF8833]">Sampah Plastik</p>
+            <p class="text-lg text-[#FF8833] line-clamp-1">Sampah Plastik</p>
         </div>
     </div>
     <table class="mt-12 w-full border-2 py-8 px-12 shadow">

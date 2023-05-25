@@ -8,7 +8,7 @@
 
   <div class="flex flex-row justify-between border-b-2 border-gray-900">
 
-    <x-tabs class="p-4 font-medium"
+    {{-- <x-tabs class="p-4 font-medium"
       href="#" x-on:click.prevent="tab='tab1'">Semua</x-tabs>
       
     <x-tabs class="p-4 font-medium" 
@@ -24,7 +24,7 @@
       href="#" x-on:click.prevent="tab='tab5'">Selesai</x-tabs>
       
     <x-tabs class="p-4 font-medium" 
-      href="#" x-on:click.prevent="tab='tab6'">Dibatalkan</x-tabs>
+      href="#" x-on:click.prevent="tab='tab6'">Dibatalkan</x-tabs> --}}
       
   </div>
   <div x-show="tab == 'tab1'" x-cloak>

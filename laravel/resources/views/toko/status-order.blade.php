@@ -4,17 +4,52 @@
  
 @section('content')
 <h1 class="text-4xl font-semibold">Status Order</h1>
-<div x-data="{ tab: 'tab1' }" class="mt-4">
-  <div class="flex flex-row justify-between border-b-2 border-gray-900">
-    <x-tabs href="#" x-on:click.prevent="tab='tab1'">Semua</x-tabs>
-    <x-tabs href="#" x-on:click.prevent="tab='tab2'">Belum Bayar</x-tabs>
-    <x-tabs href="#" x-on:click.prevent="tab='tab3'">Diproses</x-tabs>
-    <x-tabs href="#" x-on:click.prevent="tab='tab4'">Dikirim</x-tabs>
-    <x-tabs href="#" x-on:click.prevent="tab='tab5'">Selesai</x-tabs>
-    <x-tabs href="#" x-on:click.prevent="tab='tab6'">Dibatalkan</x-tabs> 
+{{--
+
+<div x-show="tab == 'tab6'" x-cloak>
+  <table class="mt-12 w-full border-2 py-8 px-12 shadow">
+  <thead>
+    <tr class="border text-base">
+      <th scope="col" class="px-3 py-3 font-medium">No</th>
+      <th scope="col" class="px-6 py-3 font-medium">Tanggal</th>
+      <th scope="col" class="px-6 py-3 font-medium ">Id Order</th>
+      <th scope="col" class="px-6 py-3 font-medium">User Pembeli</th>
+      <th scope="col" class="px-6 py-3 font-medium">Alamat Pengiriman</th>
+      <th scope="col" class="px-6 py-3 font-medium">Total (Rp)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="border text-center">
+      <td class="px-3 py-3">1</td>
+      <td class="px-6 py-3">14/03/2023</td>
+      <td class="px-6 py-3">00016</td>
+      <td class="px-6 py-3">Rafa Azka</td>
+      <td class="px-6 py-3">Kota Bandung</td>
+      <td class="px-6 py-3">Rp 6.000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+  
+</div> --}}
+
+<div x-data="{ current: 1 }">
+  <div class="flex overflow-hidden border-b-2 mt-8">
+    <button class="px-4 py-2 w-full" x-on:click="current = 1"
+        x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 1 }">Semua</button>
+    <button class="px-4 py-2 w-full" x-on:click="current = 2"
+        x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 2 }">Belum Bayar</button>
+    <button class="px-4 py-2 w-full" x-on:click="current = 3"
+        x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 3 }">Diproses</button>
+        <button class="px-4 py-2 w-full" x-on:click="current = 4"
+        x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 4 }">Dikirim</button>
+    <button class="px-4 py-2 w-full" x-on:click="current = 5"
+        x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 5 }">Selesai</button>
+    <button class="px-4 py-2 w-full" x-on:click="current = 6"
+        x-bind:class="{ 'bg-[#FF8833] text-white rounded': current === 6 }">Dibatalkan</button>    
   </div>
-  <div x-show="tab == 'tab1'" x-cloak>
-    <table class="mt-12 w-full border-2 py-8 px-12 shadow">
+  <div x-show="current === 1" class="p-3 text-center mt-4">
+    <table class="w-full border-2 py-8 px-12 shadow">
       <thead>
         <tr class="border text-base">
           <th scope="col" class="px-3 py-3 font-medium">No</th>
@@ -75,9 +110,8 @@
       </tbody>
     </table>
   </div>
-  
-  <div x-show="tab == 'tab2'" x-cloak>
-    <table class="mt-12 w-full border-2 py-8 px-12 shadow">
+  <div x-show="current === 2" class="p-3 text-center mt-4">
+    <table class="w-full border-2 py-8 px-12 shadow">
       <thead>
         <tr class="border text-base">
           <th scope="col" class="px-3 py-3 font-medium">No</th>
@@ -102,13 +136,11 @@
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
           </td>
         </tr>
-        
       </tbody>
     </table>
   </div>
-  
-  <div x-show="tab == 'tab3'" x-cloak>
-    <table class="mt-12 w-full border-2 py-8 px-12 shadow">
+  <div x-show="current === 3" class="p-3 text-center mt-4">
+    <table class="w-full border-2 py-8 px-12 shadow">
       <thead>
         <tr class="border text-base">
           <th scope="col" class="px-3 py-3 font-medium">No</th>
@@ -134,9 +166,8 @@
       </tbody>
     </table>
   </div>
-
-  <div x-show="tab == 'tab4'" x-cloak>
-    <table class="mt-12 w-full border-2 py-8 px-12 shadow">
+  <div x-show="current === 4" class="p-3 text-center mt-4">
+    <table class="w-full border-2 py-8 px-12 shadow">
       <thead>
         <tr class="border text-base">
           <th scope="col" class="px-3 py-3 font-medium">No</th>
@@ -161,10 +192,9 @@
         </tr>
       </tbody>
     </table>
-  </div>
-
-<div x-show="tab == 'tab5'" x-cloak>
-  <table class="mt-12 w-full border-2 py-8 px-12 shadow">
+</div>
+<div x-show="current === 5" class="p-3 text-center mt-4">
+  <table class="w-full border-2 py-8 px-12 shadow">
     <thead>
       <tr class="border text-base">
         <th scope="col" class="px-3 py-3 font-medium">No</th>
@@ -187,33 +217,30 @@
     </tbody>
   </table>
 </div>
-
-<div x-show="tab == 'tab6'" x-cloak>
-  <table class="mt-12 w-full border-2 py-8 px-12 shadow">
-  <thead>
-    <tr class="border text-base">
-      <th scope="col" class="px-3 py-3 font-medium">No</th>
-      <th scope="col" class="px-6 py-3 font-medium">Tanggal</th>
-      <th scope="col" class="px-6 py-3 font-medium ">Id Order</th>
-      <th scope="col" class="px-6 py-3 font-medium">User Pembeli</th>
-      <th scope="col" class="px-6 py-3 font-medium">Alamat Pengiriman</th>
-      <th scope="col" class="px-6 py-3 font-medium">Total (Rp)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="border text-center">
-      <td class="px-3 py-3">1</td>
-      <td class="px-6 py-3">14/03/2023</td>
-      <td class="px-6 py-3">00016</td>
-      <td class="px-6 py-3">Rafa Azka</td>
-      <td class="px-6 py-3">Kota Bandung</td>
-      <td class="px-6 py-3">Rp 6.000</td>
-    </tr>
-  </tbody>
-</table>
+<div x-show="current === 6" class="p-3 text-center mt-4">
+    <table class="w-full border-2 py-8 px-12 shadow">
+    <thead>
+      <tr class="border text-base">
+        <th scope="col" class="px-3 py-3 font-medium">No</th>
+        <th scope="col" class="px-6 py-3 font-medium">Tanggal</th>
+        <th scope="col" class="px-6 py-3 font-medium ">Id Order</th>
+        <th scope="col" class="px-6 py-3 font-medium">User Pembeli</th>
+        <th scope="col" class="px-6 py-3 font-medium">Alamat Pengiriman</th>
+        <th scope="col" class="px-6 py-3 font-medium">Total (Rp)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="border text-center">
+        <td class="px-3 py-3">1</td>
+        <td class="px-6 py-3">14/03/2023</td>
+        <td class="px-6 py-3">00016</td>
+        <td class="px-6 py-3">Rafa Azka</td>
+        <td class="px-6 py-3">Kota Bandung</td>
+        <td class="px-6 py-3">Rp 6.000</td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
 </div>
-  
-</div>
-
   
 @endsection 
