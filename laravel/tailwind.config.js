@@ -6,6 +6,7 @@ module.exports = {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {
@@ -13,7 +14,8 @@ module.exports = {
   },
   plugins: [
     iconsPlugin({
-      collections: getIconCollections(["mdi", "bi", "carbon", "ri", "material-symbols", "ion"]),
-    })
+      collections: getIconCollections(["mdi", "bi", "carbon", "ri", "material-symbols", "ion", "ic", "ph", "solar"]),
+    }),
+    require('flowbite/plugin')
   ],
 }

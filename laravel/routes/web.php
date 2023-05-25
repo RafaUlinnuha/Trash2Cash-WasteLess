@@ -28,20 +28,33 @@ Route::get('/home-page', [ProdukController::class, 'index'])->name('home-page');
 Route::get('/kategori/{kategori_slug}', [ProdukController::class, 'perKategori']);
 
 Route::get('/semua-kategori', [ProdukController::class, 'semuaKategori'])->name('semua-kategori');
-Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
-
-Route::get('/edit-profil', function () {
-    return view('user.edit-profil');
+Route::get('/detail-produk', function () {
+    return view('marketplace.detail-produk');
 });
+
+Route::get('/profil/edit', function () {
+    return view('user.edit-profil');})->name('/profil/edit');
+Route::get('/profil', function () {
+    return view('user.lihat-profil');})->name('profil.view');
+Route::get('/pembayaran', function () {
+    return view('marketplace.pembayaran');})->name('pembayaran');
+Route::get('/keranjang', function () {
+    return view('marketplace.keranjang');})->name('keranjang');
+Route::get('/toko/status-order', function () {
+    return view('toko.status-order');})->name('/toko/status-order');
+Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
+Route::get('/toko/penjualan', function () {
+    return view('toko.penjualan');})->name('/toko/penjualan');
+
 
 // login route
 Route::get('/login', [LoginController::class, 'index'])->name('login.view');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');
+    // Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');
     Route::post('keranjang/add/{id}',[KeranjangController::class,'store'])->name('keranjang.post');
-    Route::get('profil',[UserController::class,'index'])->name('profil.view');
+    // Route::get('profil',[UserController::class,'index'])->name('profil.view');
   });
 
 // logout route
