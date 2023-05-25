@@ -5,7 +5,7 @@
 @section('content')
 
 <h1 class="text-4xl font-semibold">Pendapatan</h1>
-    <div class="grid grid-cols-3 gap-4 mt-8">
+    <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
         <div class="flex-row flex-wrap text-center items-center py-8 border border-gray-200 rounded-lg shadow-md space-y-4">
             <h1 class="text-xl font-medium">Total Pendapatan Keseluruhan</h1>
             <p class="text-lg text-[#FF8833]">Rp 2.200.000.-</p>
@@ -14,7 +14,7 @@
             <h1 class="text-xl font-medium">Total Pendapatan Bulan Ini</h1>
             <p class="text-lg text-[#FF8833]">Rp 500.000.-</p>
         </div>
-        <div class="flex-row flex-wrap text-center items-center py-8 border border-gray-200 rounded-lg shadow-md space-y-4">
+        <div class="col-span-2 xl:col-span-1 flex-row flex-wrap text-center items-center py-8 border border-gray-200 rounded-lg shadow-md space-y-4">
             <h1 class="text-xl font-medium">Produk yang sering dibeli</h1>
             <p class="text-lg text-[#FF8833] line-clamp-1">Sampah Plastik</p>
         </div>

@@ -17,7 +17,7 @@
                             <img src="{{ asset('img/logo orange.png') }}">
                         </a>
                         @if(!Auth::guest())
-                            <div class="relative mx-auto text-gray-600 w-3/5">
+                            <div class="relative mx-auto text-gray-600 w-2/5 lg:w-5/12 xl:w-3/5">
                                 <div class="absolute left-0 top-0 mt-2 mx-2">
                                     <span class="i-material-symbols-search w-5"></span>
                                 </div>
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="dropdown-shop hover:bg-gray-200 my-auto w-8 h-8 rounded">
                                     <button type="button" class="flex space-x-4" id="shop-menu-button" aria-expanded="false" data-dropdown-toggle="shop-dropdown" data-dropdown-placement="bottom">
-                                        <span class="i-solar-shop-2-linear w-5 h-5 m-1.5"></span>
+                                        <span class="i-bi-shop w-5 h-5 m-1.5"></span>
                                     </button>
                                     <!-- Dropdown menu -->
                                     <div class="z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow" id="shop-dropdown">

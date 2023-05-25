@@ -5,7 +5,7 @@
 @section('content')
 
 <h1 class="font-semibold text-4xl">Penjualan</h1>    
-<div class="mt-8 text-right">
+<div class="text-right">
     <button href="" class="px-8 py-2 font-medium text-center bg-[#6C894A] text-neutral-50 rounded-lg transition ease-in-out delay-150 duration-300">
         Tambah Data
     </button>
