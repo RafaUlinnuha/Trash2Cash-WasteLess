@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Keranjang extends Model
 {
-    use HasFactory, HasUuids;
+    use SoftDeletes, HasFactory, HasUuids;
     protected $primaryKey = 'id';
     protected $keyType = 'string';
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
     protected $fillable = [
         'user_id'
     ];

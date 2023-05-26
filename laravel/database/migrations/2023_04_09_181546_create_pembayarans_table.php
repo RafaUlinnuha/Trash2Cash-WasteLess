@@ -24,6 +24,7 @@ return new class extends Migration
             $table->foreignUuid('order_id')->references('id')->on('orders');
             
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('foto_profil')->nullable(); 
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

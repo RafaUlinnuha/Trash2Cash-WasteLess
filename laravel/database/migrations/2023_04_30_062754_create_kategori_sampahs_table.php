@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama',20);
             $table->string('slug');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
