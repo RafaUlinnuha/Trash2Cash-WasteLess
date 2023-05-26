@@ -39,22 +39,8 @@ class LoginController extends Controller
             //echo ('yoo mantap baby');
             return redirect()->route('landing-page');
         }
-
-        // $credentials = $request->validate([
-        //     'email' => ['required', 'email'],
-        //     'password' => ['required'],
-        // ]);
- 
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
-        //     echo ('yoo mantap');
-        //     //return redirect()->intended('dashboard');
-        // }
         else{
-            //echo('gagal euy');
-            return back()
-            // ->withErrors(['email' => 'The provided credentials do not match our records.',])
-            ->onlyInput('email');
+            return redirect()->back()->with('error', 'Invalid email or password');
         }
         
     }

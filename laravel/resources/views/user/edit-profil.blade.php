@@ -37,27 +37,30 @@
         <div class="data border-2 py-8 px-12 shadow">
             <h1 class="text-2xl font-medium">Ubah Kata Sandi</h1>
             <hr class="mt-2">
-            <div class="space-y-4 mt-4">
-                <div class="flex justify-between items-center">
-                    <div class="w-1/2 text-lg">Kata Sandi Lama</div>
-                    <div class="w-2/3">
-                        <input class="h-10 w-full px-3 border rounded-lg " type="text">
+            <form action="" method="post">
+                @csrf
+                <div class="space-y-4 mt-4">
+                    <div class="flex justify-between items-center">
+                        <div class="w-1/2 text-lg">Kata Sandi Lama</div>
+                        <div class="w-2/3">
+                            <input name="current_password" class="h-10 w-full px-3 border rounded-lg " type="text">
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="w-1/2 text-lg">Kata Sandi Baru</div>
+                        <div class="w-2/3">
+                            <input class="h-10 w-full px-3 text-base border rounded-lg " type="text">
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="w-1/2 text-lg">Konfirmasi Kata Sandi</div>
+                        <div class="w-2/3">
+                            <input name="new_password" class="h-10 w-full px-3 text-base border rounded-lg " type="text">
+                        </div>
                     </div>
                 </div>
-                <div class="flex justify-between items-center">
-                    <div class="w-1/2 text-lg">Kata Sandi Baru</div>
-                    <div class="w-2/3">
-                        <input class="h-10 w-full px-3 text-base border rounded-lg " type="text">
-                    </div>
-                </div>
-                <div class="flex justify-between items-center">
-                    <div class="w-1/2 text-lg">Konfirmasi Kata Sandi</div>
-                    <div class="w-2/3">
-                        <input class="h-10 w-full px-3 text-base border rounded-lg " type="text">
-                    </div>
-                </div>
-            </div>
-            <button class="w-full mt-8 py-2 px-8 bg-[#8092C1] hover:bg-[#7588BB] text-neutral-50 rounded-xl transition ease-in-out delay-150 duration-300">Simpan</button>
+                <button class="w-full mt-8 py-2 px-8 bg-[#8092C1] hover:bg-[#7588BB] text-neutral-50 rounded-xl transition ease-in-out delay-150 duration-300">Simpan</button>
+            </form>
         </div>
     </div>
     <div class="grid grid-cols-2 mt-12 gap-12">
@@ -68,7 +71,7 @@
                 <div class="flex justify-between items-center">
                     <div class="w-1/2 text-lg">No Rekening</div>
                     <div class="w-2/3">
-                        <input class="h-10 w-full px-3 border rounded-lg " type="text">
+                        <input name="new_password_confirm" class="h-10 w-full px-3 border rounded-lg " type="text">
                     </div>
                 </div>
                 <div class="flex justify-between items-center">

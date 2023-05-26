@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\AlamatUser;
 use App\Models\MetodePembayaran;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -20,8 +21,8 @@ class UserController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
-        dd($user);
-
+        // dd($user);
+        return view('user.lihat-profil', compact('user'));
     }
 
     /**
@@ -51,21 +52,31 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function editprofil()
     {
-        //
+        return view('user.edit-profil');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function changePassword(Request $request)
     {
-        
+        $request->validate([
+            'current_password' => ['required'],
+            'new_password' => ['required', 'min:8'],
+            'new_password_confirm' => ['required', 'min:8', 'same:new_password'],
+        ]);
+
+        $user = Auth::user();
+
+        if (!Hash::check($request->input('current_password'), $user->password)) {
+            return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+        }
+
+        $user->password = Hash::make($request->input('new_password'));
+        $user->save();
+
+        return redirect()->route('home')->with('success', 'Password changed successfully.');
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -101,7 +112,7 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->update([
-            'foto_profil' => $image_path.
+            'foto_profil' => $image_path
         ]);
     }
 
