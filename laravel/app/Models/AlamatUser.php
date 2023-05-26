@@ -18,7 +18,8 @@ class AlamatUser extends Model
         'alamat',
         'kecamatan',
         'kota',
-        'provinsi'
+        'provinsi',
+        'user_id'
     ];
 
     public function user() : BelongsTo

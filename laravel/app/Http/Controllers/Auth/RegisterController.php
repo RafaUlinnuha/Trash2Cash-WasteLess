@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\AlamatUser;
 use App\Models\Keranjang;
 use App\Models\Order;
 
@@ -40,14 +41,12 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
-        //$request->dd();
-        // Validasi Register User
         $request->validate([
             'nama' => 'required',
             'email' => ['required', 'email','unique:users', 'max:225'],
             'no_hp' => ['required', 'min:10', 'max:16'],
             'password' => ['required', 'min:8'],
-            // 'confirm_password' => ['required', 'min:8', 'same:password']
+            'confirm_password' => ['required', 'same:password']
         ]);
 
         $user = User::create([
@@ -60,10 +59,9 @@ class RegisterController extends Controller
         Keranjang::create([
             'user_id' => $user->id
         ]);
-        
-        Order::create([
-            'user_id' => $user->id,
-            'status' => 'ongoing'
+
+        AlamatUser::create([
+            'user_id' => $user->id
         ]);
 
         return redirect()->route('login.view')->with('status', 'Your Account Has Been Successfully Registered!');

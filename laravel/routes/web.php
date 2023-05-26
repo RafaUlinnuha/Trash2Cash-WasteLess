@@ -67,7 +67,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('toko/penjualan/delete/{id}',[ProdukController::class,'destroy'])->name('penjualan.del');
     Route::get('toko/order',[OrderController::class,'indextoko'])->name('ordertoko.view');
 
+    //user
     Route::get('profil',[UserController::class,'index'])->name('profil.view');
+    Route::get('editprofil',[UserController::class,'editprofil'])->name('profil.edit');
+
   });
 
 // logout route
