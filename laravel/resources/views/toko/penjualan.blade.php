@@ -19,17 +19,22 @@
       </tr>
     </thead>
     <tbody>
+      <?php $i = 1; ?>
+    @foreach($produk as $item)
       <tr class="border text-center">
-        <td class="w-1/12 py-3">1</td>
-        <td class="w-2/3 py-3 text-left">Sampah Kabel Elektronik </td>
+        <td class="w-1/12 py-3">{{$i}}</td>
+        <td class="w-2/3 py-3 text-left">{{$item->nama}} </td>
         <td class="px-6 py-3">
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
         </td>
         <td class="px-6 py-3">
-            <a href="#" class="font-medium text-red-600 hover:underline">Delete</a>
+          <form method="POST" action="{{route('penjualan.del', $item->id)}}">
+          @csrf @method('DELETE')
+            <button type="submit" class="font-medium text-red-600 hover:underline">Delete</button>
         </td>
+        <?php $i++; ?>
       </tr>
-      
+    @endforeach
     </tbody>
   </table>
 @endsection 

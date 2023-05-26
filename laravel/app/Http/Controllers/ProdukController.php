@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\KategoriSampah;
-
+use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller
 {
@@ -24,7 +24,12 @@ class ProdukController extends Controller
     public function semuaKategori()
     {
         $judul = 'Sampah';
-        $produk = Produk::with('user', 'user.alamatUser')->get();
+        if(Auth::check()){
+            $id = Auth::id();
+            $produk = Produk::with('user', 'user.alamatUser')->where('user_id', '!=', $id)->get();
+        } else {
+            $produk = Produk::with('user', 'user.alamatUser')->get();
+        }
         //dd($produk);
         return view('marketplace.produk', compact('judul','produk'));
     }
@@ -33,8 +38,17 @@ class ProdukController extends Controller
     {
         $kategori = KategoriSampah::where('slug', $kategori_slug)->first();
         if ($kategori){
-           $produk = Produk::with('user', 'user.alamatUser')->where('kategori_sampah_id',$kategori->id)->get();
-            //dd($produk);
+            if(Auth::check()){
+                $id = Auth::id();
+                $produk = Produk::with('user', 'user.alamatUser')
+                          ->where('user_id', '<>', $id)
+                          ->where('kategori_sampah_id', $kategori->id)
+                          ->get();
+            } else {
+                $produk = Produk::with('user', 'user.alamatUser')
+                          ->where('kategori_sampah_id', $kategori->id)
+                          ->get();
+            }
         }
         $judul = $kategori->nama;
         return view('marketplace.produk', compact('judul','produk'));
@@ -44,13 +58,20 @@ class ProdukController extends Controller
     {
         $produk = Produk::with('user', 'user.alamatUser')->where('id', $id)->first();
         //dd($produk);
-        // $kategori = KategoriSampah::where('slug', $kategori_slug)->first();
-        // if ($kategori){
-        //    $produk = Produk::with('user', 'user.alamatUser')->where('kategori_sampah_id',$kategori->id)->get();
-        //     //dd($produk);
-        // }
-        // $judul = $kategori->nama;
         return view('marketplace.detail-produk', compact('produk'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function penjualanView()
+    {
+        $id = Auth::id();
+        $produk = Produk::where('user_id', $id)->get();
+        // dd($produk);
+        return view('toko.penjualan', compact('produk'));
     }
 
     /**
@@ -60,7 +81,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
@@ -71,7 +92,18 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = Auth::id();
+        // $produk = Produk::create([
+        //     'nama' => ,
+        //     'nama_sub_kategori' => ,
+        //     'jumlah' => ,
+        //     'harga' => ,
+        //     'deskripsi' => ,
+        //     'slug' =>  ,
+        //     'gambar' => ,
+        //     'user_id' => ,
+        // ]);
+        return redirect()->route('penjualan.view');
     }
 
     /**
@@ -93,7 +125,8 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        //
+        $produk = Produk::find($id);
+        return view('', compact('produk'));
     }
 
     /**
@@ -105,7 +138,17 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $produk = Produk::find($id);
+        // $produk->update([
+        //     'nama' => ,
+        //     'nama_sub_kategori' => ,
+        //     'jumlah' => ,
+        //     'harga' => ,
+        //     'deskripsi' => ,
+        //     'slug' =>  ,
+        //     'gambar' => ,
+        // ]);
+        return redirect()->route('penjualan.view');
     }
 
     /**
@@ -116,6 +159,8 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produk = Produk::find($id);
+        $produk->delete();
+        return redirect()->route('penjualan.view');
     }
 }

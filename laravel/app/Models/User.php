@@ -66,13 +66,5 @@ class User extends Authenticatable
     public function metodePembayaran() : HasMany
     {
         return $this->hasMany('App\Models\MetodePembayaran');
-    }
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
+    }   
 }

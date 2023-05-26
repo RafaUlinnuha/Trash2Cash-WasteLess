@@ -45,8 +45,6 @@ Route::get('/keranjang', function () {
 Route::get('/toko/status-order', function () {
     return view('toko.status-order');})->name('/toko/status-order');
 Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
-Route::get('/toko/penjualan', function () {
-    return view('toko.penjualan');})->name('/toko/penjualan');
 
 
 // login route
@@ -54,6 +52,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login.view');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
 
 Route::middleware(['auth'])->group(function () {
+    //pembelian
     Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');
     Route::post('keranjang/add/{id}',[KeranjangController::class,'store'])->name('keranjang.post');
     Route::get('keranjang/inc/{id}',[KeranjangController::class,'incProduk'])->name('produk.inc');
@@ -61,6 +60,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('keranjang/dec/{id}',[KeranjangController::class,'decProduk'])->name('produk.dec');
     Route::post('keranjang/buat-pesanan',[OrderController::class,'rincianPesanan'])->name('order.post');
     Route::get('checkout',[OrderController::class,'store'])->name('checkout');
+    Route::get('pembelian',[OrderController::class,'indexpembeli'])->name('pembelian.view');
+
+    //toko
+    Route::get('toko/penjualan',[ProdukController::class,'penjualanView'])->name('penjualan.view');
+    Route::delete('toko/penjualan/delete/{id}',[ProdukController::class,'destroy'])->name('penjualan.del');
+    Route::get('toko/order',[OrderController::class,'indextoko'])->name('ordertoko.view');
+
     Route::get('profil',[UserController::class,'index'])->name('profil.view');
   });
 

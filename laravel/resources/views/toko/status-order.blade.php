@@ -62,51 +62,19 @@
         </tr>
       </thead>
       <tbody>
+        <?php $i = 1 ?>
+        @foreach($orders as $produk)
         <tr class="border text-center">
-          <td class="px-3 py-3">1</td>
-          <td class="px-6 py-3">12/02/2023</td>
-          <td class="px-6 py-3">00012</td>
-          <td class="px-6 py-3">John Doe</td>
-          <td class="px-6 py-3">Kec. Padalarang</td>
-          <td class="px-6 py-3">Rp 2.000</td>
+          <td class="px-3 py-3">{{$i}}</td>
+          <td class="px-6 py-3">{{ \Carbon\Carbon::parse($produk->created_at)->format('Y/m/d') }}</td>
+          <td class="px-6 py-3">...{{substr($produk->itemOrder->first()->id, -5)}}</td>
+          <td class="px-6 py-3">{{$produk->itemOrder->first()->order->user->nama}}</td>
+          <td class="px-6 py-3">{{$produk->itemOrder->first()->order->user->alamatUser->kota}}</td>
+          <td class="px-6 py-3">Rp {{number_format($produk->itemOrder->first()->jumlah*$produk->harga,2,',','.')}}</td>
           <td class="px-6 py-3">Belum Bayar</td>
         </tr>
-        <tr class="border text-center">
-          <td class="px-3 py-3">2</td>
-          <td class="px-6 py-3">19/02/2023</td>
-          <td class="px-6 py-3">00013</td>
-          <td class="px-6 py-3">John Doe</td>
-          <td class="px-6 py-3">Kab. Sumedang</td>
-          <td class="px-6 py-3">Rp 6.000</td>
-          <td class="px-6 py-3">Diproses</td>
-        </tr>
-        <tr class="border text-center">
-          <td class="px-3 py-3">3</td>
-          <td class="px-6 py-3">23/02/2023</td>
-          <td class="px-6 py-3">00014</td>
-          <td class="px-6 py-3">Nanda Rai</td>
-          <td class="px-6 py-3">Kota Bandung</td>
-          <td class="px-6 py-3">Rp 2.000</td>
-          <td class="px-6 py-3">Dikirim</td>
-        </tr>
-        <tr class="border text-center">
-          <td class="px-3 py-3">4</td>
-          <td class="px-6 py-3">07/03/2023</td>
-          <td class="px-6 py-3">00015</td>
-          <td class="px-6 py-3">Rosita Dewi</td>
-          <td class="px-6 py-3">Kec. Cibiru</td>
-          <td class="px-6 py-3">Rp 5.000</td>
-          <td class="px-6 py-3">Selesai</td>
-        </tr>
-        <tr class="border text-center">
-          <td class="px-3 py-3">5</td>
-          <td class="px-6 py-3">14/03/2023</td>
-          <td class="px-6 py-3">00016</td>
-          <td class="px-6 py-3">Rafa Azka</td>
-          <td class="px-6 py-3">Kota Bandung</td>
-          <td class="px-6 py-3">Rp 6.000</td>
-          <td class="px-6 py-3">Dibatalkan</td>
-        </tr>
+        <?php $i++; ?>
+        @endforeach
       </tbody>
     </table>
   </div>
@@ -121,21 +89,26 @@
           <th scope="col" class="px-6 py-3 font-medium">Alamat Pengiriman</th>
           <th scope="col" class="px-6 py-3 font-medium">Total (Rp)</th>
           <th scope="col" class="px-6 py-3 font-medium">Bukti Bayar</th>
+          <th scope="col" class="px-6 py-3 font-medium"></th>
         </tr>
       </thead>
       <tbody>
+      <?php $i = 1 ?>
+      @foreach($orders as $produk)
         <tr class="border text-center">
-          <td class="px-3 py-3">1</td>
-          <td class="px-6 py-3">12/02/2023</td>
-          <td class="px-6 py-3">00012</td>
-          <td class="px-6 py-3">John Doe</td>
-          <td class="px-6 py-3">Kec. Padalarang</td>
-          <td class="px-6 py-3">Rp 2.000</td>
+          <td class="px-3 py-3">{{$i}}</td>
+          <td class="px-6 py-3">{{ \Carbon\Carbon::parse($produk->created_at)->format('Y/m/d') }}</td>
+          <td class="px-6 py-3">...{{substr($produk->itemOrder->first()->id, -5)}}</td>
+          <td class="px-6 py-3">{{$produk->itemOrder->first()->order->user->nama}}</td>
+          <td class="px-6 py-3">{{$produk->itemOrder->first()->order->user->alamatUser->kota}}</td>
+          <td class="px-6 py-3">Rp {{number_format($produk->itemOrder->first()->jumlah*$produk->harga,2,',','.')}}</td>
           <td class="px-6 py-3"><button class="items-center py-2 px-4 bg-[#8092C1] text-neutral-50 rounded-lg">Unduh File</button></td>
           <td class="px-6 py-3">
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
           </td>
         </tr>
+        <?php $i++; ?>
+        @endforeach
       </tbody>
     </table>
   </div>

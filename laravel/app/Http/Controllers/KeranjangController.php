@@ -24,7 +24,7 @@ class KeranjangController extends Controller
         $id = Auth::id();
         $keranjang = Keranjang::Where('user_id',$id)->first();
         // $items = $keranjang->itemKeranjang;
-        // dd($keranjang);
+        // dd($keranjang->itemKeranjang[0]->produk);
         return view('marketplace.keranjang', compact('keranjang'));
     }
 

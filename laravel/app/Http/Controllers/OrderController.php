@@ -5,6 +5,7 @@ use App\Models\Keranjang;
 use App\Models\ItemKeranjang;
 use App\Models\Produk;
 use App\Models\Order;
+use App\Models\User;
 use App\Models\ItemOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,9 +18,19 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function indextoko()
     {
-        //
+        $id = Auth::id();
+        $user = User::find($id);
+        $orders = $user->produk()->whereHas('itemOrder', function ($query) {
+            $query->whereHas('order', function ($query) {
+                // Add any additional conditions for the order if needed
+            });
+        })
+        // ->with(['itemOrder.order.user', 'itemOrder.order.pembayaran'])
+        ->get();
+        // dd($orders[0]->itemOrder->first()->order->pembayaran);
+        return view('toko.status-order', compact('orders'));
     }
 
     /**
@@ -31,7 +42,13 @@ class OrderController extends Controller
     {
         //
     }
-
+    public function indexpembeli()
+    {
+        $id = Auth::id();
+        $orders = Order::where('user_id', $id)->get();
+        // dd($orders);
+        return view('user.pembelian', compact('orders'));
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -69,6 +86,16 @@ class OrderController extends Controller
                 'produk_id' => $itemKeranjang->produk->id,
                 'order_id' => $order->id
             ]);
+            $produk = $itemKeranjang->produk;
+            $newjml = $produk->jumlah - $itemKeranjang->jumlah;
+            if($newjml <= 0){
+                $produk->delete();
+            } else {
+                $produk->update([
+                'jumlah' => $newjml
+                ]);
+            }
+            
             $itemKeranjang->delete();
         }
 
