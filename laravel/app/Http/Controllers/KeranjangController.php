@@ -46,34 +46,40 @@ class KeranjangController extends Controller
      */
     public function store(Request $request, $id)
     {   
-        dd($request);
+        // dd($request);
         $produk = Produk::Where('id', $id)->first();
         $user_id = Auth::id();
         $keranjang = Keranjang::Where('user_id',$user_id)->first();
         //dd($produk->id);
+        
         if($request->action == 'tambah_keranjang'){
             ItemKeranjang::create([
             'jumlah' => $request->jumlah,
             'keranjang_id' => $keranjang->id,
             'produk_id' => $produk->id,
             ]);
+             return redirect()->route('detail-produk', ['id' => $produk->id]);
         }
         else{
-            $order = Order::where('user_id', '=', $user_id)
-                 ->where('status', '=', 'ongoing')
-                 ->first();
+            $itemKeranjang[0] = ItemKeranjang::create([
+                'jumlah' => $request->jumlah,
+                'keranjang_id' => $keranjang->id,
+                'produk_id' => $produk->id,]
+            );
+            return view('marketplace.pembayaran', compact('itemKeranjang'));
         }
-        return back();
+        
     }
 
     public function incProduk($id)
     {
         $item = ItemKeranjang::find($id);
         $jumlah = $item->jumlah + 1;
-        // dd($jumlah);
-        $item->update([
-            'jumlah' => $jumlah
-        ]);
+        if($jumlah != $item->produk->jumlah){
+            $item->update([
+                'jumlah' => $jumlah
+            ]);
+        }
         return redirect()->route('keranjang');
     }
 
@@ -82,9 +88,13 @@ class KeranjangController extends Controller
         $item = ItemKeranjang::find($id);
         $jumlah = $item->jumlah - 1;
         // dd($jumlah);
-        $item->update([
-            'jumlah' => $jumlah
-        ]);
+        if($jumlah == 0){
+            $item->delete();
+        } else {
+            $item->update([
+                'jumlah' => $jumlah
+            ]);
+        }
         return redirect()->route('keranjang');
     }
     /**

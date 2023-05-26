@@ -65,7 +65,7 @@
         <h1 id="total">Rp 0</h1>
     </div>
     <div class="text-right">
-        <button type="submit" class="px-10 py-3 font-medium text-center text-lg bg-[#FF8833] text-neutral-50 rounded-lg transition ease-in-out delay-150 duration-300">
+        <button type="submit" disabled id = "submit-btn" class="px-10 py-3 font-medium text-center text-lg bg-[#FF8833] text-neutral-50 rounded-lg transition ease-in-out delay-150 duration-300">
             Bayar Sekarang
          </button>
     </div>
@@ -74,14 +74,16 @@
 <script>
     const selectAllCheckbox = document.getElementById('select-all');
     const checkboxes = document.querySelectorAll('input[name="checkboxes[]"]');
+    const submitButton = document.getElementById('submit-btn');
     const labels = document.querySelectorAll('input[name="labels[]"]');
 
     // Add event listener to the "Select All" checkbox
     selectAllCheckbox.addEventListener('change', function () {
-        checkboxes.forEach(function (checkbox) {
-            checkbox.checked = selectAllCheckbox.checked;
-            });
+    checkboxes.forEach(function (checkbox) {
+        checkbox.checked = selectAllCheckbox.checked;
+    });
     updateTotal();
+    updateButtonStatus();
     });
 
     // Add event listener to checkboxes
@@ -89,19 +91,20 @@
         checkbox.addEventListener('change', function () {
             updateSelectAllCheckbox();
             updateTotal();
+            updateButtonStatus();
         });
     });
 
-    // Funcion to update the "Select All" checkbox based on the selected checkboxes
+    // Function to update the "Select All" checkbox based on the selected checkboxes
     function updateSelectAllCheckbox() {
     const allChecked = Array.from(checkboxes).every(function (checkbox) {
         return checkbox.checked;
     });
-
+        
     selectAllCheckbox.checked = allChecked;
     }
 
-    // Function to update the total based on the selected checkboxes
+    // Function to update the total based on the selected checkboxes' hidden labels
     function updateTotal() {
     let sum = 0;
 
@@ -112,9 +115,22 @@
     });
 
     // Update the total element with the sum
-    document.getElementById('total').textContent = sum.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
-
+    document.getElementById('total').textContent = sum.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });;
     }
+
+    // Function to update the button status based on checkbox selection
+    function updateButtonStatus() {
+        const checkedCount = Array.from(checkboxes).filter(function (checkbox) {
+            return checkbox.checked;
+        }).length;
+        if(checkedCount > 0){
+            submitButton.disabled = false;
+        }
+        else{
+            submitButton.disabled = true;
+        }
+        }
+        
 
 </script>
 @endsection 

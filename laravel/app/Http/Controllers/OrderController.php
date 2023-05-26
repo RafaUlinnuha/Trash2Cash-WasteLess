@@ -38,7 +38,7 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function rincianPesanan(Request $request)
     {
         $selectedCheckboxes = $request->input('checkboxes');
         $id = Auth::id();
@@ -46,9 +46,23 @@ class OrderController extends Controller
                  ->where('status', '=', 'ongoing')
                  ->first();
         // dd($selectedCheckboxes);
-
+        $i = 0;
         foreach ($selectedCheckboxes as $checkboxValue) {
-            $itemKeranjang = ItemKeranjang::find($checkboxValue);
+            $itemKeranjang[$i] = ItemKeranjang::find($checkboxValue);
+            $i++;
+        }
+        return view('marketplace.pembayaran', compact('itemKeranjang'));
+    }
+
+    public function store(Request $request)
+    {
+        $id = Auth::id();
+        $order = Order::create([
+            'user_id' =>$id
+        ]);
+        // dd($request->query->keys());
+        foreach ($request->query->keys() as $item_id) {
+            $itemKeranjang = ItemKeranjang::find($item_id);
             // dd($itemKeranjang);
             ItemOrder::create([
                 'jumlah' => $itemKeranjang->jumlah,
@@ -58,16 +72,7 @@ class OrderController extends Controller
             $itemKeranjang->delete();
         }
 
-        $order->update([
-            'status' => 'selesai'
-        ]);
-
-        Order::create([
-            'status' => 'ongoing',
-            'user_id' =>$id
-        ]);
-
-        return redirect()->route('keranjang');
+        return redirect()->route('home-page');
     }
 
     /**

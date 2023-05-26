@@ -67,7 +67,7 @@
                         <div x-data="{ counter: 1 }">
                             <div class="flex items-center justify-between">
                                 <input type="button" value="-"  class="bg-white px-2 cursor-pointer border-r py-1" data-field="quantity" x-on:click="counter--;if(counter < 1){counter = 1;}">
-                                <input type="number" name="jumlah" class="w-[50%] text-center py-0 border-transparent focus:border-transparent focus:ring-0" required min="1" max="10" :value="counter">
+                                <input type="number" name="jumlah" class="w-[50%] text-center py-0 border-transparent focus:border-transparent focus:ring-0" required min="1" max="{{$produk->jumlah}}" :value="counter">
                                 <input type="button" value="+"  class="bg-white px-2 cursor-pointer border-l py-1" data-field="quantity" x-on:click="counter++;if(counter > 10){counter = 10;}">
                             </div>
                         </div>

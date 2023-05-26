@@ -59,7 +59,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('keranjang/inc/{id}',[KeranjangController::class,'incProduk'])->name('produk.inc');
     Route::get('keranjang/dec/{id}',[KeranjangController::class,'decProduk'])->name('produk.dec');
     Route::get('keranjang/dec/{id}',[KeranjangController::class,'decProduk'])->name('produk.dec');
-    Route::post('keranjang/buat-pesanan',[OrderController::class,'store'])->name('order.post');
+    Route::post('keranjang/buat-pesanan',[OrderController::class,'rincianPesanan'])->name('order.post');
+    Route::get('checkout',[OrderController::class,'store'])->name('checkout');
     Route::get('profil',[UserController::class,'index'])->name('profil.view');
   });
 
