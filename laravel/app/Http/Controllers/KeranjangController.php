@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Keranjang;
 use App\Models\ItemKeranjang;
+use App\Models\ItemOrder;
+use App\Models\Order;
 use App\Models\Produk;
 
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +23,9 @@ class KeranjangController extends Controller
     {
         $id = Auth::id();
         $keranjang = Keranjang::Where('user_id',$id)->first();
-        $item = $keranjang->itemKeranjang;
-        dd($item);
+        // $items = $keranjang->itemKeranjang;
+        // dd($keranjang->itemKeranjang[0]->produk);
+        return view('marketplace.keranjang', compact('keranjang'));
     }
 
     /**
@@ -43,19 +46,57 @@ class KeranjangController extends Controller
      */
     public function store(Request $request, $id)
     {   
-        //dd($request);
+        // dd($request);
         $produk = Produk::Where('id', $id)->first();
         $user_id = Auth::id();
         $keranjang = Keranjang::Where('user_id',$user_id)->first();
         //dd($produk->id);
-        ItemKeranjang::create([
+        
+        if($request->action == 'tambah_keranjang'){
+            ItemKeranjang::create([
             'jumlah' => $request->jumlah,
             'keranjang_id' => $keranjang->id,
             'produk_id' => $produk->id,
-        ]);
-        return back();
+            ]);
+             return redirect()->route('detail-produk', ['id' => $produk->id]);
+        }
+        else{
+            $itemKeranjang[0] = ItemKeranjang::create([
+                'jumlah' => $request->jumlah,
+                'keranjang_id' => $keranjang->id,
+                'produk_id' => $produk->id,]
+            );
+            return view('marketplace.pembayaran', compact('itemKeranjang'));
+        }
+        
     }
 
+    public function incProduk($id)
+    {
+        $item = ItemKeranjang::find($id);
+        $jumlah = $item->jumlah + 1;
+        if($jumlah != $item->produk->jumlah){
+            $item->update([
+                'jumlah' => $jumlah
+            ]);
+        }
+        return redirect()->route('keranjang');
+    }
+
+    public function decProduk($id)
+    {
+        $item = ItemKeranjang::find($id);
+        $jumlah = $item->jumlah - 1;
+        // dd($jumlah);
+        if($jumlah == 0){
+            $item->delete();
+        } else {
+            $item->update([
+                'jumlah' => $jumlah
+            ]);
+        }
+        return redirect()->route('keranjang');
+    }
     /**
      * Display the specified resource.
      *
@@ -87,13 +128,7 @@ class KeranjangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user_id = Auth::id();
-        $keranjang = Keranjang::Where('user_id',$user_id)->first();
-        $item = $keranjang->itemKeranjang->find($id);
-        //update jumlah?
-        $item->update([
-            'jumlah' => $request->jumlah
-        ]);
+        //
     }
 
     /**
@@ -104,8 +139,6 @@ class KeranjangController extends Controller
      */
     public function destroy($id)
     {
-        $item = ItemKeranjang::find($id);
-        $item->delete();
-        return back();
+        //
     }
 }

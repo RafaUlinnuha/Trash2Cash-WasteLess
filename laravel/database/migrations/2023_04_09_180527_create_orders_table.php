@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->enum('status',['ongoing', 'selesai']);
 
             //FK
             $table->foreignUuid('user_id')->references('id')->on('users');
 
             
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -11,10 +11,11 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasUuids;
+    use HasApiTokens, HasFactory, Notifiable, HasUuids, SoftDeletes;
     public $incrementing = false;
     /**
      * The attributes that are mass assignable.
@@ -23,6 +24,7 @@ class User extends Authenticatable
      */
     protected $primaryKey = 'id';
     protected $keyType = 'string';
+    protected $dates = ['deleted_at', 'created_at', 'updated_at'];
     protected $fillable = [
         'nama',
         'email',
@@ -64,13 +66,5 @@ class User extends Authenticatable
     public function metodePembayaran() : HasMany
     {
         return $this->hasMany('App\Models\MetodePembayaran');
-    }
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    // protected $casts = [
-    //     'email_verified_at' => 'datetime',
-    // ];
+    }   
 }

@@ -28,6 +28,7 @@ return new class extends Migration
             $table->foreignUuid('kategori_sampah_id')->references('id')->on('kategori_sampahs');
             
             $table->timestamps();
+            $table->softDeletes();
             
         });
     }
