@@ -131,9 +131,9 @@
           <td class="px-6 py-3">Nanda Rai</td>
           <td class="px-6 py-3">Kota Bandung</td>
           <td class="px-6 py-3">Rp 2.000</td>
-          <td class="px-6 py-3">
+          {{-- <td class="px-6 py-3">
             <a href="#" class="font-medium text-blue-600 hover:underline">Edit</a>
-          </td>
+          </td> --}}
         </tr>
       </tbody>
     </table>
