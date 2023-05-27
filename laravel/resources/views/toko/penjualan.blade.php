@@ -7,6 +7,7 @@
 <h1 class="font-semibold text-4xl">Penjualan</h1>    
 <!-- Modal toggle -->
 <div class="text-right">
+
     <button data-modal-target="addproduk-modal" data-modal-toggle="addproduk-modal" class="px-8 py-2 font-medium text-sm text-center text-white bg-[#8092C1] hover:bg-blue-800 rounded-lg transition ease-in-out delay-150 duration-300" type="button">
         Tambah Produk
     </button>
