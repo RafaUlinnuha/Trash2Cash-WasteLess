@@ -14,25 +14,25 @@
             <div class="flex justify-between items-center">
                 <div class="w-1/3 text-lg">Nama</div>
                 <div class="w-2/3">
-                    <input disabled class="h-10 w-full px-3 placeholder-gray-600 rounded-lg" type="text" placeholder="{{$user->nama}}">
+                    <input disabled class="h-10 w-full placeholder-gray-600 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 block p-3" type="text" placeholder="{{$user->nama}}">
                 </div>
             </div>
             <div class="flex justify-between items-center">
                 <div class="w-1/3 text-lg">No Telepon</div>
                 <div class="w-2/3">
-                    <input disabled class="h-10 w-full px-3 placeholder-gray-600 rounded-lg" type="text" placeholder="{{$user->no_hp}}">
+                    <input disabled class="h-10 w-full placeholder-gray-600 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 block p-3" type="text" placeholder="{{$user->no_hp}}">
                 </div>
             </div>
             <div class="flex justify-between">
                 <div class="w-1/3 text-lg items-start">Email</div>
                 <div class="w-2/3">
-                    <input disabled class="h-10 w-full px-3 placeholder-gray-600 rounded-lg" type="email" placeholder="{{$user->email}}">
+                    <input disabled class="h-10 w-full placeholder-gray-600 rounded-lg bg-gray-50 border border-gray-300 text-gray-900 block p-3" type="email" placeholder="{{$user->email}}">
                 </div>
             </div>
             <div class="flex justify-between">
                 <div class="w-1/3 text-lg items-start">Alamat</div>
                 <div class="w-2/3">
-                    <textarea disabled rows="4" class="w-full px-3 pt-2 placeholder-gray-600 rounded-lg " name="alamat" id="alamat" 
+                    <textarea disabled rows="4" class="w-full px-3 pt-2 placeholder-gray-600 rounded-lg bg-gray-50 border border-gray-300 text-gray-900" name="alamat" id="alamat" 
                       placeholder="{{$user->AlamatUser->alamat === null ? '' : $user->AlamatUser->alamat.', '.$user->AlamatUser->kecamatan.', '.$user->AlamatUser->kota.', '.$user->AlamatUser->provinsi.', '.$user->AlamatUser->kode_pos}}"></textarea>
                 </div>
             </div>
