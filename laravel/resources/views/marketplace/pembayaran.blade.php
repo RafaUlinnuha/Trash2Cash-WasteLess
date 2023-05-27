@@ -27,10 +27,10 @@
             <span class="i-material-symbols-account-circle w-8 h-8"></span>
             <h1 class="font-semibold text-[#FF8833]">{{$item->produk->user->nama}}</h1>
         </div>
-        <div class="flex flex-wrap justify-between mt-4">
-            <div class="flex space-x-6">
-                <img src="{{ asset('img/marketplace/produk-2.png') }}" class="rounded-xl w-[30%]">
-                <div class="flex-rows">
+        <div class="flex justify-between mt-4">
+            <div class="flex space-x-6 w-3/4">
+                <img src="{{ asset('img/marketplace/produk-2.png') }}" class="rounded-xl w-48 h-32">
+                <div class="flex-rows flex-wrap w-2/3">
                     <h1>{{$item->produk->nama}}</h1>
                     <h2>{{$item->jumlah}} kg</h2>
                 </div>
