@@ -10,7 +10,7 @@
         <!-- navbar sebelum login -->
         <div class="flex flex-col h-screen">
             @section('navbar')
-            <nav class="fixed bg-white w-full z-[1100]">
+            <nav class="fixed bg-white w-full z-40">
                 <div class="py-2 px-14">
                     <div class="flex justify-between items-center">
                         <a href="/" class="logo">
@@ -57,7 +57,7 @@
                                                 <a href="{{route('ordertoko.view')}}" class="block px-4 py-2 text-sm hover:bg-gray-100">Status Order</a>
                                             </li>
                                             <li>
-                                                <a href="#" class="block px-4 py-2 text-sm hover:bg-gray-100">Pendapatan</a>
+                                                <a href="{{route('pendapatan.view')}}" class="block px-4 py-2 text-sm hover:bg-gray-100">Pendapatan</a>
                                             </li>
                                         </ul>
                                     </div>
