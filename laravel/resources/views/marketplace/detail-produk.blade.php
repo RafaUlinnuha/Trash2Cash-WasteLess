@@ -6,7 +6,7 @@
     <h1 class="text-4xl font-semibold">{{$produk->nama}}</h1>
     <div class="grid grid-cols-3 mt-8">
         <div class="flex flex-col w-full space-y-4 justify-center">
-            <img src="{{ asset($produk->gambar) }}" class="w-[80%]">
+            <img src="{{asset('storage/'.$produk->gambar)}}" class="w-[80%]">
             <div class="foto flex space-x-4">
                 <span class="i-bi-people-circle w-12 h-12"></span>
                 <div class="grid grid-rows-2">

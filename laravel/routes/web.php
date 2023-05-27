@@ -64,6 +64,8 @@ Route::middleware(['auth'])->group(function () {
 
     //toko
     Route::get('toko/penjualan',[ProdukController::class,'penjualanView'])->name('penjualan.view');
+    Route::post('toko/add-product',[ProdukController::class,'store'])->name('penjualan.add');
+    Route::post('toko/edit-product/{id}',[ProdukController::class,'update'])->name('penjualan.edit');
     Route::delete('toko/penjualan/delete/{id}',[ProdukController::class,'destroy'])->name('penjualan.del');
     Route::get('toko/order',[OrderController::class,'indextoko'])->name('ordertoko.view');
 

@@ -31,11 +31,11 @@ class ProdukFactory extends Factory
             
         //     $table->timestamps();
         $randomImages =[
-            'img/marketplace/produk-1.png',
-            'img/marketplace/produk-2.png',
-            'img/marketplace/produk-3.png',
-            'img/marketplace/produk-4.png',
-            'img/marketplace/produk-5.jpeg',
+            'product_images/produk-1.png',
+            'product_images/produk-2.png',
+            'product_images/produk-3.png',
+            'product_images/produk-4.png',
+            'product_images/produk-5.jpeg',
         ];
 
         $kategoriId = fake()->randomElement(KategoriSampah::query()->get('id'));

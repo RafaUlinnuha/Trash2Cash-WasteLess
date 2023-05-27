@@ -29,7 +29,9 @@
         </div>
         <div class="flex justify-between mt-4">
             <div class="flex space-x-6 w-3/4">
-                <img src="{{ asset('img/marketplace/produk-2.png') }}" class="rounded-xl w-48 h-32">
+
+                <img src="{{asset('storage/'.$item->gambar)}}" class="rounded-xl w-48 h-32">
+
                 <div class="flex-rows flex-wrap w-2/3">
                     <h1>{{$item->produk->nama}}</h1>
                     <h2>{{$item->jumlah}} kg</h2>
