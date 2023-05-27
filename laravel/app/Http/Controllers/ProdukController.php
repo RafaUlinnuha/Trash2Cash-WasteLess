@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\KategoriSampah;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
 
 class ProdukController extends Controller
 {
@@ -71,7 +73,8 @@ class ProdukController extends Controller
         $id = Auth::id();
         $produk = Produk::where('user_id', $id)->get();
         // dd($produk);
-        return view('toko.penjualan', compact('produk'));
+        $kategori = KategoriSampah::All();
+        return view('toko.penjualan', compact('produk', 'kategori'));
     }
 
     /**
@@ -92,18 +95,42 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
+        $request->validate([
+            'nama' => ['required'],
+            'nama_sub_kategori' => ['required'],
+            'deskripsi' => ['required'],
+            'jumlah' => ['required','numeric', 'min:1'],
+            'harga' => ['numeric'],
+            'gambar' => ['required','image','mimes:jpeg,png'],
+        ]);
         $id = Auth::id();
-        // $produk = Produk::create([
-        //     'nama' => ,
-        //     'nama_sub_kategori' => ,
-        //     'jumlah' => ,
-        //     'harga' => ,
-        //     'deskripsi' => ,
-        //     'slug' =>  ,
-        //     'gambar' => ,
-        //     'user_id' => ,
-        // ]);
-        return redirect()->route('penjualan.view');
+         // Handle image upload
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file('gambar');
+            $imageName = time() . '_' . $gambar->getClientOriginalName();
+            $imagePath = 'product_images/' . $imageName;
+            Storage::disk('public')->put($imagePath, file_get_contents($gambar));
+        }
+        $kategori = KategoriSampah::where('nama', $request->kategori)->first();
+        $slug = \Str::slug($request->nama,'-').'-'.substr($id, -8);
+        try {
+            $produk = new Produk();
+            $produk->nama = $request->input('nama');
+            $produk->nama_sub_kategori = $request->input('nama_sub_kategori');
+            $produk->jumlah = $request->input('jumlah');
+            $produk->harga = $request->input('harga');
+            $produk->deskripsi = $request->input('deskripsi');
+            $produk->slug =  $slug;
+            $produk->gambar = $imagePath;
+            $produk->user_id = $id;
+            $produk->kategori_sampah_id = $kategori->id;
+            $produk->save();
+            return redirect()->back()->with('add', 'Product created successfully');
+        } catch (\Exception $e) {
+            // Set error message in the session
+            return redirect()->back()->with('error', 'Failed to create product');
+        }
     }
 
     /**
@@ -125,8 +152,7 @@ class ProdukController extends Controller
      */
     public function edit($id)
     {
-        $produk = Produk::find($id);
-        return view('', compact('produk'));
+        //
     }
 
     /**
@@ -138,18 +164,49 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produk = Produk::find($id);
-        // $produk->update([
-        //     'nama' => ,
-        //     'nama_sub_kategori' => ,
-        //     'jumlah' => ,
-        //     'harga' => ,
-        //     'deskripsi' => ,
-        //     'slug' =>  ,
-        //     'gambar' => ,
-        // ]);
-        return redirect()->route('penjualan.view');
+        // dd($request->hasFile('gambar'));
+        $request->validate([
+            'nama' => ['required'],
+            'nama_sub_kategori' => ['required'],
+            'deskripsi' => ['required'],
+            'jumlah' => ['required','numeric','min:1'],
+            'harga' => ['numeric','min:1'],
+            'gambar' => ['nullable','image','mimes:jpeg,png'],
+        ]);
+        $produk = Produk::findOrFail($id);
+        $kategori = KategoriSampah::where('nama', $request->kategori)->first();
+        $slug = \Str::slug($request->nama,'-').'-'.substr($id, -8);
+        
+        //update
+        $produk->nama = $request->input('nama');
+        $produk->nama_sub_kategori = $request->input('nama_sub_kategori');
+        $produk->jumlah = $request->input('jumlah');
+        $produk->harga = $request->input('harga');
+        $produk->deskripsi = $request->input('deskripsi');
+        $produk->slug =  $slug;
+
+        // Handle image upload if a new image is uploaded
+        if ($request->hasFile('gambar')) {
+            // Delete old image if exists
+            
+            if ($produk->gambar) {
+                Storage::delete('public/product_images/' . $produk->gambar);
+            }
+            $gambar = $request->file('gambar');
+            $imageName = time() . '_' . $gambar->getClientOriginalName();
+            $imagePath = 'product_images/' . $imageName;
+            Storage::disk('public')->put($imagePath, file_get_contents($gambar));
+
+            $produk->gambar = $imagePath;
+        }
+
+        // Update the product in the database
+        $produk->save();
+
+        return redirect()->back()->with('update', 'Product updated successfully');
     }
+
+
 
     /**
      * Remove the specified resource from storage.

@@ -38,7 +38,7 @@
             </td>
             <td>
                 <div class="flex flex-wrap space-x-6">
-                    <img src="{{ asset($item->produk->gambar) }}" class="rounded-xl w-[30%]">
+                    <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl w-[30%]">
                     <h1 class="w-[50%]">{{$item->produk->nama}}</h1>
                 </div> 
             </td>
