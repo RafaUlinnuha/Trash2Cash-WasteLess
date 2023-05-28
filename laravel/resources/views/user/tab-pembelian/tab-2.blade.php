@@ -1,7 +1,7 @@
 <div x-show="current === 2" class="py-3 mt-4">
     <?php?>
     <?php $kosong = true; ?>
-    @foreach($orders as $order)
+    @forelse ($orders as $order)
     @if ($order->pembayaran->status == 'belum_bayar')
     <?php $jumlah=0 ?>
     <div class="shop-2">
@@ -47,5 +47,8 @@
         </div>
       </div>
         @endif
-  @endforeach
+        @empty
+<img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-4">
+    <h1 class="mt-4 text-center">Belum ada pesanan</h1>
+@endforelse
   </div>

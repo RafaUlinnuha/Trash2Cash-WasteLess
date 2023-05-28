@@ -4,10 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pembayaran;
 use App\Models\Order;
+use App\Models\User;
+use App\Models\Produk;
 use App\Models\ItemOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
+
 
 
 class PembayaranController extends Controller
@@ -163,6 +167,48 @@ class PembayaranController extends Controller
         ]);
         // dd($order);
         return redirect()->back();
+    }
+
+
+    //pendapatan toko
+    public function indexpendapatan()
+    {
+        $id = Auth::id();
+        $user = User::find($id);
+        $items = ItemOrder::whereHas('produk', function ($query) use ($id) {
+            $query->where('user_id', $id);
+        })->get();
+        $jumlahKeseluruhan=0;
+        // dd($items);
+        foreach($items as $item){
+            $jumlahKeseluruhan += $item->jumlah * $item->produk->harga;
+        }
+        // Get the current month's start and end dates
+        $currentMonthStart = Carbon::now()->startOfMonth();
+        $currentMonthEnd = Carbon::now()->endOfMonth();
+        
+        $items_bulan = $items-> whereBetween('created_at', [$currentMonthStart, $currentMonthEnd])->All();
+        $totalperbulan = 0;
+        foreach($items_bulan as $item){
+            $totalperbulan += $item->jumlah * $item->produk->harga;
+        }
+        // dd($totalperbulan);
+
+        //produk
+        $mostOrderedProduct = DB::table('item_orders')
+                    ->select('produk_id', DB::raw('count(*) as total_orders'))
+                    ->groupBy('produk_id')
+                    ->orderBy('total_orders', 'desc')
+                    ->first();
+        $product = Produk::find($mostOrderedProduct->produk_id);
+        // dd($product);
+        $pendapatan = [
+            'totalsemua' => $jumlahKeseluruhan,
+            'totalbulanini' => $totalperbulan,
+            'produkterlaris' => $product->nama
+        ];
+        // dd($pendapatan);
+        return view('toko.pendapatan', compact('pendapatan', 'items'));
     }
 
     /**
