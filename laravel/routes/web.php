@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PembayaranController;
 
 
 
@@ -59,8 +60,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('keranjang/dec/{id}',[KeranjangController::class,'decProduk'])->name('produk.dec');
     Route::get('keranjang/dec/{id}',[KeranjangController::class,'decProduk'])->name('produk.dec');
     Route::post('keranjang/buat-pesanan',[OrderController::class,'rincianPesanan'])->name('order.post');
+    Route::get('keranjang/buat-pesanan',[OrderController::class,'showRincianPesanan'])->name('order.view');
     Route::get('checkout',[OrderController::class,'store'])->name('checkout');
-    Route::get('pembelian',[OrderController::class,'indexpembeli'])->name('pembelian.view');
+    Route::get('pembelian',[PembayaranController::class,'index'])->name('pembelian.view');
+    Route::post('order/bayar/{id}',[PembayaranController::class,'updateBukti'])->name('bukti.update');
+    Route::get('order/selesai/{id}',[PembayaranController::class,'konfirmasi'])->name('konfirmasi');
+    Route::get('order/batal/{id}',[PembayaranController::class,'batal'])->name('batalkan');
 
     //toko
     Route::get('toko/penjualan',[ProdukController::class,'penjualanView'])->name('penjualan.view');
@@ -68,11 +73,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('toko/edit-product/{id}',[ProdukController::class,'update'])->name('penjualan.edit');
     Route::delete('toko/penjualan/delete/{id}',[ProdukController::class,'destroy'])->name('penjualan.del');
     Route::get('toko/order',[OrderController::class,'indextoko'])->name('ordertoko.view');
+    Route::get('toko/order/konfirmasi/{id}',[PembayaranController::class,'konfirmasiPembayaran'])->name('konfirmasipembayaran');
+    Route::get('toko/order/kirim/{id}',[PembayaranController::class,'konfirmasiKirim'])->name('konfirmasipengiriman');
+    Route::get('toko/pendapatan',[OrderController::class,'indextoko'])->name('pendapatan.view');
 
     //user
     Route::get('profil',[UserController::class,'index'])->name('profil.view');
     Route::get('editprofil',[UserController::class,'editprofil'])->name('profil.edit');
-
+    Route::post('edit-alamat',[UserController::class,'updateAlamat'])->name('alamat.update');
   });
 
 // logout route

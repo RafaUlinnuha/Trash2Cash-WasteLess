@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Pembayaran;
 use App\Models\Order;
+use App\Models\ItemOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Storage;
+
 
 class PembayaranController extends Controller
 {
@@ -17,18 +20,11 @@ class PembayaranController extends Controller
     public function index()
     {
         $id = Auth::id();
-        $order = Order::Where('user_id',$id)->first();
-        $pembayaran = $order->pembayaran;
-        // sekalian ngecek udh lewat batas pembayaran atau engga
-        // kl udh lewat status berubah jadi gagal.
-        $now = Carbon::now();
-        if($pembayaran->batas <= $now){
-            $pembayaran->update([
-                'status' => 'batal'
-            ]);
-        }
-        dd($pembayaran);
-        
+        $orders = Order::where('user_id',$id)->get();
+        // foreach($orders as $order){
+        //     dd($order->id);
+        // }
+        return view('user.pembelian', compact('orders'));
     }
 
     /**
@@ -95,25 +91,78 @@ class PembayaranController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateBukti(Request $request, $id)
     {
+        // dd($id);
         $this->validate($request, [
-            'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
+            'gambar' => 'required|image|mimes:jpg,png,jpeg',
         ]);
-
-        $image_path = $request->file('image')->store('image', 'public');
-        $pembayaran::find($id);
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file('gambar');
+            $imageName = time() . '_' . $gambar->getClientOriginalName();
+            $imagePath = 'bukti_pembayaran/' . $imageName;
+            Storage::disk('public')->put($imagePath, file_get_contents($gambar));
+        }
+        $pembayaran = Pembayaran::find($id);
         $pembayaran->update([
-            'bukti_pembayaran' => $image_path,
+            'bukti_pembayaran' => $imagePath,
+            'status' => 'menunggu'
         ]);
+        return redirect()->back();
     }
 
+    //konfirmasi order oleh pelanggan
     public function konfirmasi($id)
     {
-        $pembayaran::find($id);
+        $pembayaran = Pembayaran::find($id);
+        // dd($pembayaran);
+        $order = Order::where('id', $pembayaran->order_id)->first();
+        $order->update([
+            'status' => 'selesai',
+        ]);
+        // dd($order);
+        return redirect()->back();
+    }
+
+    //oleh toko
+    public function konfirmasiPembayaran($id)
+    {
+        $pembayaran = Pembayaran::find($id);
+        // dd($pembayaran);
         $pembayaran->update([
             'status' => 'selesai',
         ]);
+        // dd($order);
+        return redirect()->back();
+    }
+
+    //oleh toko
+    public function konfirmasiKirim($id)
+    {
+        // dd($id);
+        $item = ItemOrder::where('id',$id)->first();
+        $order = Order::where('id',$item->order_id)->first();
+        // dd($order);    
+        $order->update([
+            'status' => 'dikirim',
+        ]);
+        // dd($order);
+        return redirect()->back();
+    }
+
+    //oleh toko/pelanggan
+    public function batal($id)
+    {
+        $pembayaran = Pembayaran::find($id);
+        $order = Order::where('id', $pembayaran->order_id)->first();
+        $pembayaran->update([
+            'status' => 'batal'
+        ]);
+        $order->update([
+            'status' => 'batal',
+        ]);
+        // dd($order);
+        return redirect()->back();
     }
 
     /**

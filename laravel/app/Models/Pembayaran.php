@@ -18,7 +18,8 @@ class Pembayaran extends Model
         'total',
         'batas_pembayaran',
         'status',
-        'bukti_pembayaran'
+        'bukti_pembayaran',
+        'order_id'
     ];
 
     public function order() : BelongsTo

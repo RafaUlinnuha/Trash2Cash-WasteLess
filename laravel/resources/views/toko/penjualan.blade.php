@@ -54,9 +54,6 @@
         <td class="w-4/12 py-3 text-left">{{$item->nama}} </td>
         <td class="w-1/12 py-3 text-center">{{$item->jumlah}} </td>
         <td class="w-1/12 py-3 text-center">Rp {{number_format($item->harga,2,',','.')}}</td>
-        <td class="w-1/12 px-6 py-3">
-          <a data-modal-target="editproduk-modal" data-modal-toggle="editproduk-modal" class="font-medium text-blue-600 hover:underline">Edit</a>
-        </td>
         @include('toko.modal.modal-editproduk')
         @include('toko.modal.modal-delete')
         <td class="w1/12 px-6 py-3">

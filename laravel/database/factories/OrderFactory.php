@@ -18,7 +18,7 @@ class OrderFactory extends Factory
     {
         return [
             'id' => fake()->uuid(),
-            'status' => 'ongoing'
+            'status' => 'diproses'
         ];
     }
 }

@@ -119,14 +119,15 @@ class UserController extends Controller
     public function updateAlamat(Request $request)
     {
         $request->validate([
-            'alamat' => 'required',
-            'kecamatan' => 'required',
-            'kota' => 'required',
-            'provinsi' => 'required',
-            'kode_pos' => 'required',
+            'alamat' => ['required'],
+            'kecamatan' => ['required'],
+            'kota' => ['required'],
+            'provinsi' => ['required'],
+            'kode_pos' => ['required', 'numeric'],
         ]);
         $id = Auth::id();
-        $alamat = AlamatUser::Where('user_id', $id)->first();
+        $alamat = AlamatUser::where('user_id', $id)->first();
+        
         $alamat->update([
             'alamat' => $request->alamat,
             'kecamatan' => $request->kecamatan,
@@ -134,8 +135,11 @@ class UserController extends Controller
             'provinsi' => $request->provinsi,
             'kode_pos' => $request->kode_pos,
         ]);
+        // dd($alamat);
+        // Return the updated address as a JSON response
+        return redirect()->back();
     }
-    
+
     public function addRekening(Request $request)
     {
         $request->validate([
