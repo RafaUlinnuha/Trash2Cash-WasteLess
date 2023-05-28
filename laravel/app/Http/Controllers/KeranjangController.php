@@ -51,22 +51,29 @@ class KeranjangController extends Controller
         $user_id = Auth::id();
         $keranjang = Keranjang::Where('user_id',$user_id)->first();
         //dd($produk->id);
-        
         if($request->action == 'tambah_keranjang'){
-            ItemKeranjang::create([
-            'jumlah' => $request->jumlah,
-            'keranjang_id' => $keranjang->id,
-            'produk_id' => $produk->id,
-            ]);
+            if(ItemKeranjang::where('keranjang_id', $keranjang->id)->where('produk_id',$produk->id)->first()){
+                $item = ItemKeranjang::where('keranjang_id', $keranjang->id)->where('produk_id',$produk->id)->first();
+                $item->update([
+                    'jumlah' => $request->jumlah + $item->jumlah,
+                ]);
+            } else {
+                ItemKeranjang::create([
+                'jumlah' => $request->jumlah,
+                'keranjang_id' => $keranjang->id,
+                'produk_id' => $produk->id,
+                ]);
+            }
              return redirect()->route('detail-produk', ['id' => $produk->id]);
         }
-        else{
-            $itemKeranjang[0] = ItemKeranjang::create([
+        else {
+            $item[0] = itemKeranjang::create([
                 'jumlah' => $request->jumlah,
                 'keranjang_id' => $keranjang->id,
                 'produk_id' => $produk->id,]
             );
-            return view('marketplace.pembayaran', compact('itemKeranjang'));
+            $request->session()->put('itemKeranjang', $item);
+            return view('marketplace.pembayaran');
         }
         
     }

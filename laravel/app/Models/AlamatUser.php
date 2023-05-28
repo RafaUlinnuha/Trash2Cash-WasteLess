@@ -19,6 +19,7 @@ class AlamatUser extends Model
         'kecamatan',
         'kota',
         'provinsi',
+        'kode_pos',
         'user_id'
     ];
 

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->float('total') -> nullable();
             $table->dateTime('batas_pembayaran') ->nullable();
-            $table->enum('status',['menunggu','batal', 'selesai']);
+            $table->enum('status',['belum_bayar','menunggu','batal', 'selesai']);
             $table->string('bukti_pembayaran')->nullable();
 
             //FK

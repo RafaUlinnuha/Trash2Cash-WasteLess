@@ -7,6 +7,7 @@ use App\Models\Produk;
 use App\Models\Order;
 use App\Models\User;
 use App\Models\ItemOrder;
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,14 +23,10 @@ class OrderController extends Controller
     {
         $id = Auth::id();
         $user = User::find($id);
-        $orders = $user->produk()->whereHas('itemOrder', function ($query) {
-            $query->whereHas('order', function ($query) {
-                // Add any additional conditions for the order if needed
-            });
-        })
-        // ->with(['itemOrder.order.user', 'itemOrder.order.pembayaran'])
-        ->get();
-        // dd($orders[0]->itemOrder->first()->order->pembayaran);
+        $orders = Order::whereHas('produk', function ($query) use ($id) {
+            $query->where('user_id', $id);
+        })->get();
+        // dd($orders);
         return view('toko.status-order', compact('orders'));
     }
 
@@ -42,13 +39,6 @@ class OrderController extends Controller
     {
         //
     }
-    public function indexpembeli()
-    {
-        $id = Auth::id();
-        $orders = Order::where('user_id', $id)->get();
-        // dd($orders);
-        return view('user.pembelian', compact('orders'));
-    }
     /**
      * Store a newly created resource in storage.
      *
@@ -59,23 +49,34 @@ class OrderController extends Controller
     {
         $selectedCheckboxes = $request->input('checkboxes');
         $id = Auth::id();
-        $order = Order::where('user_id', '=', $id)
-                 ->where('status', '=', 'ongoing')
-                 ->first();
+        // $order = Order::where('user_id', '=', $id)
+        //          ->where('status', '=', 'ongoing')
+        //          ->first();
         // dd($selectedCheckboxes);
         $i = 0;
         foreach ($selectedCheckboxes as $checkboxValue) {
             $itemKeranjang[$i] = ItemKeranjang::find($checkboxValue);
             $i++;
         }
-        return view('marketplace.pembayaran', compact('itemKeranjang'));
+        $request->session()->put('itemKeranjang', $itemKeranjang);
+        return view('marketplace.pembayaran');
+    }
+
+    public function showRincianPesanan(Request $request)
+    {
+        return view('marketplace.pembayaran');
     }
 
     public function store(Request $request)
     {
         $id = Auth::id();
         $order = Order::create([
-            'user_id' =>$id
+            'user_id' =>$id,
+            'status' => 'diproses'
+        ]);
+        $pembayaran = Pembayaran::create([
+            'order_id' =>$order->id,
+            'status' => 'belum_bayar'
         ]);
         // dd($request->query->keys());
         foreach ($request->query->keys() as $item_id) {
@@ -97,9 +98,10 @@ class OrderController extends Controller
             }
             
             $itemKeranjang->delete();
+            $request->session()->forget('itemKeranjang');
         }
 
-        return redirect()->route('home-page');
+        return redirect()->route('pembelian.view');
     }
 
     /**

@@ -19,7 +19,8 @@ class Order extends Model
     protected $keyType = 'string';
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
     protected $fillable = [
-        'user_id'
+        'user_id',
+        'status'
     ];
 
     public function itemOrder() : HasMany
@@ -40,5 +41,10 @@ class Order extends Model
     public function orders()
     {
         return $this->belongsToMany(Order::class, 'item_orders');
+    }
+
+    public function produk()
+    {
+        return $this->belongsToMany(Produk::class, 'item_orders');
     }
 }
