@@ -6,7 +6,9 @@
     <h1 class="text-4xl font-semibold">Ubah Profil</h1>
     <div class="foto items-center flex flex-col space-y-8">
         <span class="i-bi-people-circle w-48 h-48"></span>
-        <button class="py-2 px-16 text-center p-4 bg-[#8092C1] hover:bg-[#7588BB] rounded-xl text-neutral-50">Ubah Foto</button>
+        {{-- <button class="py-2 px-16 text-center p-4 bg-[#8092C1] hover:bg-[#7588BB] rounded-xl text-neutral-50">Ubah Foto</button> --}}
+        <!-- Modal toggle -->
+        @include('user.modal.modal-edit-foto')
     </div>
     <div class="grid grid-cols-2 mt-12 gap-12">
         <div class="data border-2 py-8 px-12 shadow">

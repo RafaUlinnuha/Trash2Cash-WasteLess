@@ -1,4 +1,4 @@
-<div x-show="current === 2" class=" mt-4 relative overflow-x-auto">
+<div x-show="current === 2" class="p-3 text-center mt-4">
     <table class="w-full border-2 py-8 px-12 shadow">
       <thead>
         <tr class="border text-base">
@@ -41,7 +41,7 @@
       </tbody>
     </table>
     @if($kosong)
-      <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-4">
+      <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-12">
       <h1 class="mt-4 text-center">Belum ada pesanan</h1>
     @endif
   </div>
