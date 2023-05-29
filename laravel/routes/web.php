@@ -75,12 +75,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('toko/order',[OrderController::class,'indextoko'])->name('ordertoko.view');
     Route::get('toko/order/konfirmasi/{id}',[PembayaranController::class,'konfirmasiPembayaran'])->name('konfirmasipembayaran');
     Route::get('toko/order/kirim/{id}',[PembayaranController::class,'konfirmasiKirim'])->name('konfirmasipengiriman');
-    Route::get('toko/pendapatan',[OrderController::class,'indextoko'])->name('pendapatan.view');
+    Route::get('toko/pendapatan',[PembayaranController::class,'indexpendapatan'])->name('pendapatan.view');
+    Route::get('/download-gambar/{path}', [PembayaranController::class, 'download'])->name('download.image');
 
+    
     //user
     Route::get('profil',[UserController::class,'index'])->name('profil.view');
     Route::get('editprofil',[UserController::class,'editprofil'])->name('profil.edit');
     Route::post('edit-alamat',[UserController::class,'updateAlamat'])->name('alamat.update');
+    Route::post('edit-user',[UserController::class,'update'])->name('user.update');
+    Route::post('edit-rekening',[UserController::class,'updaterekening'])->name('rekening.update');
+    Route::post('edit-katasandi',[UserController::class,'changePassword'])->name('katasandi.update');
+    Route::post('edit-fotoprofil',[UserController::class,'updatefotoprofil'])->name('fotoprofil.update');
+    Route::post('add-rekening',[UserController::class,'storerekening'])->name('rekening.store');
+    Route::delete('delete-rekening/{id}',[UserController::class,'deleterekening'])->name('rekening.delete');
   });
 
 // logout route

@@ -12,12 +12,12 @@
         </tr>
       </thead>
       <tbody>
-        <?php $i = 1 ?>
-        @foreach($orders as $produk)
+        <?php $i = 1;?>
+        @forelse($orders as $produk)
         <tr class="border text-center">
           <td class="px-3 py-2">{{$i}}</td>
           <td class="px-3 py-2">{{ \Carbon\Carbon::parse($produk->created_at)->format('Y/m/d') }}</td>
-          <td class="px-3 py-2">...{{substr($produk->itemOrder->first()->id, -5)}}</td>
+          <td class="px-3 py-2">order-{{substr($produk->itemOrder->first()->id, 0,8)}}</td>
           <td class="px-3 py-2">{{$produk->itemOrder->first()->order->user->nama}}</td>
           <td class="px-3 py-2">{{$produk->itemOrder->first()->order->user->alamatUser->kota}}</td>
           <td class="px-3 py-2">Rp {{number_format($produk->itemOrder->first()->produk->harga * $produk->itemOrder->first()->jumlah,2,',','.')}}</td>
@@ -32,7 +32,10 @@
           @endif
         </tr>
         <?php $i++; ?>
-        @endforeach
+        @empty
+          <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-4">
+          <h1 class="mt-4 text-center">Belum ada pesanan</h1>
+        @endforelse
       </tbody>
     </table>
 </div>

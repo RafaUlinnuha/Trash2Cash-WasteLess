@@ -25,7 +25,7 @@ class OrderController extends Controller
         $user = User::find($id);
         $orders = Order::whereHas('produk', function ($query) use ($id) {
             $query->where('user_id', $id);
-        })->get();
+        })->orderby('created_at', 'desc')->get();
         // dd($orders);
         return view('toko.status-order', compact('orders'));
     }

@@ -54,7 +54,9 @@ class UserController extends Controller
      */
     public function editprofil()
     {
-        return view('user.edit-profil');
+        $id = Auth::id();
+        $user = User::find($id);
+        return view('user.edit-profil', compact('user'));
     }
 
     public function changePassword(Request $request)
@@ -74,7 +76,7 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('new_password'));
         $user->save();
 
-        return redirect()->route('home')->with('success', 'Password changed successfully.');
+        return redirect()->back();
     }
 
 
@@ -87,11 +89,12 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
+        // dd($request);
         $id = Auth::id();
         $request->validate([
             'nama' => 'required',
             'email' => ['required', 'email', 'max:225'],
-            'no_hp' => ['required', 'min:12', 'max:12'],
+            'no_hp' => ['required', 'numeric'],
         ]);
         $user = User::find($id);
         $user->update([
@@ -99,9 +102,10 @@ class UserController extends Controller
             'email' => $request->email,
             'no_hp' => $request->no_hp,
         ]);
+        return redirect()->back();
     }
 
-    public function updateFoto(Request $request)
+    public function updatefotoprofil(Request $request)
     {
         $id = Auth::id();
         $this->validate($request, [
@@ -114,6 +118,7 @@ class UserController extends Controller
         $user->update([
             'foto_profil' => $image_path
         ]);
+        return redirect()->back();
     }
 
     public function updateAlamat(Request $request)
@@ -140,7 +145,7 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function addRekening(Request $request)
+    public function storerekening(Request $request)
     {
         $request->validate([
             'no_rek' => 'required',
@@ -154,29 +159,32 @@ class UserController extends Controller
             'atas_nama' => $request->atas_nama,
             'user_id' => $id
         ]);
+        return redirect()->back();
     }
 
-    public function updateRekening(Request $request)
+    public function updaterekening(Request $request)
     {
-        $request->validate([
-            'no_rek' => 'required',
-            'nama_metode' => 'required',
-            'atas_nama' => 'required',
-        ]);
+        // $request->validate([
+        //     'no_rek' => 'required',
+        //     'nama_metode' => 'required',
+        //     'atas_nama' => 'required',
+        // ]);
         $id = Auth::id();
         $rekening = MetodePembayaran::Where('user_id', $id)->first();
         $rekening->update([
             'no_rek' => $request->no_rek,
             'nama_metode' => $request->nama_metode,
             'atas_nama' => $request->atas_nama,
-            'user_id' => $id
         ]);
+        return redirect()->back();
     }
 
-    public function deleteRekening($id)
+    public function deleterekening($id)
     {
         $rekening = MetodePembayaran::find($id);
+        // dd($rekening);
         $rekening->delete();
+        return redirect()->back();
     }
 
     /**

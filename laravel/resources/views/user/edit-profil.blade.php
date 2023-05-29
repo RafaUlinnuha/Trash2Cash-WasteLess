@@ -12,54 +12,62 @@
         <div class="data border-2 py-8 px-12 shadow">
             <h1 class="text-2xl font-medium">Ubah Data Pribadi</h1>
             <hr class="mt-2">
+            <form action="{{route('user.update')}}" method="post">
+            @csrf
             <div class="space-y-4 mt-4">
                 <div class="flex justify-between items-center">
                     <div class="w-1/3 text-lg">Nama</div>
                     <div class="w-2/3">
-                        <input class="h-10 w-full px-3 placeholder-gray-600 border rounded-lg border-gray-300" type="text" placeholder="Nama sebelumnya">
+                        <input name="nama" class="h-10 w-full px-3 placeholder-gray-600 border rounded-lg border-gray-300" type="text" value="{{$user->nama}}">
                     </div>
                 </div>
                 <div class="flex justify-between items-center">
                     <div class="w-1/3 text-lg">No Telepon</div>
                     <div class="w-2/3">
-                        <input class="h-10 w-full px-3 text-base placeholder-gray-600 border rounded-lg border-gray-300" type="text" placeholder="No telepon sebelumnya">
+                        <input name="no_hp" class="h-10 w-full px-3 text-base placeholder-gray-600 border rounded-lg border-gray-300" type="text" value="{{$user->no_hp}}">
                     </div>
                 </div>
                 <div class="flex justify-between">
                     <div class="w-1/3 text-lg items-start">Email</div>
                     <div class="w-2/3">
-                        <input class="h-10 w-full px-3 text-base placeholder-gray-600 border rounded-lg border-gray-300" type="email" placeholder="Email sebelumnya">
+                        <input name="email" class="h-10 w-full px-3 text-base placeholder-gray-600 border rounded-lg border-gray-300" type="email" value="{{$user->email}}">
                     </div>
                 </div>
             </div>
-            <button class="w-full mt-8 py-2 px-8 bg-[#8092C1] hover:bg-[#7588BB] text-neutral-50 rounded-2xl transition ease-in-out delay-150 duration-300">Simpan</button>
+            <button type="submit" class="w-full mt-8 py-2 px-8 bg-[#8092C1] hover:bg-[#7588BB] text-neutral-50 rounded-2xl transition ease-in-out delay-150 duration-300">Simpan</button>
+            </form>
         </div>
         <div class="data border-2 py-8 px-12 shadow">
             <h1 class="text-2xl font-medium">Ubah Kata Sandi</h1>
             <hr class="mt-2">
-            <form action="" method="post">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            @endif
+            <form action="{{route('katasandi.update')}}" method="post">
                 @csrf
                 <div class="space-y-4 mt-4">
                     <div class="flex justify-between items-center">
                         <div class="w-1/2 text-lg">Kata Sandi Lama</div>
                         <div class="w-2/3">
-                            <input name="current_password" class="h-10 w-full px-3 border rounded-lg border-gray-300" type="text">
+                            <input type="password" name="current_password" class="h-10 w-full px-3 border rounded-lg border-gray-300" type="text">
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
                         <div class="w-1/2 text-lg">Kata Sandi Baru</div>
                         <div class="w-2/3">
-                            <input class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
+                            <input type="password" name="new_password" class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
                         <div class="w-1/2 text-lg">Konfirmasi Kata Sandi</div>
                         <div class="w-2/3">
-                            <input name="new_password" class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
+                            <input type="password" name="new_password_confirm" class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
                         </div>
                     </div>
                 </div>
-                <button class="w-full mt-8 py-2 px-8 bg-[#8092C1] hover:bg-[#7588BB] text-neutral-50 rounded-xl transition ease-in-out delay-150 duration-300">Simpan</button>
+                <button type= "submit" class="w-full mt-8 py-2 px-8 bg-[#8092C1] hover:bg-[#7588BB] text-neutral-50 rounded-xl transition ease-in-out delay-150 duration-300">Simpan</button>
             </form>
         </div>
     </div>
@@ -67,49 +75,54 @@
         <div class="data border-2 py-8 px-12 shadow">
             <h1 class="text-2xl font-medium">Tambah Rekening Bank</h1>
             <hr class="mt-2">
+            <form action="{{route('rekening.store')}}" method="post">
+            @csrf
             <div class="space-y-4 mt-4">
                 <div class="flex justify-between items-center">
                     <div class="w-1/2 text-lg">No Rekening</div>
                     <div class="w-2/3">
-                        <input name="new_password_confirm" class="h-10 w-full px-3 border rounded-lg border-gray-300" type="text">
+                        <input name="no_rek" class="h-10 w-full px-3 border rounded-lg border-gray-300" type="text">
                     </div>
                 </div>
                 <div class="flex justify-between items-center">
                     <div class="w-1/2 text-lg">Nama Bank</div>
                     <div class="w-2/3">
-                        <input class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
+                        <input name="nama_metode" class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
                     </div>
                 </div>
                 <div class="flex justify-between items-center">
                     <div class="w-1/2 text-lg">Nama Pemilik Rekening</div>
                     <div class="w-2/3">
-                        <input class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
+                        <input name="atas_nama" class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
                     </div>
                 </div>
             </div>
-            <button class="w-full mt-8 py-2 px-8 bg-[#8092C1] hover:bg-[#7588BB] text-neutral-50 rounded-xl transition ease-in-out delay-150 duration-300">Simpan</button>
+            <button type="submit" class="w-full mt-8 py-2 px-8 bg-[#8092C1] hover:bg-[#7588BB] text-neutral-50 rounded-xl transition ease-in-out delay-150 duration-300">Simpan</button>
+            </form>
         </div>
         <div class="data border-2 py-8 px-12 shadow">
             <h1 class="text-2xl font-medium">Ubah Alamat</h1>
             <hr class="mt-2">
+            <form action="{{route('alamat.update')}}" method="post">
+            @csrf
             <div class="space-y-4 mt-4">
                 <div class="flex justify-between items-center">
                     <div class="w-1/2 text-lg">Alamat</div>
                     <div class="w-2/3">
-                        <input class="h-10 w-full px-3 border rounded-lg border-gray-300" type="text">
+                        <input name="alamat" class="h-10 w-full px-3 border rounded-lg border-gray-300" type="text" value="{{$user->alamatUser->alamat}}">
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-2">
                     <div class="flex justify-between items-center">
                         <div class="w-1/2 text-lg">Kecamatan</div>
                         <div class="w-2/3">
-                            <input class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
+                            <input name="kecamatan" class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text" value="{{$user->alamatUser->kecamatan}}">
                         </div>                    
                     </div>
                     <div class="flex justify-between items-center">
                         <div class="w-1/2 text-lg">Kota</div>
                         <div class="w-2/3">
-                            <input class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
+                            <input name="kota" class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text" value="{{$user->alamatUser->kota}}">
                         </div>
                     </div>
                 </div>
@@ -117,13 +130,13 @@
                     <div class="flex justify-between items-center">
                         <div class="w-1/2 text-lg">Provinsi</div>
                         <div class="w-2/3">
-                            <input class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
+                            <input name="provinsi" class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text" value="{{$user->alamatUser->provinsi}}">
                         </div>
                     </div>
                     <div class="flex justify-between items-center">
                         <div class="w-1/2 text-lg">Kode Pos</div>
                         <div class="w-2/3">
-                            <input class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text">
+                            <input name="kode_pos" class="h-10 w-full px-3 text-base border rounded-lg border-gray-300" type="text" value="{{$user->alamatUser->kode_pos}}">
                         </div>
                     </div>
                 </div>
@@ -141,11 +154,14 @@
           </tr>
         </thead>
         <tbody>
+            <?php $i = 0 ?>
+        @foreach($user->metodePembayaran as $rekening)
+        <?php $i++ ?>
           <tr class="bg-white border-b">
-            <td class="px-6 py-3">1</td>
-            <td class="px-6 py-3">43559483413</td>
-            <td class="px-6 py-3">BCA</td>
-            <td class="px-6 py-3">Malcolm Lockyer</td>
+            <td class="px-6 py-3">{{$i}}</td>
+            <td class="px-6 py-3">{{$rekening->no_rek}}</td>
+            <td class="px-6 py-3">{{$rekening->nama_metode}}</td>
+            <td class="px-6 py-3">{{$rekening->atas_nama}}</td>
             <td class="py-3">
                 <!-- Modal toggle -->
                 <button data-modal-target="edit-modal" data-modal-toggle="edit-modal" class="block text-white bg-blue-600 hover:bg-blue-700 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
@@ -163,18 +179,18 @@
                             </button>
                             <div class="px-6 py-6 lg:px-8">
                                 <h3 class="mb-4 text-xl font-medium text-gray-900 text-center">Edit Rekening Bank</h3>
-                                <form>
+                                <form action="{{route('rekening.update')}}" method="post">
                                 <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                                    <label for="floating_nama_barang" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nomor Rekening</label>
+                                    <input type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 peer" name="no_rek" value="{{$rekening->no_rek}}" required />
+                                    <label class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nomor Rekening</label>
                                 </div>
                                 <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                                    <label for="floating_nama_barang" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Bank</label>
+                                    <input type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 peer" name="nama_metode" value="{{$rekening->nama_metode}}" required />
+                                    <label class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Bank</label>
                                 </div>
                                 <div class="relative z-0 w-full mb-6 group">
-                                    <input type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 peer" placeholder=" " required />
-                                    <label for="floating_nama_barang" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Pemilik Rekening</label>
+                                    <input type="text" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 peer" name="atas_nama" value="{{$rekening->atas_nama}}" required />
+                                    <label class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nama Pemilik Rekening</label>
                                 </div>
                                 <button type="submit" class="mt-4 w-full text-white bg-[#8092C1] hover:bg-blue-800 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">Submit</button>
                                 </form>
@@ -198,9 +214,12 @@
                             <div class="p-6 text-center">
                                 <svg aria-hidden="true" class="mx-auto mb-4 text-gray-400 w-14 h-14" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                                 <h3 class="mb-5 text-lg font-normal text-gray-500">Apakah Anda yakin ingin menghapus rekening bank ini?</h3>
-                                <button data-modal-hide="delete-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                                <form action="{{route('rekening.delete', $rekening->id)}}" method="post">
+                                @csrf @method('DELETE')
+                                <button data-modal-hide="delete-modal" type="submit" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
                                     Iya, saya yakin
                                 </button>
+                                </form>
                                 <button data-modal-hide="delete-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Tidak, batalkan</button>
                             </div>
                         </div>
@@ -208,6 +227,7 @@
                 </div>
             </td>
           </tr>
+          @endforeach
         </tbody>
       </table>
 @endsection 

@@ -1,4 +1,4 @@
-<button data-modal-target="#popup-modal1{{$order->pembayaran->id}}" data-modal-toggle="popup-modal1{{$order->pembayaran->id}}" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 items-center mx-auto p-2 text-sm font-medium text-center text-white rounded-lg" type="button">
+<button data-modal-target="#popup-modal1{{$order->pembayaran->id}}" data-modal-toggle="popup-modal1{{$order->pembayaran->id}}" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 items-center mx-auto p-2 text-sm font-medium text-center rounded-lg" type="button">
   Batalkan Pesanan
 </button>
 
