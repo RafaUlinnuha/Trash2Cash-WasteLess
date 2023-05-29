@@ -84,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('editprofil',[UserController::class,'editprofil'])->name('profil.edit');
     Route::post('edit-alamat',[UserController::class,'updateAlamat'])->name('alamat.update');
     Route::post('edit-user',[UserController::class,'update'])->name('user.update');
-    Route::post('edit-rekening',[UserController::class,'updaterekening'])->name('rekening.update');
+    Route::put('/rekening/{id}', [UserController::class, 'updaterekening'])->name('rekening.update');
     Route::post('edit-katasandi',[UserController::class,'changePassword'])->name('katasandi.update');
     Route::post('edit-fotoprofil',[UserController::class,'updatefotoprofil'])->name('fotoprofil.update');
     Route::post('add-rekening',[UserController::class,'storerekening'])->name('rekening.store');
