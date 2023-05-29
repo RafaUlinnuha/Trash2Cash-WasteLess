@@ -1,9 +1,11 @@
 <div x-show="current === 4" class="py-3 mt-4">
     <!-- <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-4">
     <h1 class="mt-4 text-center">Belum ada pesanan</h1> -->
-    @forelse($orders as $order)
+    <?php $kosong = true ?>
+    @foreach($orders as $order)
     @if ($order->pembayaran->status == 'selesai' && $order->status == 'dikirim')
-    <?php $jumlah=0 ?>
+    <?php $jumlah=0;
+    $kosong = false ?>
     <div class="shop-2">
       <div class="flex space-x-4 items-center">
         <span class="i-solar-shop-2-linear w-6 h-6"></span>
@@ -45,8 +47,9 @@
         </div>
       </div>
   @endif
-  @empty
+@endforeach
+@if($kosong)
 <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-4">
     <h1 class="mt-4 text-center">Belum ada pesanan</h1>
-@endforelse
+@endif
   </div>

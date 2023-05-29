@@ -1,12 +1,13 @@
 <div x-show="current === 3" class="py-3 mt-4">
-    @forelse($orders as $order)
+  <?php $kosong = true ?>
+    @foreach($orders as $order)
     @if ($order->status == 'diproses')
-    <?php $jumlah=0 ?>
+    <?php $jumlah=0; $kosong = false ?>
     <div class="shop-2">
       <div class="flex space-x-4 items-center">
         <span class="i-solar-shop-2-linear w-6 h-6"></span>
         <h1 class="font-semibold my-auto" >order-{{substr($order->id,0,8)}}</h1>
-        <h1 class="items-center mx-auto p-2 text-sm font-medium text-center text-white bg-[#8092C1] rounded-lg">diproses penjual</h1>        
+        <h1 class="items-center mx-auto p-2 text-sm font-medium text-center text-white bg-[#8092C1] rounded-lg">{{$order->pembayaran->status == 'menunggu'? 'menunggu konfirmasi':'diproses penjual'}}</h1>        
       </div>
     </div>
     <div class="m-4">
@@ -42,8 +43,9 @@
         </div>
       </div>
   @endif
-  @empty
+@endforeach
+@if($kosong)
 <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-4">
     <h1 class="mt-4 text-center">Belum ada pesanan</h1>
-@endforelse
+@endif
   </div>

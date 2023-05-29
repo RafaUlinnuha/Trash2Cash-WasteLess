@@ -10,7 +10,7 @@
         @elseif($order->status == 'dikirim')
         <h1 class="items-center mx-auto p-2 text-sm font-medium text-center text-white bg-[#8092C1] rounded-lg">dikirim</h1>        
         @elseif($order->status == 'diproses')
-        <h1 class="items-center mx-auto p-2 text-sm font-medium text-center text-white bg-[#8092C1] rounded-lg">diproses penjual</h1>        
+        <h1 class="items-center mx-auto p-2 text-sm font-medium text-center text-white bg-[#8092C1] rounded-lg">{{$order->pembayaran->status == 'menunggu'? 'menunggu konfirmasi':'diproses penjual'}}</h1>        
         @elseif($order->status == 'selesai')
         <h1 class="items-center mx-auto p-2 text-sm font-medium text-center text-white bg-[#8092C1] rounded-lg">{{$order->pembayaran->status}}</h1>        
         @else

@@ -13,19 +13,20 @@
         </tr>
       </thead>
       <tbody>
-      <?php $i = 1 ?>
+      <?php $i = 1;
+      $kosong = true; ?>
       @foreach($orders as $produk)
         @if($produk->itemOrder->first()->order->pembayaran->status == 'belum_bayar' || $produk->itemOrder->first()->order->pembayaran->status == 'menunggu')
         <tr class="border text-center">
           <td class="px-3 py-3">{{$i}}</td>
           <td class="px-3 py-3">{{ \Carbon\Carbon::parse($produk->created_at)->format('Y/m/d') }}</td>
-          <td class="px-3 py-3">...{{substr($produk->itemOrder->first()->id, -5)}}</td>
+          <td class="px-3 py-3">order-{{substr($produk->itemOrder->first()->id, 0,8)}}</td>
           <td class="px-3 py-3">{{$produk->itemOrder->first()->order->user->nama}}</td>
           <td class="px-3 py-3">{{$produk->itemOrder->first()->order->user->alamatUser->kota}}</td>
           <td class="px-3 py-3">Rp {{number_format($produk->itemOrder->first()->produk->harga * $produk->itemOrder->first()->jumlah,2,',','.')}}</td>
           <td class="px-3 py-3">
             @if($produk->itemOrder->first()->order->pembayaran->bukti_pembayaran)
-            <button class="items-center py-2 px-4 bg-[#8092C1] text-neutral-50 rounded-lg">Unduh File</button></td>
+            <a href="{{ route('download.image', ['path' => $produk->itemOrder->first()->order->pembayaran->bukti_pembayaran]) }}" class="items-center py-2 px-4 bg-[#8092C1] text-neutral-50 rounded-lg">Unduh File</a></td>
             @else
                 belum ada
             @endif
@@ -33,9 +34,14 @@
             @include('toko.modal.modal-konfirmasipembayaran')
           </td>
         </tr>
+        <?php $i++; 
+        $kosong = false; ?>
         @endif
-        <?php $i++; ?>
         @endforeach
       </tbody>
     </table>
+    @if($kosong)
+      <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-4">
+      <h1 class="mt-4 text-center">Belum ada pesanan</h1>
+    @endif
   </div>

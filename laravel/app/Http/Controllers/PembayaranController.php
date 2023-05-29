@@ -109,10 +109,21 @@ class PembayaranController extends Controller
         }
         $pembayaran = Pembayaran::find($id);
         $pembayaran->update([
-            'bukti_pembayaran' => $imagePath,
+            'bukti_pembayaran' => $imageName,
             'status' => 'menunggu'
         ]);
         return redirect()->back();
+    }
+
+    public function download($path)
+    {
+        $filePath = storage_path('app/public/bukti_pembayaran/' . $path);
+        
+        if (file_exists($filePath)) {
+            return response()->download($filePath);
+        }
+        
+        abort(404);
     }
 
     //konfirmasi order oleh pelanggan
