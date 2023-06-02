@@ -23,7 +23,7 @@
 
 <h1 class="text-4xl font-semibold">Pendapatan</h1>
     <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
-        <div class="flex-row flex-wrap text-center items-center py-8 border border-gray-200 rounded-lg shadow-md space-y-4">
+        <div class="flex-row flex-wrap text-center items-center p-8 border border-gray-200 rounded-lg shadow-md space-y-4">
             <h1 class="text-xl font-medium">Total Pendapatan Keseluruhan</h1>
             <p class="text-lg text-[#FF8833]">Rp {{number_format($pendapatan['totalsemua'],2,',','.')}}</p>
         </div>
@@ -31,7 +31,7 @@
             <h1 class="text-xl font-medium">Total Pendapatan Bulan {{ $monthNames[$currentMonth] }}</h1>
             <p class="text-lg text-[#FF8833]">Rp {{number_format($pendapatan['totalbulanini'],2,',','.')}}</p>
         </div>
-        <div class="col-span-2 xl:col-span-1 flex-row flex-wrap text-center items-center py-8 border border-gray-200 rounded-lg shadow-md space-y-4">
+        <div class="col-span-2 xl:col-span-1 flex-row flex-wrap text-center items-center p-8 border border-gray-200 rounded-lg shadow-md space-y-4">
             <h1 class="text-xl font-medium">Produk yang sering dibeli</h1>
             <p class="text-lg text-[#FF8833]">
               {{$pendapatan['produkterlaris']}} 

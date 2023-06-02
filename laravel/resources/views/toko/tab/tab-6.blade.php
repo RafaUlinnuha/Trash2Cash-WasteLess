@@ -29,7 +29,7 @@
     </tbody>
     </table>
     @if($kosong)
-      <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-4">
+      <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-12">
       <h1 class="mt-4 text-center">Tidak ada</h1>
     @endif
   </div>

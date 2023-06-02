@@ -44,7 +44,7 @@
                                     <a href="{{route('keranjang')}}" class="i-ph-shopping-cart w-5 h-5 m-1.5"></a>
                                 </div>
                                 <div class="dropdown-shop hover:bg-gray-200 my-auto w-8 h-8 rounded">
-                                    <button type="button" class="flex space-x-4" id="shop-menu-button" aria-expanded="false" data-dropdown-toggle="shop-dropdown" data-dropdown-placement="bottom">
+                                    <button type="button" id="shop-menu-button" aria-expanded="false" data-dropdown-toggle="shop-dropdown" data-dropdown-placement="bottom">
                                         <span class="i-bi-shop w-5 h-5 m-1.5"></span>
                                     </button>
                                     <!-- Dropdown menu -->
@@ -66,11 +66,15 @@
                                 <div class="dropdown-profile my-auto">
                                     <button type="button" class="flex space-x-4" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                                         <span class="i-bi-people-circle w-5 h-5"></span>
-                                        <h1>{{Auth::user()->nama }}</h1>
+                                        {{-- <h1 class="w-1/2 truncate">{{Auth::user()->nama }}</h1> --}}
                                     </button>
                                     <!-- Dropdown menu -->
                                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">
-                                        <span class="px-4 py-3 block text-sm text-gray-500 truncate">{{Auth::user()->email }}</span>
+                                        <div class="px-4 py-3">
+                                            <span class="block text-sm text-gray-900 truncate">{{Auth::user()->nama }}</span>
+                                            <span class="block text-sm text-gray-500 truncate">{{Auth::user()->email }}</span>
+                                        </div>
+                                            
                                         <ul class="py-2" aria-labelledby="user-menu-button">
                                             <li>
                                                 <a href="{{route('pembelian.view')}}" class="block px-4 py-2 text-sm hover:bg-gray-100">Pembelian</a>

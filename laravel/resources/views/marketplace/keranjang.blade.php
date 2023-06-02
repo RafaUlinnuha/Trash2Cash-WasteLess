@@ -50,7 +50,7 @@
                     <div class="flex items-center justify-between">
                         <a href="{{route('produk.dec', ['id' => $item->id])}}" class="bg-white px-2 cursor-pointer border-r py-1">-</a>
                         <input type="number" name="jumlah" class="w-[80%] text-center py-0 border-transparent focus:border-transparent focus:ring-0" readonly min="1" max="{{$item->produk->jumlah}}" value="{{$item->jumlah}}">
-                        <a href="{{route('produk.inc', ['id' => $item->id])}}" class="bg-white px-2 cursor-pointer border-r py-1">+</a>
+                        <a href="{{route('produk.inc', ['id' => $item->id])}}" class="bg-white px-2 cursor-pointer border-l py-1">+</a>
                     </div>
                 </div>
             </td>
