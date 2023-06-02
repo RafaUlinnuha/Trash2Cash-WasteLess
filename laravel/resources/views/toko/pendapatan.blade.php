@@ -3,6 +3,23 @@
 @section('title', 'Pendapatan | ')
  
 @section('content')
+@php
+    $monthNames = [
+        1 => 'Januari',
+        2 => 'Februari',
+        3 => 'Maret',
+        4 => 'April',
+        5 => 'Mei',
+        6 => 'Juni',
+        7 => 'Juli',
+        8 => 'Agustus',
+        9 => 'September',
+        10 => 'Oktober',
+        11 => 'November',
+        12 => 'Desember',
+    ];
+    $currentMonth = date('n');
+@endphp
 
 <h1 class="text-4xl font-semibold">Pendapatan</h1>
     <div class="grid grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
@@ -10,13 +27,18 @@
             <h1 class="text-xl font-medium">Total Pendapatan Keseluruhan</h1>
             <p class="text-lg text-[#FF8833]">Rp {{number_format($pendapatan['totalsemua'],2,',','.')}}</p>
         </div>
-        <div class="flex-row flex-wrap text-center items-center py-8 border border-gray-200 rounded-lg shadow-md space-y-4">
-            <h1 class="text-xl font-medium">Total Pendapatan Bulan Ini</h1>
-            <p class="text-lg text-[#FF8833]">Rp {{number_format($pendapatan['totalbulanini'],2,',','.')}}-</p>
+        <div class="flex-row flex-wrap text-center items-center p-8 border border-gray-200 rounded-lg shadow-md space-y-4">
+            <h1 class="text-xl font-medium">Total Pendapatan Bulan {{ $monthNames[$currentMonth] }}</h1>
+            <p class="text-lg text-[#FF8833]">Rp {{number_format($pendapatan['totalbulanini'],2,',','.')}}</p>
         </div>
         <div class="col-span-2 xl:col-span-1 flex-row flex-wrap text-center items-center py-8 border border-gray-200 rounded-lg shadow-md space-y-4">
             <h1 class="text-xl font-medium">Produk yang sering dibeli</h1>
-            <p class="text-lg text-[#FF8833] line-clamp-1">{{$pendapatan['produkterlaris']}}</p>
+            <p class="text-lg text-[#FF8833]">
+              {{$pendapatan['produkterlaris']}} 
+              @empty($pendapatan['produkterlaris'])
+                  -
+              @endempty
+            </p>
         </div>
     </div>
     <table class="mt-12 w-full border-2 py-8 px-12 shadow">

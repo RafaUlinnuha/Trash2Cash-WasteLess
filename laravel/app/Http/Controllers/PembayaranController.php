@@ -206,17 +206,23 @@ class PembayaranController extends Controller
         // dd($totalperbulan);
 
         //produk
-        $mostOrderedProduct = DB::table('item_orders')
-                    ->select('produk_id', DB::raw('count(*) as total_orders'))
-                    ->groupBy('produk_id')
-                    ->orderBy('total_orders', 'desc')
-                    ->first();
-        $product = Produk::find($mostOrderedProduct->produk_id);
-        // dd($product);
+        $mostOrderedProduct = $user->produk->map(function ($produk) {
+            $totalOrdered = $produk->itemOrder->filter(function ($itemOrder) {
+                return $itemOrder->order->status !== 'batal';
+            })->sum('jumlah');
+            return [
+                'product' => $produk,
+                'total_ordered' => $totalOrdered,
+            ];
+        })
+        ->sortByDesc('total_ordered')->first();
+        // dd($mostOrderedProduct);
+        $mostOrderedProductName = $mostOrderedProduct ? $mostOrderedProduct['product']->nama : null;
+
         $pendapatan = [
             'totalsemua' => $jumlahKeseluruhan,
             'totalbulanini' => $totalperbulan,
-            'produkterlaris' => $product->nama
+            'produkterlaris' => $mostOrderedProductName
         ];
         // dd($pendapatan);
         return view('toko.pendapatan', compact('pendapatan', 'items'));

@@ -34,23 +34,31 @@ Route::get('/semua-kategori', [ProdukController::class, 'semuaKategori'])->name(
 Route::get('/detail-produk', function () {
     return view('marketplace.detail-produk');
 });
-
-Route::get('/profil/edit', function () {
-    return view('user.edit-profil');})->name('/profil/edit');
-Route::get('/profil', function () {
-    return view('user.lihat-profil');})->name('profil.view');
-Route::get('/pembayaran', function () {
-    return view('marketplace.pembayaran');})->name('pembayaran');
-Route::get('/keranjang', function () {
-    return view('marketplace.keranjang');})->name('keranjang');
-Route::get('/toko/status-order', function () {
-    return view('toko.status-order');})->name('/toko/status-order');
+Route::get('/search', [ProdukController::class, 'search'])->name('search-produk');
 Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
 
+// Route::get('/profil/edit', function () {
+//     return view('user.edit-profil');})->name('/profil/edit');
+// Route::get('/profil', function () {
+//     return view('user.lihat-profil');})->name('profil.view');
+// Route::get('/pembayaran', function () {
+//     return view('marketplace.pembayaran');})->name('pembayaran');
+// Route::get('/keranjang', function () {
+//     return view('marketplace.keranjang');})->name('keranjang');
+// Route::get('/toko/status-order', function () {
+//     return view('toko.status-order');})->name('/toko/status-order');
 
-// login route
-Route::get('/login', [LoginController::class, 'index'])->name('login.view');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
+Route::group(['middleware' => 'guest'], function () {
+    // login route
+    Route::get('/login', [LoginController::class, 'index'])->name('login.view');
+    Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
+
+    //register route
+    Route::get('/register', [RegisterController::class, 'index'])->name('register.view');
+    Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
+});
+
+
 
 Route::middleware(['auth'])->group(function () {
     //pembelian
@@ -89,11 +97,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('edit-fotoprofil',[UserController::class,'updatefotoprofil'])->name('fotoprofil.update');
     Route::post('add-rekening',[UserController::class,'storerekening'])->name('rekening.store');
     Route::delete('delete-rekening/{id}',[UserController::class,'deleterekening'])->name('rekening.delete');
-  });
+  
+    // logout route
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout.post');
+});
 
-// logout route
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout.post');
 
-//register route
-Route::get('/register', [RegisterController::class, 'index'])->name('register.view');
-Route::post('/register', [RegisterController::class, 'store'])->name('register.post');
+

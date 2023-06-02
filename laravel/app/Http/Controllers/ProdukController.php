@@ -82,9 +82,19 @@ class ProdukController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function search(Request $request)
     {
-        return view('');
+        // dd($request);
+        $query = $request->input('search');
+        // dd($query);
+        $produk = Produk::with('user', 'user.alamatUser')
+                          ->where('produks.nama', 'LIKE', '%'.$query.'%')
+                          ->orWhere('produks.nama_sub_kategori', 'LIKE', '%'.$query.'%')
+                          ->get();
+        // dd($produk);
+        $judul = 'Jual '.$query;
+        // dd($judul);
+        return view('marketplace.produk', compact('judul','produk'));
     }
 
     /**
