@@ -6,7 +6,7 @@
 <x-kategori>
   <div class="ml-64">
     <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
-      @foreach ($produk as $item)
+      @forelse ($produk as $item)
       <a href="{{ route('detail-produk', ['id' => $item->id]) }}" class="max-w-sm h-80">
           <div class="items-center bg-white border border-gray-200">
               <img src="{{asset('storage/'.$item->gambar)}}" class="w-fit mx-auto h-[60%]">
@@ -15,7 +15,11 @@
               <h3 class="m-2 text-right">Kota {{$item->user->alamatUser->kota}}</h3>
           </div>
       </a>
-      @endforeach
+      @empty
+      <p>
+        Opps, produk tidak ada.
+      </p>
+      @endforelse
     </div>
   </div>
 </x-kategori>
