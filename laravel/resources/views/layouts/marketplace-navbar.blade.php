@@ -8,10 +8,10 @@
 
 <nav class="fixed bg-white w-full z-30 border-b">
     <div class="text-xs items-center justify-end space-x-4 font-medium py-1 pr-2 hidden md:flex bg-[#FEC261]">
-        <a href="/#tentang-kami">Tentang Kami</a>
-        <a href="/#layanan">Layanan</a>
-        <a href="/#jenis-sampah">Jenis Sampah</a>
-        <a href="/home-opafe">Marketplace</a>
+        <a href="#tentang-kami">Tentang Kami</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#jenis-sampah">Jenis Sampah</a>
+        <a href="/home-pagee">Marketplace</a>
     </div>
     <div class="text-xs text-right justify-end space-x-4 font-medium py-1 pr-2 flex md:hidden bg-[#FEC261]">
         <a href="/">Home</a>
@@ -40,8 +40,8 @@
             <button type="button" id="shop-menu-button" aria-expanded="false" data-dropdown-toggle="shop-dropdown" data-dropdown-placement="bottom">
                 <span class="i-bi-shop w-5 h-5 m-1.5"></span>
             </button>
-            <div class="z-50 hidden my-4 text-base list-none bg-white rounded-lg shadow" id="shop-dropdown">
-                <ul class="py-2" aria-labelledby="shop-menu-button">
+            <div class="z-50 hidden text-base list-none bg-white rounded-lg shadow" id="shop-dropdown">
+                <ul aria-labelledby="shop-menu-button">
                     <li>
                         <a href="{{route('penjualan.view')}}" class="block px-4 py-2 text-sm hover:bg-gray-100">Penjualan</a>
                     </li>

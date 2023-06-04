@@ -20,13 +20,13 @@
         <h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Layanan</h1>
         <div class="grid grid-cols-1 md:grid-cols-3 md:gap-4 xl:gap-8">
             <div class="pendataan">
-                <x-layanan-card title="Penjualan" image="{{ asset('img/landing-page/iconPendataan.png') }}" desc="Sampah yang kamu punya dapat dijual pada marketplace dan dikelola disini." route="#"></x-layanan-card>
+                <x-layanan-card title="Penjualan" image="{{ asset('img/landing-page/iconPendataan.png') }}" desc="Sampah yang kamu punya dapat dijual pada marketplace dan dikelola disini." route="{{route('penjualan.view')}}"></x-layanan-card>
             </div>
             <div class="marketplace">
                 <x-layanan-card title="Marketplace" image="{{ asset('img/landing-page/iconMarketplace.png') }}" desc="Tempat untuk kamu melakukan transaksi sampah yang belum diolah dan sudah diolah." route="{{route('home-page')}}"></x-layanan-card>
             </div>
             <div class="pendapatan">
-                <x-layanan-card title="Pendapatan" image="{{ asset('img/landing-page/iconPendapatan.png') }}" desc="Hasil dari penjualan yang telah kamu dapatkan pada marketplace dapat kamu kelola disini." route="#"></x-layanan-card>
+                <x-layanan-card title="Pendapatan" image="{{ asset('img/landing-page/iconPendapatan.png') }}" desc="Hasil dari penjualan yang telah kamu dapatkan pada marketplace dapat kamu kelola disini." route="{{route('pendapatan.view')}}"></x-layanan-card>
             </div>
         </div>
     </div>

@@ -21,14 +21,14 @@
         </div>
       </div>
       <div class="flex md:flex-col flex-wrap justify-between mt-4">
-        <div class="flex md:space-x-6">
+        <div class="flex space-x-2 md:space-x-6">
             <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl w-48 h-32">
             <div class="flex-rows">
                 <h1>{{$item->produk->nama}}</h1>
                 <h2>Jumlah : {{$item->jumlah}} Kg</h2>
             </div>
         </div>
-        <div class="flex space-x-2 mt-auto">
+        <div class="flex space-x-2 mt-2 md:mt-auto">
           <h3 class="text-right">Harga : </h3>
           <h4 class="text-[#FF8833]">Rp {{number_format($item->produk->harga,2,',','.')}}/Kg</h4>
         </div>
