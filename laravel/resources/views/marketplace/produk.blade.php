@@ -4,8 +4,8 @@
  
 @section('content')
 <x-kategori>
-  <div class="ml-64">
-    <div class="grid grid-cols-2 xl:grid-cols-4 gap-4">
+  <div class="md:ml-64">
+    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
       @forelse ($produk as $item)
       <a href="{{ route('detail-produk', ['id' => $item->id]) }}" class="max-w-sm h-80">
           <div class="items-center bg-white border border-gray-200">

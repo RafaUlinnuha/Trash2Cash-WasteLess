@@ -7,6 +7,16 @@
 </nav> --}}
 
 <nav class="fixed bg-white w-full z-40 border-b">
+    <div class="text-xs items-center justify-end space-x-4 font-medium pt-2 pr-2 mr-2 hidden md:flex">
+        <a href="/#tentang-kami">Tentang Kami</a>
+        <a href="/#layanan">Layanan</a>
+        <a href="/#jenis-sampah">Jenis Sampah</a>
+        <a href="/home-opafe">Marketplace</a>
+    </div>
+    <div class="text-xs text-right justify-end space-x-4 font-medium pt-2 pr-2 mr-2 flex md:hidden">
+        <a href="/">Home</a>
+        <a href="/home-page">Marketplace</a>
+    </div>
     <div class="flex md:flex-wrap items-center justify-around md:justify-between md:mx-auto py-2 px-2 md:px-12">
         <a href="/" class="items-center cursor-pointer hidden md:block">
             <img src="{{ asset('img/logo orange.png') }}" class="scale-90">

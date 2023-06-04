@@ -5,7 +5,7 @@
 @section('content')
    <aside class="fixed bg-white">
       <nav class="flex flex-col">
-         <a href="{{ route('semua-kategori') }}" class="flex items-center space-x-4 font-semibold">
+         <a href="{{ route('semua-kategori') }}" class="hidden md:flex items-center space-x-4 font-semibold">
             <span class="i-ion-options w-8 h-8"></span>
             <span class="text-lg">Semua Kategori</span>
          </a>

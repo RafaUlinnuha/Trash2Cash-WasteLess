@@ -35,9 +35,9 @@
                 <input type="hidden" name="labels[]" value="{{$item->jumlah*$item->produk->harga}}" />
             </td>
             <td>
-                <div class="flex flex-wrap ml-2 md:ml-0 md:space-x-6">
-                    <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl md:w-32 md:h-24 hidden md:block">
-                    <h1 class="text-sm md:text-base md:w-[50%]">{{$item->produk->nama}}</h1>
+                <div class="flex flex-wrap ml-2 md:ml-0 md:space-x-4 space-y-2 md:space-y-0">
+                    <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl w-48 md:w-36 h-32 md:h-28">
+                    <h1 class="text-sm md:text-base md:w-[60%]">{{$item->produk->nama}}</h1>
                 </div> 
             </td>
             <td class="align-text-top text-sm md:text-base text-center hidden md:table-cell">
@@ -56,20 +56,8 @@
         <tr>
             <td>
             </td>
-            {{-- <td class="inline-flex items-center mt-1 mr-16 align-text-top text-sm md:text-base ml-2 md:ml-0 md:hidden">
-                Rp {{number_format($item->produk->harga,2,',','.')}}
-            </td>
-            <td class="inline-flex items-center md:hidden">
-                <div class="border md:w-[50%] mx-auto w-24">
-                    <div class="flex items-center justify-between">
-                        <a href="{{route('produk.dec', ['id' => $item->id])}}" class="bg-white p-1 md:px-2 cursor-pointer border-r md:py-1 text-sm md:text-base">-</a>
-                        <input type="number" name="jumlah" class="md:w-[80%] w-10 text-center py-0 border-transparent focus:border-transparent focus:ring-0 text-sm md:text-base" readonly min="1" max="{{$item->produk->jumlah}}" value="{{$item->jumlah}}">
-                        <a href="{{route('produk.inc', ['id' => $item->id])}}" class="bg-white p-1 md:px-2 cursor-pointer border-l md:py-1 text-sm md:text-base">+</a>
-                    </div>
-                </div>
-            </td> --}}
             <td class="flex mt-1 items-center ml-2 md:hidden">
-                <div class="text-sm w-2/3">
+                <div class="text-sm w-2/3 font-medium">
                     Rp {{number_format($item->produk->harga,2,',','.')}}
                 </div>
                 <div class="border mx-auto">
@@ -88,7 +76,7 @@
 <div class="flex flex-col md:flex-row items-center mt-8 space-y-4 md:space-y-0 md:space-x-4">
     <div class="md:px-10 px-4 py-3 rounded-lg border border-gray-200 shadow flex justify-between font-medium xl:w-3/4 md:w-2/3 w-full items-center">
         <h1 class="text-sm md:text-lg">Total Pembayaran</h1>
-        <h1 id="total" class="text-sm md:text-lg">Rp 0</h1>
+        <h1 id="total" class="text-sm md:text-lg w-fit">Rp 0</h1>
     </div>
     <div class="text-right xl:w-1/4 md:w-1/3 w-full">
         <button type="submit" disabled id = "submit-btn" class="md:px-12 py-3 font-medium text-center text-sm md:text-base lg:text-lg bg-[#FF8833] text-neutral-50 rounded-lg transition ease-in-out delay-150 duration-300 w-full">
