@@ -1,5 +1,5 @@
-<button type="button" data-modal-target="#popup-modal{{$produk->itemOrder->first()->order->pembayaran->id}}" data-modal-toggle="popup-modal{{$produk->itemOrder->first()->order->pembayaran->id}}" class="font-medium text-blue-600 hover:underline" {{$produk->itemOrder->first()->order->pembayaran->status == 'belum_bayar'? 'disabled': ''}}>
-  Konfirmasi
+<button type="button" data-modal-target="#popup-modal{{$produk->itemOrder->first()->order->pembayaran->id}}" data-modal-toggle="popup-modal{{$produk->itemOrder->first()->order->pembayaran->id}}" class="font-medium text-[#6C894A]" {{$produk->itemOrder->first()->order->pembayaran->status == 'belum_bayar'? 'disabled': ''}}>
+  <span class="i-material-symbols-check-circle-outline w-4 h-4"></span>
 </button>
 
 <div id="popup-modal{{$produk->itemOrder->first()->order->pembayaran->id}}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">

@@ -39,22 +39,22 @@
         </div>
     </div>
 </div>
-<table class="mt-12 w-full border-2 py-8 px-12 shadow">
+<table class="mt-12 w-full border-2 py-8 md:px-12 shadow">
     <thead>
       <tr class="bg-white border-b text-sm md:text-xl">
         <th scope="col" class="px-6 py-3 font-medium hidden md:table-cell">No</th>
-        <th scope="col" class="px-6 py-3 font-medium ">No Rekening</th>
-        <th scope="col" class="px-6 py-3 font-medium">Nama Bank</th>
+        <th scope="col" class="px-3 md:px-6 py-3 font-medium ">No Rekening</th>
+        <th scope="col" class="px-3 md:px-6 font-medium">Nama Bank</th>
         <th scope="col" class="px-6 py-3 font-medium hidden md:table-cell">Nama Pemilik Rekening</th>
       </tr>
     </thead>
     <tbody>
         <?php $i=1 ?>
             @forelse ($user->metodePembayaran as $rekening)
-                <tr class="bg-white border-b text-sm md:text-xl">
+                <tr class="bg-white border-b text-xs md:text-xl">
                     <td class="px-6 py-3 hidden md:table-cell">{{$i}}</td>
-                    <td class="px-6 py-3">{{$rekening->no_rek}}</td>
-                    <td class="px-6 py-3">{{$rekening->nama_metode}}</td>
+                    <td class="px-3 md:px-6 py-3">{{$rekening->no_rek}}</td>
+                    <td class="px-3 md:px-6 py-3">{{$rekening->nama_metode}}</td>
                     <td class="px-6 py-3 hidden md:table-cell">{{$rekening->atas_nama}}</td>
                 </tr>
         <?php $i++ ?>

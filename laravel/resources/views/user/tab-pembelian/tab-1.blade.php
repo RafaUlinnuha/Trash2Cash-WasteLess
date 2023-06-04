@@ -3,7 +3,7 @@
 <?php $jumlah=0 ?>
     <div class="shop">
       <div class="flex space-x-4 items-center">
-        <span class="i-solar-shop-2-linear w-6 h-6"></span>
+        {{-- <span class="i-solar-shop-2-linear w-6 h-6"></span> --}}
         <h1 class="font-semibold my-auto" >order-{{substr($order->id,0,8)}}</h1>
         @if($order->pembayaran->status == 'belum_bayar')
         <h1 class="items-center mx-auto p-2 text-sm font-medium text-center text-white bg-[#8092C1] rounded-lg">belum bayar</h1>        
