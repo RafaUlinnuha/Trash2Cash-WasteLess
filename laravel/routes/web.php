@@ -37,17 +37,6 @@ Route::get('/detail-produk', function () {
 Route::get('/search', [ProdukController::class, 'search'])->name('search-produk');
 Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
 
-// Route::get('/profil/edit', function () {
-//     return view('user.edit-profil');})->name('/profil/edit');
-// Route::get('/profil', function () {
-//     return view('user.lihat-profil');})->name('profil.view');
-// Route::get('/pembayaran', function () {
-//     return view('marketplace.pembayaran');})->name('pembayaran');
-// Route::get('/keranjang', function () {
-//     return view('marketplace.keranjang');})->name('keranjang');
-// Route::get('/toko/status-order', function () {
-//     return view('toko.status-order');})->name('/toko/status-order');
-
 Route::group(['middleware' => 'guest'], function () {
     // login route
     Route::get('/login', [LoginController::class, 'index'])->name('login.view');
