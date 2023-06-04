@@ -1,5 +1,5 @@
 <td class="w-1/12 px-2 md:px-6 py-3">
-  <a data-modal-target="#popup-modal{{$item->id}}" data-modal-toggle="popup-modal{{$item->id}}" class="font-medium text-red-600 hover:underline">Delete</a>
+  <a data-modal-target="#popup-modal{{$item->id}}" data-modal-toggle="popup-modal{{$item->id}}" class="block text-white bg-red-600 hover:bg-red-700 focus:outline-none font-medium rounded-lg text-xs md:text-sm px-2 py-2 md:px-5 md:py-2.5 text-center">Delete</a>
 </td>
 
 <div id="popup-modal{{$item->id}}" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">

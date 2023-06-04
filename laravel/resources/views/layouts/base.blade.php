@@ -21,7 +21,7 @@
                 @endif
             @show
      
-            <div class="mt-24 lg:mt-32 px-6 lg:px-24 mb-auto">
+            <div class="mt-24 md:mt-32 px-6 lg:px-24 mb-auto">
                 @yield('content')
             </div>
         

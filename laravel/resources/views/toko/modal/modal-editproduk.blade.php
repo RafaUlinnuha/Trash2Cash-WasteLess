@@ -1,5 +1,5 @@
 <td class="w-1/12 px-2 md:px-6 py-3">
-  <a data-modal-target="#editproduk-modal{{$item->id}}" data-modal-toggle="editproduk-modal{{$item->id}}" class="font-medium text-blue-600 hover:underline">Edit</a>
+  <a data-modal-target="#editproduk-modal{{$item->id}}" data-modal-toggle="editproduk-modal{{$item->id}}" class="block text-white bg-blue-600 hover:bg-blue-700 focus:outline-none font-medium rounded-lg text-xs md:text-sm px-2 py-2 md:px-5 md:py-2.5 text-center">Edit</a>
 </td>
 <!-- Main modal -->
 <div id="editproduk-modal{{$item->id}}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-8 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -44,7 +44,7 @@
                 </div>
                 <div class="relative z-0 w-full mb-6 group">
                   <h3 class="text-sm text-gray-500 mb-2">Ubah Gambar</h3>
-                  <div class="relative z-0 w-full mb-6 group laig">
+                  <div class="relative z-0 w-full mb-6 group">
                     <img src="{{asset('storage/'.$item->gambar)}}" alt="" class="p-4 mx-auto">
                   </div> 
                   <div class="flex items-center justify-center w-full">
@@ -53,7 +53,7 @@
                         <img id="uploaded-image1" class="hidden object-cover mx-auto p-4 max-w-xs rounded-md" />
                         <p id="image-name1" class="hidden mt-2 text-sm text-gray-500 mb-2"></p>
                         <svg aria-hidden="true" class="w-10 h-10 mb-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
-                        <p class="mb-2 text-sm text-gray-500"><span class="font-semibold">Klik untuk upload</span> atau drag and drop</p>
+                        <p class="mb-2 text-sm text-gray-500 px-4 md:px-0 text-center"><span class="font-semibold">Klik untuk upload</span> atau drag and drop</p>
                         <p class="text-xs text-gray-500">PNG atau JPG</p>
                       </div>
                       <input type="file" id="dropzone-file1" name="gambar" accept="image/*" class="hidden" />

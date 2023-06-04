@@ -151,7 +151,7 @@
         <thead>
           <tr class="bg-white border-b text-sm md:text-xl">
             <th scope="col" class="px-6 font-medium hidden md:table-cell">No</th>
-            <th scope="col" class="px-6 py-3 font-medium">No Rekening</th>
+            <th scope="col" class="px-3 md:px-6 py-3 font-medium">No Rekening</th>
             <th scope="col" class="px-6 py-3 font-medium hidden md:table-cell">Nama Bank</th>
             <th scope="col" class="px-6 py-3 font-medium hidden md:table-cell">Nama Pemilik Rekening</th>
           </tr>
@@ -160,15 +160,15 @@
             <?php $i = 0 ?>
         @foreach($user->metodePembayaran as $rekening)
         <?php $i++ ?>
-          <tr class="bg-white border-b text-sm md:text-base">
+          <tr class="bg-white border-b text-xs md:text-base">
             <td class="px-6 py-3 hidden md:table-cell">{{$i}}</td>
             <td class="px-3 md:px-6 py-3">{{$rekening->no_rek}}</td>
             <td class="px-6 py-3 hidden md:table-cell">{{$rekening->nama_metode}}</td>
             <td class="px-6 py-3 hidden md:table-cell">{{$rekening->atas_nama}}</td>
-            <td class="p-2">
+            <td>
                 @include('user.modal.modal-editrekening')
             </td>
-            <td class="p-2">
+            <td>
                 @include('user.modal.modal-hapusrekening')
             </td>
           </tr>
