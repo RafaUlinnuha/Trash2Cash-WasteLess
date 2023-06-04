@@ -21,11 +21,11 @@
                 <h4 class="text-red-600">Tambahkan alamat terlebih dahulu!</h4>
                 @endif
             </div>
-            <div class="row mt-4 md:mt-0">
+            <!-- <div class="row mt-4 md:mt-0">
                 <button data-modal-target="ubahalamat-modal" data-modal-toggle="ubahalamat-modal" class="px-6 py-2 my-auto font-medium text-center bg-[#FF8833] text-neutral-50 rounded-lg transition ease-in-out delay-150 duration-300 xl:mt-0" type="button">
                     {{$user->alamatUser->alamat? 'Ubah Alamat' : 'Tambah Alamat'}}
                 </button>
-            </div>
+            </div> -->
             
         </div>
     </div>
@@ -68,5 +68,3 @@
          </button>
     </div>
 @endsection
-
-    @include('marketplace.modal.modal-ubahAlamat')
