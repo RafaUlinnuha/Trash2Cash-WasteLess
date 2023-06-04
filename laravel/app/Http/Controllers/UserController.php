@@ -153,6 +153,23 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function storerekening(Request $request)
+    {
+        $request->validate([
+            'no_rek' => 'required',
+            'nama_metode' => 'required',
+            'atas_nama' => 'required',
+        ]);
+        $id = Auth::id();
+        MetodePembayaran::create([
+            'no_rek' => $request->no_rek,
+            'nama_metode' => $request->nama_metode,
+            'atas_nama' => $request->atas_nama,
+            'user_id' => $id
+        ]);
+        return redirect()->back();
+    }
+
     public function updaterekening(Request $request)
     {
         $request->validate([
