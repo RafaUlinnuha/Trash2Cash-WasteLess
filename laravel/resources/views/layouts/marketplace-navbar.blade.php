@@ -6,7 +6,7 @@
     </div>
 </nav> --}}
 
-<nav class="fixed bg-white w-full z-40 border-b">
+<nav class="fixed bg-white w-full z-30 border-b">
     <div class="text-xs items-center justify-end space-x-4 font-medium pt-2 pr-2 mr-2 hidden md:flex">
         <a href="/#tentang-kami">Tentang Kami</a>
         <a href="/#layanan">Layanan</a>

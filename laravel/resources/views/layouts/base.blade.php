@@ -28,7 +28,7 @@
         
     
             @section('footer')
-            <footer class="bg-[#6C894A] mt-24 lg:mt-28">
+            <footer class="bg-[#6C894A] mt-24 lg:mt-28 z-30">
                 <div class="pt-8 pb-5 px-8 md:px-24">
                     <div class="flex flex-wrap justify-between">
                         <div>

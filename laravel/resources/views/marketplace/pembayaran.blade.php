@@ -5,8 +5,8 @@
 @section('content')
     @php($itemKeranjang = session('itemKeranjang'))
     <div class="p-6 rounded-lg border border-gray-200 shadow">
-        <h1 class="font-semibold text-xl row">Alamat Pengiriman</h1>
-        <div class="flex flex-wrap justify-between mt-2 grid grid-rows-1 grid-flow-col gap-4">
+        <h1 class="font-semibold text-xl md:text-xl row">Alamat Pengiriman</h1>
+        <div class="justify-between mt-2 grid grid-rows-3 md:grid-rows-1 grid-flow-col gap-2 md:gap-4">
             <div class="row font-medium">
                 <?php 
                 $user = Auth::user();
