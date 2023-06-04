@@ -9,7 +9,7 @@
                 : 'w-[16px] h-[16px]';
 @endphp
 
-<a {{ $attributes->class(['flex items-center ml-10 p-1 pr-3 space-x-2 rounded hover:bg-[#FF8833] hover:text-white'])->merge(['class' => $classes]) }}>
+<a {{ $attributes->class(['flex text-sm md:text-base items-center p-1.5 md:ml-10 md:p-1 md:pr-3 space-x-2 rounded hover:bg-[#FF8833] hover:text-white'])->merge(['class' => $classes]) }}>
     <span {{$attributes->class([$classArrow])}}></span>
     <span class="">{{ $slot }}</span>
 </a> 
