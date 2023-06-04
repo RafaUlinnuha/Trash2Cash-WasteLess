@@ -7,13 +7,13 @@
 </nav> --}}
 
 <nav class="fixed bg-white w-full z-30 border-b">
-    <div class="text-xs items-center justify-end space-x-4 font-medium pt-2 pr-2 mr-2 hidden md:flex">
+    <div class="text-xs items-center justify-end space-x-4 font-medium py-1 pr-2 hidden md:flex bg-[#FEC261]">
         <a href="/#tentang-kami">Tentang Kami</a>
         <a href="/#layanan">Layanan</a>
         <a href="/#jenis-sampah">Jenis Sampah</a>
         <a href="/home-opafe">Marketplace</a>
     </div>
-    <div class="text-xs text-right justify-end space-x-4 font-medium pt-2 pr-2 mr-2 flex md:hidden">
+    <div class="text-xs text-right justify-end space-x-4 font-medium py-1 pr-2 flex md:hidden bg-[#FEC261]">
         <a href="/">Home</a>
         <a href="/home-page">Marketplace</a>
     </div>
