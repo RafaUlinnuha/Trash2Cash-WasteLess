@@ -1,4 +1,4 @@
-<div x-show="current === 2" class="py-3 mt-4">
+<div x-show="current === 2" class="py-3 mt-4 text-sm md:text-base">
     <?php $kosong = true; ?>
     @foreach ($orders as $order)
     @if ($order->pembayaran->status == 'belum_bayar')

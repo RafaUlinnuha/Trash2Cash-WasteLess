@@ -10,6 +10,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+        scale: {
+        '10': '0.1',
+      }
     },
   },
   plugins: [

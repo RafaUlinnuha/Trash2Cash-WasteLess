@@ -1,4 +1,4 @@
-<td class="w-1/12 px-6 py-3">
+<td class="w-1/12 px-2 md:px-6 py-3">
   <a data-modal-target="#popup-modal{{$item->id}}" data-modal-toggle="popup-modal{{$item->id}}" class="font-medium text-red-600 hover:underline">Delete</a>
 </td>
 

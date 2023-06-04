@@ -1,5 +1,5 @@
 <!-- Modal toggle -->
-<button data-modal-target="edit-modal{{$rekening->id}}" data-modal-toggle="edit-modal{{$rekening->id}}" class="block text-white bg-blue-600 hover:bg-blue-700 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+<button data-modal-target="edit-modal{{$rekening->id}}" data-modal-toggle="edit-modal{{$rekening->id}}" class="block text-white bg-blue-600 hover:bg-blue-700 focus:outline-none font-medium rounded-lg text-sm px-3 py-2 md:px-5 md:py-2.5 text-center" type="button">
     Edit
 </button>
 
