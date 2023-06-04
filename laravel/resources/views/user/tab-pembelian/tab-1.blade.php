@@ -1,7 +1,7 @@
-<div x-show="current === 1" class="py-3 mt-4">
+<div x-show="current === 1" class="py-3 mt-4 text-sm md:text-base">
 @forelse ($orders as $order)
 <?php $jumlah=0 ?>
-    <div class="shop-2">
+    <div class="shop">
       <div class="flex space-x-4 items-center">
         <span class="i-solar-shop-2-linear w-6 h-6"></span>
         <h1 class="font-semibold my-auto" >order-{{substr($order->id,0,8)}}</h1>

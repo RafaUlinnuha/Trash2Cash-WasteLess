@@ -1,4 +1,4 @@
-<div x-show="current === 5" class="py-3 mt-4">
+<div x-show="current === 5" class="py-3 mt-4 text-sm md:text-base">
     <!-- <img src="{{ asset('img/marketplace/clipboard.png') }}" class="w-32 mx-auto mt-4">
     <h1 class="mt-4 text-center">Belum ada pesanan</h1> -->
     <?php $kosong = true ?>

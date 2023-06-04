@@ -3,10 +3,10 @@
 @section('title', 'Detail Produk | ')
  
 @section('content')
-    <h1 class="text-4xl font-semibold">{{$produk->nama}}</h1>
-    <div class="grid grid-cols-3 mt-8">
-        <div class="flex flex-col w-full space-y-4 justify-center">
-            <img src="{{asset('storage/'.$produk->gambar)}}" class="w-[80%]">
+    <h1 class="text-3xl lg:text-4xl font-semibold">{{$produk->nama}}</h1>
+    <div class="grid md:grid-cols-3 mt-8">
+        <div class="flex flex-col w-full space-y-4">
+            <img src="{{asset('storage/'.$produk->gambar)}}" class="w-full md:w-[80%]">
             <div class="foto flex space-x-4">
                 <span class="i-bi-people-circle w-12 h-12"></span>
                 <div class="grid grid-rows-2">
@@ -16,8 +16,8 @@
             </div>
         </div>
         <div class="deskripsi col-span-2">
-            <p>{{$produk->deskripsi}}</p>
-            <div class="grid xl:grid-cols-4 grid-cols-2 gap-4 mt-4">
+            <p class="mt-6 md:mt-0">{{$produk->deskripsi}}</p>
+            <div class="grid xl:grid-cols-4 grid-cols-2 gap-4 mt-4 text-sm md:text-base">
                 <div class="flex space-x-2">
                     <div class="bg-[#8092C1] p-2 rounded">
                         <span class="i-mdi-recycle w-8 h-8"></span>
@@ -73,9 +73,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-6 flex justify-between col-span-2 w-full md:w-[70%] xl:w-[40%]">
-                    <button type="submit" name="action" value="beli_skrg" class="items-center py-2 px-6 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button>
-                    <button type="submit" name="action" value="tambah_keranjang" class="items-center py-2 px-8 border border-[#FF8833] text-[#FF8833] rounded-lg">Keranjang</button>
+                <div class="mt-6 text-sm md:text-base flex justify-between col-span-2 w-full md:w-[70%] xl:w-[40%]">
+                    <button type="submit" name="action" value="beli_skrg" class="items-center py-2 px-5 md:px-6 bg-[#FF8833] text-neutral-50 rounded-lg">Beli Sekarang</button>
+                    <button type="submit" name="action" value="tambah_keranjang" class="items-center py-2 px-5 md:px-6 border border-[#FF8833] text-[#FF8833] rounded-lg">Keranjang</button>
                 </div>
             </div>
             </form>

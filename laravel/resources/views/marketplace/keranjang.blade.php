@@ -3,21 +3,21 @@
 @section('title', 'Keranjang | ')
  
 @section('content')
-<h1 class="font-semibold text-4xl">Keranjang Saya</h1>
+<h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Keranjang Saya</h1>
 <form action="{{route('order.post')}}" method="post">
 @csrf
 <table class="w-full text-left mt-8">
     @if($keranjang->itemKeranjang->isEmpty())
     <br>
-    <p class="text-lg">Tidak ada produk dalam keranjang.</p>
+    <p class="text-sm md:text-lg">Tidak ada produk dalam keranjang.</p>
     @else
     <thead>
-        <tr class="bg-white text-lg">
+        <tr class="bg-white text-sm md:text-lg">
             <th scope="col"><input id="select-all" type="checkbox" value="" class="w-4 h-4 text-[#8092C1] bg-gray-100 border-gray-300 rounded focus:ring-[#8092C1]">
             </th>
-            <th scope="col" class="py-3 font-thin w-1/2">Produk</th>
-            <th scope="col" class="py-3 font-thin text-center">Harga</th>
-            <th scope="col" class="py-3 font-thin text-center">Jumlah</th>
+            <th class="py-3 font-thin pl-2 md:pl-0 md:w-1/2">Produk</th>
+            <th scope="col" class="py-3 font-thin text-center hidden md:table-cell">Harga</th>
+            <th scope="col" class="py-3 font-thin text-center hidden md:table-cell">Jumlah</th>
         </tr>
     </thead>
     @foreach($keranjang->itemKeranjang as $item)
@@ -25,11 +25,9 @@
         <tr>
             <td>
             </td>
-            <td class="py-3 font-medium text-lg">
+            <td class="py-3 font-medium pl-2 md:pl-0 text-sm md:text-lg">
                 {{$item->produk->user->nama}}
             </td>
-            <td class="py-3 hidden"></td>
-            <td class="py-3 hidden"></td>
         </tr>
         <tr>
             <td>
@@ -37,20 +35,48 @@
                 <input type="hidden" name="labels[]" value="{{$item->jumlah*$item->produk->harga}}" />
             </td>
             <td>
-                <div class="flex flex-wrap space-x-6">
-                    <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl w-[30%]">
-                    <h1 class="w-[50%]">{{$item->produk->nama}}</h1>
+                <div class="flex flex-wrap ml-2 md:ml-0 md:space-x-6">
+                    <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl md:w-32 md:h-24 hidden md:block">
+                    <h1 class="text-sm md:text-base md:w-[50%]">{{$item->produk->nama}}</h1>
                 </div> 
             </td>
-            <td class="align-text-top text-center">
+            <td class="align-text-top text-sm md:text-base text-center hidden md:table-cell">
                 Rp {{number_format($item->produk->harga,2,',','.')}}
             </td>
-            <td class="align-text-top">
-                <div class="border w-[50%] mx-auto">
+            <td class="align-text-top hidden md:table-cell">
+                <div class="border md:w-[50%] mx-auto">
                     <div class="flex items-center justify-between">
-                        <a href="{{route('produk.dec', ['id' => $item->id])}}" class="bg-white px-2 cursor-pointer border-r py-1">-</a>
-                        <input type="number" name="jumlah" class="w-[80%] text-center py-0 border-transparent focus:border-transparent focus:ring-0" readonly min="1" max="{{$item->produk->jumlah}}" value="{{$item->jumlah}}">
-                        <a href="{{route('produk.inc', ['id' => $item->id])}}" class="bg-white px-2 cursor-pointer border-l py-1">+</a>
+                        <a href="{{route('produk.dec', ['id' => $item->id])}}" class="bg-white p-1 md:px-2 cursor-pointer border-r md:py-1 text-sm md:text-base">-</a>
+                        <input type="number" name="jumlah" class="md:w-[80%] w-10 text-center py-0 border-transparent focus:border-transparent focus:ring-0 text-sm md:text-base" readonly min="1" max="{{$item->produk->jumlah}}" value="{{$item->jumlah}}">
+                        <a href="{{route('produk.inc', ['id' => $item->id])}}" class="bg-white p-1 md:px-2 cursor-pointer border-l md:py-1 text-sm md:text-base">+</a>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            {{-- <td class="inline-flex items-center mt-1 mr-16 align-text-top text-sm md:text-base ml-2 md:ml-0 md:hidden">
+                Rp {{number_format($item->produk->harga,2,',','.')}}
+            </td>
+            <td class="inline-flex items-center md:hidden">
+                <div class="border md:w-[50%] mx-auto w-24">
+                    <div class="flex items-center justify-between">
+                        <a href="{{route('produk.dec', ['id' => $item->id])}}" class="bg-white p-1 md:px-2 cursor-pointer border-r md:py-1 text-sm md:text-base">-</a>
+                        <input type="number" name="jumlah" class="md:w-[80%] w-10 text-center py-0 border-transparent focus:border-transparent focus:ring-0 text-sm md:text-base" readonly min="1" max="{{$item->produk->jumlah}}" value="{{$item->jumlah}}">
+                        <a href="{{route('produk.inc', ['id' => $item->id])}}" class="bg-white p-1 md:px-2 cursor-pointer border-l md:py-1 text-sm md:text-base">+</a>
+                    </div>
+                </div>
+            </td> --}}
+            <td class="flex mt-1 items-center ml-2 md:hidden">
+                <div class="text-sm w-2/3">
+                    Rp {{number_format($item->produk->harga,2,',','.')}}
+                </div>
+                <div class="border mx-auto">
+                    <div class="flex items-center justify-between">
+                        <a href="{{route('produk.dec', ['id' => $item->id])}}" class="bg-white p-1 md:px-2 cursor-pointer border-r md:py-1 text-sm md:text-base">-</a>
+                        <input type="number" name="jumlah" class="md:w-[80%] w-10 text-center py-0 border-transparent focus:border-transparent focus:ring-0 text-sm md:text-base" readonly min="1" max="{{$item->produk->jumlah}}" value="{{$item->jumlah}}">
+                        <a href="{{route('produk.inc', ['id' => $item->id])}}" class="bg-white p-1 md:px-2 cursor-pointer border-l md:py-1 text-sm md:text-base">+</a>
                     </div>
                 </div>
             </td>
@@ -59,13 +85,13 @@
     @endforeach
     @endif
 </table>
-<div class="flex items-center mt-8 space-x-4">
-    <div class="px-10 py-3 rounded-lg border border-gray-200 shadow flex justify-between font-medium xl:w-3/4 w-2/3">
-        <h1 class="text-lg">Total Pembayaran</h1>
-        <h1 id="total">Rp 0</h1>
+<div class="flex flex-col md:flex-row items-center mt-8 space-y-4 md:space-y-0 md:space-x-4">
+    <div class="md:px-10 px-4 py-3 rounded-lg border border-gray-200 shadow flex justify-between font-medium xl:w-3/4 md:w-2/3 w-full items-center">
+        <h1 class="text-sm md:text-lg">Total Pembayaran</h1>
+        <h1 id="total" class="text-sm md:text-lg">Rp 0</h1>
     </div>
-    <div class="text-right">
-        <button type="submit" disabled id = "submit-btn" class="px-10 py-3 font-medium text-center text-lg bg-[#FF8833] text-neutral-50 rounded-lg transition ease-in-out delay-150 duration-300">
+    <div class="text-right xl:w-1/4 md:w-1/3 w-full">
+        <button type="submit" disabled id = "submit-btn" class="md:px-12 py-3 font-medium text-center text-sm md:text-base lg:text-lg bg-[#FF8833] text-neutral-50 rounded-lg transition ease-in-out delay-150 duration-300 w-full">
             Bayar Sekarang
          </button>
     </div>
