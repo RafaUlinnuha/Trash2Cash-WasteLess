@@ -8,16 +8,18 @@ class JenisSampahCard extends Component
 {
     public $title;
     public $image;
+    public $route;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $image)
+    public function __construct($title, $image, $route)
     {
         $this->title = $title;
         $this->image = $image;
+        $this->route = $route;
     }
 
     /**

@@ -36,16 +36,16 @@
         <h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Jenis Sampah</h1>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 xl:gap-8">
             <div class="plastik">
-                <x-jenis-sampah-card title="Plastik" image="{{ asset('img/landing-page/plastic.png') }}"></x-jenis-sampah-card>
+                <x-jenis-sampah-card title="Plastik" image="{{ asset('img/landing-page/plastic.png') }}" route="{{route('artikel-sampah-plastik')}}"></x-jenis-sampah-card>
             </div>
             <div class="kaca-kaleng">
-                <x-jenis-sampah-card title="Kaca & Kaleng" image="{{ asset('img/landing-page/glass.png') }}"></x-jenis-sampah-card>
+                <x-jenis-sampah-card title="Kaca & Kaleng" image="{{ asset('img/landing-page/glass.png') }}" route="{{route('artikel-sampah-plastik')}}"></x-jenis-sampah-card>
             </div>
             <div class="elektronik">
-                <x-jenis-sampah-card title="Elektronik" image="{{ asset('img/landing-page/electronic.png') }}"></x-jenis-sampah-card>
+                <x-jenis-sampah-card title="Elektronik" image="{{ asset('img/landing-page/electronic.png') }}" route="{{route('artikel-sampah-plastik')}}"></x-jenis-sampah-card>
             </div>
             <div class="kertas">
-                <x-jenis-sampah-card title="Kertas" image="{{ asset('img/landing-page/paper.png') }}"></x-jenis-sampah-card>
+                <x-jenis-sampah-card title="Kertas" image="{{ asset('img/landing-page/paper.png') }}" route="{{route('artikel-sampah-plastik')}}"></x-jenis-sampah-card>
             </div>
         </div>
     </div>

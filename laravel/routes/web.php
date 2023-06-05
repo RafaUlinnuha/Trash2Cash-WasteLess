@@ -25,6 +25,8 @@ use App\Http\Controllers\PembayaranController;
 
 Route::get('/', function () {
     return view('landing-page');})->name('landing-page');
+Route::get('/artikel-sampah-plastik', function () {
+    return view('artikel');})->name('artikel-sampah-plastik');
 
 Route::get('/home-page', [ProdukController::class, 'index'])->name('home-page');
 
