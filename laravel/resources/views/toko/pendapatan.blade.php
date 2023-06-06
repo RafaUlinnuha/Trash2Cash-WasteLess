@@ -41,12 +41,12 @@
             </p>
         </div>
     </div>
-    <table class="mt-12 w-full border-2 py-8 px-12 shadow">
+    <table class="mt-12 w-full border-2 py-8 px-12 shadow text-xs md:text-base">
         <thead>
-          <tr class="border text-base">
+          <tr class="border">
             <th scope="col" class="md:px-3 py-3 font-medium">No</th>
             <th scope="col" class="px-6 py-3 font-medium hidden md:table-cell">Tanggal</th>
-            <th scope="col" class="px-6 py-3 font-medium">Order ID</th>
+            <th scope="col" class="py-3 font-medium">Order ID</th>
             <th scope="col" class="px-6 py-3 font-medium hidden md:table-cell">Nama Barang</th>
             <th scope="col" class="px-6 py-3 font-medium hidden md:table-cell">Jumlah</th>
             <th scope="col" class="px-6 py-3 font-medium hidden md:table-cell">Total (Rp)</th>
@@ -62,9 +62,10 @@
             <td class="px-6 py-3 hidden md:table-cell">{{$item->produk->nama}} </td>
             <td class="px-6 py-3 hidden md:table-cell">{{$item->jumlah}} Kg</td>
             <td class="px-6 py-3 hidden md:table-cell">Rp {{number_format($item->jumlah*$item->produk->harga,2,',','.')}}</td>
-            <td class="p-2">
-              {{-- @include('user.modal.modal-lihatorder') --}}
+            <td>
+              @include('toko.modal.modal-lihatorder')
             </td>
+            <?php $i++; ?>
           </tr>
         @endforeach
         </tbody>

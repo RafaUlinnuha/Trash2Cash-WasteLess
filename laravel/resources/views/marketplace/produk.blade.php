@@ -10,7 +10,7 @@
     </svg>
   </button>
   <aside id="default-sidebar" class="fixed md:top-32 md:left-12 z-50 md:z-20 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-    <div class="h-full px-3 py-4 md:py-0 overflow-y-auto bg-gray-50">
+    <div class="h-full px-3 py-4 md:py-0 overflow-y-auto bg-gray-50 md:bg-white">
       <ul class="space-y-6">
         <div class="mt-2" aria-hidden="true">
           <li>

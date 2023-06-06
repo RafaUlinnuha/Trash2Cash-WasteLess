@@ -8,17 +8,17 @@
 
 <nav class="fixed bg-white w-full z-30 border-b">
     <div class="text-xs items-center justify-end space-x-4 font-medium py-1 pr-2 hidden md:flex bg-[#FEC261]">
-        <a href="#tentang-kami">Tentang Kami</a>
-        <a href="#layanan">Layanan</a>
-        <a href="#jenis-sampah">Jenis Sampah</a>
-        <a href="/home-pagee">Marketplace</a>
+        <a href="/#tentang-kami">Tentang Kami</a>
+        <a href="/#layanan">Layanan</a>
+        <a href="/#jenis-sampah">Jenis Sampah</a>
+        <a href="/home-page">Marketplace</a>
     </div>
     <div class="text-xs text-right justify-end space-x-4 font-medium py-1 pr-2 flex md:hidden bg-[#FEC261]">
         <a href="/">Home</a>
         <a href="/home-page">Marketplace</a>
     </div>
     <div class="flex md:flex-wrap items-center justify-around md:justify-between md:mx-auto py-2 px-2 md:px-12">
-        <a href="/" class="items-center cursor-pointer hidden md:block">
+        <a href="/home-page" class="items-center cursor-pointer hidden md:block">
             <img src="{{ asset('img/logo orange.png') }}" class="scale-90">
         </a>
         <div class="flex items-center my-auto lg:flex-grow w-1/2 md:w-fit">
