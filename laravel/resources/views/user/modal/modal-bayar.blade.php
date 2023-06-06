@@ -1,4 +1,4 @@
-<button data-modal-target="#bayar-modal{{$order->pembayaran->id}}" data-modal-toggle="bayar-modal{{$order->pembayaran->id}}" class="block text-white bg-[#8092C1] hover:bg-blue-800 font-medium rounded-lg text-sm md:px-5 py-2.5 text-center w-full" type="button">
+<button data-modal-target="#bayar-modal{{$order->pembayaran->id}}" data-modal-toggle="bayar-modal{{$order->pembayaran->id}}" class="block text-white bg-[#8092C1] hover:bg-blue-800 font-medium rounded-lg text-sm md:px-5 py-2.5 md:w-48 text-center" type="button">
   Bayar Sekarang
 </button>
 

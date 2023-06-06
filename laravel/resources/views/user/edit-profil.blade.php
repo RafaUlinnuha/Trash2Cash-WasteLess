@@ -75,7 +75,7 @@
     </div>
     <div class="grid md:grid-cols-2 mt-12 gap-12">
         <div class="data border-2 md:py-8 p-6 md:px-12 shadow">
-            <h1 class="text-2xl font-medium">Ubah Rekening Bank</h1>
+            <h1 class="text-2xl font-medium">Tambah Rekening Bank</h1>
             <hr class="mt-2">
             <form action="{{route('rekening.store')}}" method="post">
             @csrf

@@ -16,17 +16,17 @@
             :class="{ 'absolute top-14 border-b bg-white w-full p-8': showMenu, 'hidden': !showMenu}"
             id="navbar-main" x-cloak>
             <li class="py-1">
-                <a href="#tentang-kami" class="group cursor-pointer">Tentang Kami
+                <a href="/#tentang-kami" class="group cursor-pointer">Tentang Kami
                     <span class="hidden md:block mx-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-[3px] rounded bg-[#6C894A]" :class="showMenu && 'mb-4'"></span>
                 </a>
             </li>
             <li class="py-1">
-                <a href="#layanan" class="group cursor-pointer">Layanan
+                <a href="/#layanan" class="group cursor-pointer">Layanan
                     <span class="hidden md:block mx-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-[3px] rounded bg-[#6C894A]" :class="showMenu && 'mb-4'"></span>
                 </a>
             </li>
             <li class="py-1">
-                <a href="#jenis-sampah" class="group cursor-pointer">Jenis Sampah
+                <a href="/#jenis-sampah" class="group cursor-pointer">Jenis Sampah
                     <span class="hidden md:block mx-auto max-w-0 group-hover:max-w-full transition-all duration-500 h-[3px] rounded bg-[#6C894A]" :class="showMenu && 'mb-2'"></span>
                 </a>
             </li>

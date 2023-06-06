@@ -13,7 +13,7 @@
         <h1 class="items-center mx-auto p-2 text-sm font-medium text-center text-white bg-[#8092C1] rounded-lg">{{$order->pembayaran->status == 'belum_bayar'? 'belum bayar' : $order->pembayaran->status}}</h1>        
       </div>
     </div>
-    <div class="m-4">
+    <div class="m-4 text-xs md:text-base">
       @foreach($order->itemOrder as $item)
       <div class="shop-2 mt-3">
         <div class="flex space-x-4 items-center">
@@ -23,7 +23,7 @@
       </div>
       <div class="flex flex-wrap justify-between mt-4">
         <div class="flex space-x-2 md:space-x-6">
-            <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl w-48 h-32">
+            <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl md:w-48 md:h-32 w-28 h-18">
             <div class="flex-rows">
                 <h1>{{$item->produk->nama}}</h1>
                 <h2>Jumlah : {{$item->jumlah}} Kg</h2>

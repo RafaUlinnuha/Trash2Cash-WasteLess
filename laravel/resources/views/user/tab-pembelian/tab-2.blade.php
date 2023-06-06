@@ -12,7 +12,7 @@
         @include('user.modal.modal-batalkan')
       </div>
     </div>
-    <div class="m-4">
+    <div class="m-4 text-xs md:text-base">
       @foreach($order->itemOrder as $item)
       <div class="shop-2 mt-3">
         <div class="flex space-x-4 items-center">
@@ -22,7 +22,7 @@
       </div>
       <div class="flex flex-wrap justify-between mt-4">
         <div class="flex space-x-2 md:space-x-6">
-            <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl w-48 h-32">
+            <img src="{{asset('storage/'.$item->produk->gambar)}}" class="rounded-xl md:w-48 md:h-32 w-28 h-18">
             <div class="flex-rows">
                 <h1>{{$item->produk->nama}}</h1>
                 <h2>Jumlah : {{$item->jumlah}} Kg</h2>
@@ -36,8 +36,8 @@
     </div>
     @endforeach 
       <div class="produk-3">
-        <div class="flex flex-col md:flex-row justify-end md:space-x-6 space-y-4 md:space-y-0 mt-4 md:items-center">
-          <div class="flex space-x-2"> 
+        <div class="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0 mt-4 md:items-center md:justify-between">
+          <div class="flex space-x-2 w-full"> 
             <h3 class="md:text-right font-semibold">Total Pesanan : </h3>
             <h4 class="text-[#FF8833] font-medium">Rp {{number_format($jumlah,2,',','.')}}</h4>
           </div>
