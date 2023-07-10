@@ -6,7 +6,10 @@
 <h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Profil</h1>
 <div class="grid xl:grid-cols-2 lg:grid-cols-1 mt-8 md:mt-0 space-y-6 md:space-y-8 xl:space-y-0">
     <div class="foto items-center flex flex-col space-y-8">
-        <span class="i-bi-people-circle w-32 h-32 md:w-48 md:h-48"></span>
+          <!-- if gaada foto profil -->
+        {{-- <span class="i-bi-people-circle w-32 h-32 md:w-48 md:h-48"></span> --}}
+        <!-- kl ada foto profil -->
+        <img src="{{ asset('img/sampah plastik.png') }}" alt="" class="w-32 h-32 md:w-48 md:h-48 rounded-full">
         <a href="{{route('profil.edit', $user->id)}}" class="py-2 px-16 text-center p-4 bg-[#8092C1] hover:bg-[#7588BB] rounded-xl text-neutral-50">Ubah Profil</a>
     </div>
     <div class="data border-2 md:py-8 p-6 md:px-12 shadow rounded-lg">

@@ -26,7 +26,13 @@ use App\Http\Controllers\PembayaranController;
 Route::get('/', function () {
     return view('landing-page');})->name('landing-page');
 Route::get('/artikel-sampah-plastik', function () {
-    return view('artikel');})->name('artikel-sampah-plastik');
+    return view('artikel.plastik');})->name('artikel-sampah-plastik');
+Route::get('/artikel-sampah-elektronik', function () {
+    return view('artikel.elektronik');})->name('artikel-sampah-elektronik');
+Route::get('/artikel-sampah-kaca-kaleng', function () {
+    return view('artikel.kaca-kaleng');})->name('artikel-sampah-kaca-kaleng');
+Route::get('/artikel-sampah-kertas', function () {
+    return view('artikel.kertas');})->name('artikel-sampah-kertas');
 
 Route::get('/home-page', [ProdukController::class, 'index'])->name('home-page');
 

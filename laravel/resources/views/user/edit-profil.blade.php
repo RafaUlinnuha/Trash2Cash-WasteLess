@@ -5,7 +5,10 @@
 @section('content')
     <h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Ubah Profil</h1>
     <div class="foto items-center flex flex-col mt-8 md:mt-0 space-y-8">
-        <span class="i-bi-people-circle w-32 h-32 md:w-48 md:h-48"></span>
+        <!-- if gaada foto profil -->
+        {{-- <span class="i-bi-people-circle w-32 h-32 md:w-48 md:h-48"></span> --}}
+        <!-- kl ada foto profil -->
+        <img src="{{ asset('img/sampah plastik.png') }}" alt="" class="w-32 h-32 md:w-48 md:h-48 rounded-full">
         {{-- <button class="py-2 px-16 text-center p-4 bg-[#8092C1] hover:bg-[#7588BB] rounded-xl text-neutral-50">Ubah Foto</button> --}}
         <!-- Modal toggle -->
         @include('user.modal.modal-edit-foto')

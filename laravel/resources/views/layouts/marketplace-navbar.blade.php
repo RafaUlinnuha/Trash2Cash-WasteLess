@@ -62,7 +62,10 @@
         @else
         <div class="dropdown-profile my-auto">
             <button type="button" class="flex space-x-4" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                <span class="i-bi-people-circle w-5 h-5 m-1.5"></span>
+                <!-- if gaada foto profil -->
+                {{-- <span class="i-bi-people-circle w-6 h-6"></span> --}}
+                <!-- kl ada foto profil -->
+                <img src="{{ asset('img/sampah plastik.png') }}" alt="" class="w-6 h-6 rounded-full">
             </button>
             <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">
                 <div class="px-4 py-3">
