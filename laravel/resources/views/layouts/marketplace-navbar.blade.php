@@ -7,16 +7,18 @@
 </nav> --}}
 
 <nav class="fixed bg-white w-full z-30 border-b">
-    <div class="text-xs items-center justify-end space-x-4 font-medium py-1 pr-2 hidden md:flex bg-[#FEC261]">
-        <a href="/#tentang-kami">Tentang Kami</a>
-        <a href="/#layanan">Layanan</a>
-        <a href="/#jenis-sampah">Jenis Sampah</a>
-        <a href="/home-page">Marketplace</a>
+    <div class="text-xs items-center justify-end space-x-4 font-medium py-1 pr-2 flex bg-[#FEC261]">
+        <a href="#tentang-kami">Tentang Kami</a>
+        @if(Auth::guest())
+            <a href="/login">Masuk ke Bank Sampah</a>
+        @elseif(Auth::user()->role == 'anggota')
+            <a href="/anggota">Masuk ke Bank Sampah</a>
+        @elseif(Auth::user()->role == 'bank_sampah')
+            <a href="/bank-sampah/penjualan">Masuk ke Bank Sampah</a>
+        @elseif(Auth::user()->role == 'pembeli')
+        @endif
     </div>
-    <div class="text-xs text-right justify-end space-x-4 font-medium py-1 pr-2 flex md:hidden bg-[#FEC261]">
-        <a href="/">Home</a>
-        <a href="/home-page">Marketplace</a>
-    </div>
+</button>
     <div class="flex md:flex-wrap items-center justify-around md:justify-between md:mx-auto py-2 px-2 md:px-12">
         <a href="/home-page" class="items-center cursor-pointer hidden md:block">
             <img src="{{ asset('img/logo orange.png') }}" class="scale-90">
@@ -36,7 +38,12 @@
         <div class="hover:bg-gray-200 my-auto w-8 h-8 rounded lg:px-0 mr-2 lg:mr-6">
             <a href="{{route('keranjang')}}" class="i-ph-shopping-cart w-5 h-5 m-1.5"></a>
         </div>
-        <div class="dropdown-shop hover:bg-gray-200 my-auto w-8 h-8 rounded mr-2 lg:mr-6">
+        <a href="{{route('pembelian.view')}}" class="hover:bg-gray-200 my-auto w-8 h-8 p-1.5 rounded lg:px-0 mr-2 lg:mr-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+        </a>
+        <!-- <div class="dropdown-shop hover:bg-gray-200 my-auto w-8 h-8 rounded mr-2 lg:mr-6">
             <button type="button" id="shop-menu-button" aria-expanded="false" data-dropdown-toggle="shop-dropdown" data-dropdown-placement="bottom">
                 <span class="i-bi-shop w-5 h-5 m-1.5"></span>
             </button>
@@ -53,7 +60,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <div class="hidden lg:block w-px h-10 my-auto mr-8 self-stretch bg-[#0F0F0F]"></div>
         @if(Auth::guest())
             <a href="{{route('login.view')}}" class="text-sm md:font-medium py-1 px-2 md:px-5 bg-slate-50 hover:bg-[#6C894A] border-2 border-[#6C894A] text-[#6C894A] hover:text-neutral-50 rounded-xl transition ease-in-out delay-150 hover:scale-110 duration-300">
@@ -79,9 +86,9 @@
                 </div>
             
                 <ul class="py-2" aria-labelledby="user-menu-button">
-                    <li>
+                    <!-- <li>
                         <a href="{{route('pembelian.view')}}" class="block px-4 py-2 text-sm hover:bg-gray-100">Pembelian</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="{{ route('profil.view') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Profil</a>
                     </li>

@@ -20,22 +20,30 @@ class KategoriSampahSeeder extends Seeder
         //kategori 1
         KategoriSampah::create([
             'nama' => 'Plastik',
-            'slug' => 'plastik'
+            'slug' => 'plastik',
+            'harga' => 3000,
+            'gambar' => 'product_images/plastic.png',
         ]);
         //kategori 2
         KategoriSampah::create([
             'nama' => 'Kertas',
-            'slug' => 'kertas'
+            'slug' => 'kertas',
+            'harga' => 2000,
+            'gambar' => 'product_images/paper.png',
         ]);
         //kategori 3
         KategoriSampah::create([
             'nama' => 'Elektronik',
-            'slug' => 'elektronik'
+            'slug' => 'elektronik',
+            'harga' => 6000,
+            'gambar' => 'product_images/electronic.png',
         ]);
         //kategori 4
         KategoriSampah::create([
             'nama' => 'Kaca dan Kaleng',
-            'slug' => 'kaca-dan-kaleng'
+            'slug' => 'kaca-dan-kaleng',
+            'harga' => 5000,
+            'gambar' => 'product_images/glass.png',
         ]);
 
     }

@@ -13,19 +13,29 @@
         <!-- navbar sebelum login -->
         <div class="flex flex-col h-screen">
             @section('navbar')
-                @if (in_array(Request::path(), ['/', 'login', 'register']))                   
-                    @include('layouts.landing-navbar')
-                @else
-                    <!-- Navbar for Marketplace -->
-                    @include('layouts.marketplace-navbar')
-                @endif
+            @if(Request::is('anggota', 'anggota/*'))
+                @include('layouts.anggota-navbar')
+            @elseif(Request::is('bank-sampah/*'))
+                @include('layouts.bank-navbar')
+            @elseif(Request::is('profil','profil/*'))
+                @include('layouts.profil-navbar')
+            @elseif (Request::is('/', 'login', 'register', 'artikel/*'))
+                @include('layouts.landing-navbar')
+            @elseif (Request::is('admin', 'admin/*'))
+                @include('layouts.admin-navbar')
+            @else
+                @include('layouts.marketplace-navbar')
+            @endif
             @show
-     
-            <div class="mt-24 md:mt-32 px-6 lg:px-24 mb-auto">
-                @yield('content')
-            </div>
-        
-    
+
+            @if (Request::is('admin', 'admin/*'))
+                    @yield('content')
+            @else
+                <div class="mt-24 md:mt-32 px-6 lg:px-24 mb-auto">
+                    @yield('content')
+                </div>
+            @endif
+           
             @section('footer')
             <footer class="bg-[#6C894A] mt-24 lg:mt-28 z-30">
                 <div class="pt-8 pb-5 px-8 md:px-24">

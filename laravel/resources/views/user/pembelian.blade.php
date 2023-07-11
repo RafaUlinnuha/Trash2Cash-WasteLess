@@ -3,7 +3,7 @@
 @section('title', 'Pembelian | ')
  
 @section('content')
-<h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Pembelian</h1>
+<h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Status Pembelian</h1>
 <div x-data="{ current: 1 }">
   <div class="flex overflow-x-auto border-b-2 mt-8 text-xs md:text-base">
     <button class="p-2 w-full" x-on:click="current = 1"
