@@ -10,11 +10,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Kyslik\ColumnSortable\Sortable;
 
 
 class Order extends Model
 {
-    use SoftDeletes, HasFactory, HasUuids;
+    use SoftDeletes, HasFactory, HasUuids, Sortable;
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
@@ -22,6 +23,8 @@ class Order extends Model
         'user_id',
         'status'
     ];
+
+    public $sortable = ['updated_at', 'status'];
 
     public function itemOrder() : HasMany
     {

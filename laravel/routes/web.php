@@ -9,6 +9,7 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\SampahController;
+use App\Http\Controllers\AdminController;
 
 
 
@@ -28,6 +29,7 @@ Route::get('/', function () {
     return view('landing-page');})->name('landing-page');
 Route::get('artikel/sampah-plastik', function () {
     return view('artikel');})->name('artikel-sampah-plastik');
+
 
 Route::group(['middleware' => ['role:anggota,pembeli|guest' ]], function () {
     // Route marketplace
@@ -56,6 +58,11 @@ Route::group(['middleware' => 'guest'], function () {
 
 
 Route::middleware(['auth'])->group(function () {
+    //admin
+    Route::middleware('role:admin')->group(function (){
+        Route::get('admin',[AdminController::class,'index'])->name('admin.dashboard');
+        Route::get('admin/order',[AdminController::class,'order'])->name('admin.order');
+    });
     //pembelian
     Route::middleware(['role:anggota, pembeli'])->group(function () {
         Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');

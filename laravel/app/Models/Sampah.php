@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Kyslik\ColumnSortable\Sortable;
 
 class Sampah extends Model
 {
-    use HasFactory, HasUuids;
+    use HasFactory, HasUuids, Sortable;
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
@@ -23,6 +24,8 @@ class Sampah extends Model
         'waktu_jemput',
         'status'
     ];
+
+    public $sortable = ['updated_at', 'status'];
 
     public function itemSampah() : HasMany
     {
