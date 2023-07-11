@@ -23,4 +23,9 @@ class KategoriSampah extends Model
     {
         return $this->hasMany('App\Models\Produk');
     }
+
+    public function itemSampah() : HasMany
+    {
+        return $this->hasMany('App\Models\ItemSampah');
+    }
 }

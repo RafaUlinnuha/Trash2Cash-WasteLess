@@ -7,6 +7,7 @@
 <form action="{{route('order.post')}}" method="post">
 @csrf
 <table class="w-full text-left mt-8">
+    @if(isset($keranjang))
     @if($keranjang->itemKeranjang->isEmpty())
     <br>
     <p class="text-sm md:text-lg">Tidak ada produk dalam keranjang.</p>
@@ -71,6 +72,7 @@
         </tr>
     </tbody>
     @endforeach
+    @endif
     @endif
 </table>
 <div class="flex flex-col md:flex-row items-center mt-8 space-y-4 md:space-y-0 md:space-x-4">

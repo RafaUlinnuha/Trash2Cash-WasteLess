@@ -20,13 +20,16 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $name = fake()->name();
+        $domain = '@mail.com';
+        $email = fake()->numerify('user###').$domain;
         return [
             'id' => fake()->uuid(),
-            'nama' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            // 'email_verified_at' => now(),
+            'nama' => $name,
+            'email' => $email,
             'password' => Hash::make('password12'), // password
             'no_hp' => fake()->e164PhoneNumber(),
+            'foto_profil' => 'foto_user/blank_profil.jpeg',
             'remember_token' => Str::random(10),
         ];
     }

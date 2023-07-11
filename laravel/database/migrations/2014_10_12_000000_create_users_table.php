@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('no_hp',16);
+            $table->enum('role',['anggota', 'bank_sampah', 'pembeli', 'admin']);
             $table->string('foto_profil')->nullable(); 
             $table->rememberToken();
             $table->timestamps();

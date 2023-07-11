@@ -9,45 +9,37 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Kyslik\ColumnSortable\Sortable;
 
-
-class Order extends Model
+class Sampah extends Model
 {
-    use SoftDeletes, HasFactory, HasUuids, Sortable;
+    use HasFactory, HasUuids, Sortable;
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     protected $dates = ['deleted_at', 'created_at', 'updated_at'];
     protected $fillable = [
-        'user_id',
+        'anggota_user_id',
+        'bank_user_id',
+        'tgl_jemput',
+        'waktu_jemput',
         'status'
     ];
 
     public $sortable = ['updated_at', 'status'];
 
-    public function itemOrder() : HasMany
+    public function itemSampah() : HasMany
     {
-        return $this->hasMany('App\Models\ItemOrder');
+        return $this->hasMany('App\Models\ItemSampah');
     }
 
-    public function user() : BelongsTo
+    public function anggotaUser(): BelongsTo
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo('App\Models\User', 'anggota_user_id');
     }
 
-    public function pembayaran() : HasOne
+    public function bankUser(): BelongsTo
     {
-        return $this->hasOne('App\Models\Pembayaran');
+        return $this->belongsTo('App\Models\User', 'bank_user_id');
     }
 
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class, 'item_orders');
-    }
-
-    public function produk()
-    {
-        return $this->belongsToMany(Produk::class, 'item_orders');
-    }
 }

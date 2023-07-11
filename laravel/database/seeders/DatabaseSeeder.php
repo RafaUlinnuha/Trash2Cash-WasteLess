@@ -27,17 +27,43 @@ class DatabaseSeeder extends Seeder
             KategoriSampahSeeder::class,
         ]);
 
-        User::factory(10)
-            ->has(AlamatUser::factory())
-            ->has(MetodePembayaran::factory()->count(4))
-            ->has(Produk::factory()->count(4))
-            ->has(Order::factory()
-                -> hasPembayaran()
-                -> hasItemOrder(2)
-            )
-            ->has(Keranjang::factory()
-                -> hasItemKeranjang(2)
-            )
-            ->create();
+        $user = User::factory(3)
+        ->has(AlamatUser::factory()->state([
+            'provinsi' => 'Jawa Barat',
+            'kota' => 'Sumedang',
+            'kecamatan' => 'Jatinangor',
+        ]))
+        ->has(MetodePembayaran::factory())
+        ->create([ 
+            'role' => 'anggota',
+        ])
+        
+        ;
+        
+        $user = User::factory(3)
+        ->has(AlamatUser::factory()->state([
+            'provinsi' => 'Jawa Barat',
+            'kota' => 'Sumedang',
+            'kecamatan' => 'Jatinangor',
+        ]))
+        ->has(MetodePembayaran::factory())
+        ->has(Produk::factory()->count(4))
+        ->create([
+            'role' => 'bank_sampah',
+        ])
+        ;
+        
+        $user = User::factory(3)
+        ->has(AlamatUser::factory()->state([
+            'provinsi' => 'Jawa Barat',
+            'kota' => 'Sumedang',
+            'kecamatan' => 'Jatinangor',
+        ]))
+        ->has(MetodePembayaran::factory())
+        ->has(Keranjang::factory())
+        ->create([
+            'role' => 'pembeli',
+        ])
+        ;
     }
 }
