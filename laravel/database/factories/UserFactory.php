@@ -29,7 +29,6 @@ class UserFactory extends Factory
             'email' => $email,
             'password' => Hash::make('password12'), // password
             'no_hp' => fake()->e164PhoneNumber(),
-            'foto_profil' => 'foto_user/blank_profil.jpeg',
             'remember_token' => Str::random(10),
         ];
     }
