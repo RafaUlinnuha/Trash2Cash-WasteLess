@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('kategori_sampahs', function (Blueprint $table) {
+        Schema::create('item_sampahs', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('nama',20);
-            $table->string('slug');
-            $table->float('harga');
-            $table->string('gambar')->nullable();
+            $table->string('nama_jenis');
+            $table->integer('jumlah');
+            $table->float('hargasatuan');
+            $table->text('deskripsi')->nullable();
+            //FK
+            $table->foreignUuid('sampah_id')->references('id')->on('sampahs');
+            $table->foreignUuid('kategori_sampah_id')->references('id')->on('kategori_sampahs');
+
             $table->timestamps();
             $table->softDeletes();
         });
@@ -31,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori_sampahs');
+        Schema::dropIfExists('item_sampahs');
     }
 };

@@ -46,6 +46,15 @@
                             <span class="block text-sm text-gray-500 truncate">{{Auth::user()->email }}</span>
                         </div>
                         <ul class="py-2" aria-labelledby="user-menu-button">
+                            @if(Auth::user()->role == 'bank_sampah')
+                            <li>
+                                <a href="{{ route('bank-status') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Pengelolaan Bank Sampah</a>
+                            </li>
+                            @elseif(Auth::user()->role == 'anggota')
+                            <li>
+                                <a href="{{ route('anggota-status') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Pengelolaan Bank Sampah</a>
+                            </li>
+                            @endif
                             <li>
                                 <a href="{{ route('profil.view') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Profil</a>
                             </li>

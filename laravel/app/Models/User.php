@@ -30,6 +30,7 @@ class User extends Authenticatable
         'email',
         'password',
         'no_hp',
+        'role',
         'foto_profil'
     ];
 
@@ -67,4 +68,11 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\MetodePembayaran');
     }   
+
+    public function sampah() : HasMany
+    {
+        return $this->hasMany('App\Models\Sampah');
+    }
+
+    
 }
