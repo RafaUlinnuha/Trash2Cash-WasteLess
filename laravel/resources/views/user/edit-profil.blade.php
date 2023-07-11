@@ -5,10 +5,16 @@
 @section('content')
     <h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Ubah Profil</h1>
     <div class="foto items-center flex flex-col mt-8 md:mt-0 space-y-8">
-        <!-- if gaada foto profil -->
-        {{-- <span class="i-bi-people-circle w-32 h-32 md:w-48 md:h-48"></span> --}}
+        @php
+            $user = Auth::user();
+        @endphp
+        @if($user->foto_profil == null)
+        <!-- kalau gaada foto profil -->
+        <span class="i-bi-people-circle w-32 h-32 md:w-48 md:h-48"></span>
+        @else
         <!-- kl ada foto profil -->
-        <img src="{{ asset('img/sampah plastik.png') }}" alt="" class="w-32 h-32 md:w-48 md:h-48 rounded-full">
+        <img src="{{asset('storage/foto_user/'.$user->foto_profil)}}" alt="" class="w-32 h-32 md:w-48 md:h-48 rounded-full">
+        @endif
         {{-- <button class="py-2 px-16 text-center p-4 bg-[#8092C1] hover:bg-[#7588BB] rounded-xl text-neutral-50">Ubah Foto</button> --}}
         <!-- Modal toggle -->
         @include('user.modal.modal-edit-foto')

@@ -41,9 +41,15 @@
                 <div class="dropdown-profile my-auto md:ml-2">
                     <button type="button" class="flex space-x-4" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <!-- if gaada foto profil -->
-                        {{-- <span class="i-bi-people-circle w-6 h-6"></span> --}}
+                        @php
+                            $user = Auth::user();
+                        @endphp
+                        @if($user->foto_profil == null)
+                        <span class="i-bi-people-circle w-6 h-6"></span>
                         <!-- kl ada foto profil -->
-                        <img src="{{ asset('img/sampah plastik.png') }}" alt="" class="w-6 h-6 rounded-full">
+                        @else
+                        <img src="{{asset('storage/foto_user/'.$user->foto_profil)}}" alt="" class="w-6 h-6 rounded-full">
+                        @endif
                     </button>
                     <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">
                         <div class="px-4 py-3">
