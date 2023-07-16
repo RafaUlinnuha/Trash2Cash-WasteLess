@@ -37,7 +37,18 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             // Authentication passed...
             //echo ('yoo mantap baby');
-            return redirect()->route('landing-page');
+            $user = Auth::user();
+            // dd($user);
+            if($user->role == 'anggota'){
+                return redirect()->route('anggota-home');
+            } elseif($user->role == 'bank_sampah'){
+                return redirect()->route('bank-status');
+            } elseif($user->role == 'admin'){
+                return redirect()->route('admin.dashboard');
+            } else {
+                return redirect()->route('home-page');
+            }
+
         }
         else{
             return redirect()->back()->with('error', 'Invalid email or password');

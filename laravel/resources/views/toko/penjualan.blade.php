@@ -48,15 +48,17 @@
       <?php $i = 1; ?>
     @foreach($produk as $item)
       <tr class="border text-center text-xs md:text-base">
-        <td class="md:w-1/12 py-3">{{$i}}</td>
-        <td class="md:w-3/12 py-3 hidden md:table-cell"><img src="{{asset('storage/'.$item->gambar)}}" alt="" class="p-4"></td>
-        <td class="md:w-4/12 py-3 text-left">{{$item->nama}} </td>
-        <td class="md:w-1/12 py-3 text-center hidden md:table-cell">{{$item->jumlah}} </td>
-        <td class="md:w-1/12 py-3 text-center hidden md:table-cell">Rp {{number_format($item->harga,2,',','.')}}</td>
-        <td>
+        <td class="py-3">{{$i}}</td>
+        <td class="py-3 hidden md:table-cell"><img src="{{asset('storage/'.$item->gambar)}}" alt="" class="p-4"></td>
+        <td class="py-3 text-left">{{$item->nama}} </td>
+        <td class="py-3 text-center hidden md:table-cell">{{$item->jumlah}} </td>
+        <td class="py-3 text-center hidden md:table-cell">Rp {{number_format($item->harga,2,',','.')}}</td>
+        <td class="p-2">
+          <a data-modal-target="#editproduk-modal{{$item->id}}" data-modal-toggle="editproduk-modal{{$item->id}}" class="block text-white bg-blue-600 hover:bg-blue-700 focus:outline-none font-medium rounded-lg text-xs md:text-sm px-2 py-2 md:px-5 md:py-2.5 text-center">Edit</a>
           @include('toko.modal.modal-editproduk')
         </td>
-        <td>
+        <td class="p-2">
+          <a data-modal-target="#popup-modal{{$item->id}}" data-modal-toggle="popup-modal{{$item->id}}" class="block text-white bg-red-600 hover:bg-red-700 focus:outline-none font-medium rounded-lg text-xs md:text-sm px-2 py-2 md:px-5 md:py-2.5 text-center">Delete</a>
           @include('toko.modal.modal-delete')
         </td>
         <?php $i++; ?>

@@ -3,6 +3,27 @@
 @section('title', 'Konfirmasi Penyetoran | ')
  
 @section('content')
+<h1 class="text-3xl lg:text-4xl font-semibold text-center mb-8 md:text-left">Rincian Penyetoran</h1>
+<nav class="flex mb-4" aria-label="Breadcrumb">
+    <ol class="inline-flex items-center space-x-1 md:space-x-3">
+        <li class="inline-flex items-center">
+            <a href="{{route('bank-status')}}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
+                <svg class="w-3 h-3 mr-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
+                    <path d="M17 4h-4V2a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v2H1a1 1 0 0 0 0 2h1v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1a1 1 0 1 0 0-2ZM7 2h4v2H7V2Zm1 14a1 1 0 1 1-2 0V8a1 1 0 0 1 2 0v8Zm4 0a1 1 0 0 1-2 0V8a1 1 0 0 1 2 0v8Z"/>
+                </svg>
+                Penyetoran
+            </a>
+        </li>
+        <li aria-current="page">
+            <div class="flex items-center">
+                <svg class="w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                </svg>
+                <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">rincian setor-{{substr($sampah->id,0,6)}}</span>
+            </div>
+        </li>
+    </ol>
+</nav>
     <div class="p-4 md:p-6 rounded-lg border border-gray-200 shadow">
         <h1 class="font-semibold text-sm md:text-base row">Informasi Penjemputan</h1>
         <div class="mt-2 grid grid-rows-2 md:grid-rows-1 grid-flow-col gap-2 md:gap-4 text-sm md:text-base">

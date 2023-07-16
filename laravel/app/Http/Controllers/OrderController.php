@@ -74,10 +74,7 @@ class OrderController extends Controller
             'user_id' =>$id,
             'status' => 'diproses'
         ]);
-        $pembayaran = Pembayaran::create([
-            'order_id' =>$order->id,
-            'status' => 'belum_bayar'
-        ]);
+        $total=0;
         // dd($request->query->keys());
         foreach ($request->query->keys() as $item_id) {
             $itemKeranjang = ItemKeranjang::find($item_id);
@@ -88,6 +85,7 @@ class OrderController extends Controller
                 'order_id' => $order->id
             ]);
             $produk = $itemKeranjang->produk;
+            $total += $itemKeranjang->jumlah*$produk->harga;
             $newjml = $produk->jumlah - $itemKeranjang->jumlah;
             if($newjml <= 0){
                 $produk->delete();
@@ -96,7 +94,11 @@ class OrderController extends Controller
                 'jumlah' => $newjml
                 ]);
             }
-            
+            $pembayaran = Pembayaran::create([
+                'order_id' =>$order->id,
+                'status' => 'belum_bayar',
+                'total' => $total
+            ]);
             $itemKeranjang->delete();
             $request->session()->forget('itemKeranjang');
         }

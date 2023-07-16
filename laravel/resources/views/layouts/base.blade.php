@@ -13,23 +13,23 @@
         <!-- navbar sebelum login -->
         <div class="flex flex-col h-screen">
             @section('navbar')
-            @if(Request::is('anggota', 'anggota/*'))
-                @include('layouts.anggota-navbar')
-            @elseif(Request::is('bank-sampah/*'))
-                @include('layouts.bank-navbar')
+            @if(Request::is('anggota', 'anggota/*', 'bank-sampah/*', 'admin', 'admin/*'))
+                @include('layouts.side-navbar')
             @elseif(Request::is('profil','profil/*'))
                 @include('layouts.profil-navbar')
             @elseif (Request::is('/', 'login', 'register', 'artikel/*'))
                 @include('layouts.landing-navbar')
-            @elseif (Request::is('admin', 'admin/*'))
-                @include('layouts.admin-navbar')
             @else
                 @include('layouts.marketplace-navbar')
             @endif
             @show
 
-            @if (Request::is('admin', 'admin/*'))
-                    @yield('content')
+            @if (Request::is('admin', 'admin/*', 'anggota', 'anggota/*', 'bank-sampah/*'))
+                <div class="p-4 sm:ml-64 mb-64">
+                    <div class="p-4 mt-20">
+                        @yield('content')
+                    </div>
+                </div>
             @else
                 <div class="mt-24 md:mt-32 px-6 lg:px-24 mb-auto">
                     @yield('content')
@@ -37,7 +37,7 @@
             @endif
            
             @section('footer')
-            <footer class="bg-[#6C894A] mt-24 lg:mt-28 z-30">
+            <footer class="bg-[#6C894A] mt-24 lg:mt-64 z-20">
                 <div class="pt-8 pb-5 px-8 md:px-24">
                     <div class="flex flex-wrap justify-between">
                         <div>

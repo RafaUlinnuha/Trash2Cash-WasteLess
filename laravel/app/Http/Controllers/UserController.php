@@ -106,6 +106,16 @@ class UserController extends Controller
         return redirect()->back();
     }
 
+    public function daftarAnggota($id)
+    {
+        $user = User::find($id);
+        // dd($user);
+        $user->update([
+            'role' => 'anggota',
+        ]);
+        return redirect()->route('anggota-home');
+    }
+
     public function updatefotoprofil(Request $request)
     {
         // dd($request);

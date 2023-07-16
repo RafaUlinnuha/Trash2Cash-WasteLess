@@ -73,6 +73,13 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Sampah');
     }
-
     
+    public function sampah_anggota() : HasMany
+    {
+        return $this->hasMany('App\Models\Sampah', 'anggota_user_id');
+    }
+    public function sampah_bank() : HasMany
+    {
+        return $this->hasMany('App\Models\Sampah', 'bank_user_id');
+    }
 }

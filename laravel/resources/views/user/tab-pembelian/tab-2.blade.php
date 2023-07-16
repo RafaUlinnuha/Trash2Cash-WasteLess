@@ -34,7 +34,7 @@
         </div>
       <?php $jumlah+=$item->produk->harga*$item->jumlah ?>
     </div>
-    @endforeach 
+      @endforeach 
       <div class="produk-3">
         <div class="flex flex-col md:flex-row md:space-x-6 space-y-4 md:space-y-0 mt-4 md:items-center md:justify-between">
           <div class="flex space-x-2 w-full"> 
@@ -42,6 +42,9 @@
             <h4 class="text-[#FF8833] font-medium">Rp {{number_format($jumlah,2,',','.')}}</h4>
           </div>
           <!-- Modal toggle -->
+          <button data-modal-target="#bayar-modal-{{$order->pembayaran->id}}" data-modal-toggle="bayar-modal-{{$order->pembayaran->id}}" class="block text-white bg-[#8092C1] hover:bg-blue-800 font-medium rounded-lg text-sm md:px-5 py-2.5 md:w-48 text-center" type="button">
+            Bayar Sekarang
+          </button>
           @include('user.modal.modal-bayar')
          </div>
         </div>

@@ -37,7 +37,7 @@ Route::get('/artikel-sampah-kertas', function () {
     return view('artikel.kertas');})->name('artikel-sampah-kertas');
 
 
-Route::group(['middleware' => ['role:anggota,pembeli|guest' ]], function () {
+// Route::middleware(['guest', 'role:pembeli'])->group(function () {
     // Route marketplace
     // Tambahkan route lain yang ingin diakses oleh guest, anggota, dan pembeli di sini
     Route::get('/home-page', [ProdukController::class, 'index'])->name('home-page');
@@ -51,8 +51,8 @@ Route::group(['middleware' => ['role:anggota,pembeli|guest' ]], function () {
     Route::get('/search', [ProdukController::class, 'search'])->name('search-produk');
     Route::get('/produk/{id}', [ProdukController::class, 'detailProduk'])->name('detail-produk');
 
-});
-Route::group(['middleware' => 'guest'], function () {
+// });
+Route::group(['middleware' => ['guest']], function () {
     // login route
     Route::get('/login', [LoginController::class, 'index'])->name('login.view');
     Route::post('/login', [LoginController::class, 'authenticate'])->name('login.post');
@@ -68,10 +68,18 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware('role:admin')->group(function (){
         Route::get('admin',[AdminController::class,'index'])->name('admin.dashboard');
         Route::get('admin/order',[AdminController::class,'order'])->name('admin.order');
+        Route::get('admin/penyetoran',[AdminController::class,'penyetoran'])->name('admin.penyetoran');
+        Route::get('admin/user',[AdminController::class,'userview'])->name('admin.user');
+        Route::post('admin/user/add',[AdminController::class,'addUser'])->name('admin.add-user');
+        Route::get('admin/user/{id}',[AdminController::class,'rincianUser'])->name('admin.rincian-user');
+        Route::get('admin/penyetoran/rincian/{id}',[AdminController::class,'rincianSetor'])->name('admin.rincian-setor');
+        Route::get('admin/konfirmasi/{id}',[PembayaranController::class,'konfirmasiPembayaran'])->name('konfirmasipembayaran');
+
     });
     //pembelian
-    Route::middleware(['role:anggota, pembeli'])->group(function () {
+    Route::middleware(['role.anggotaataupembeli'])->group(function () {
         Route::get('keranjang',[KeranjangController::class,'index'])->name('keranjang');
+        Route::get('daftarkeanggota/{id}',[UserController::class,'daftarAnggota'])->name('daftar-anggota');
         Route::post('keranjang/add/{id}',[KeranjangController::class,'store'])->name('keranjang.post');
         Route::get('keranjang/inc/{id}',[KeranjangController::class,'incProduk'])->name('produk.inc');
         Route::get('keranjang/dec/{id}',[KeranjangController::class,'decProduk'])->name('produk.dec');
@@ -124,11 +132,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('bank-sampah/edit-product/{id}',[ProdukController::class,'update'])->name('penjualan.edit');
         Route::delete('bank-sampah/penjualan/delete/{id}',[ProdukController::class,'destroy'])->name('penjualan.del');
         Route::get('bank-sampah/order',[OrderController::class,'indextoko'])->name('ordertoko.view');
-        Route::get('bank-sampah/order/konfirmasi/{id}',[PembayaranController::class,'konfirmasiPembayaran'])->name('konfirmasipembayaran');
         Route::get('bank-sampah/order/kirim/{id}',[PembayaranController::class,'konfirmasiKirim'])->name('konfirmasipengiriman');
         Route::get('bank-sampah/pendapatan',[PembayaranController::class,'indexpendapatan'])->name('pendapatan.view');
-        Route::get('/download-gambar/{path}', [PembayaranController::class, 'download'])->name('download.image');  
     });
+    Route::get('/download-gambar/{path}', [PembayaranController::class, 'download'])->name('download.image');  
+
 });
 
 

@@ -24,7 +24,7 @@ class PembayaranController extends Controller
     public function index()
     {
         $id = Auth::id();
-        $orders = Order::where('user_id',$id)->get();
+        $orders = Order::where('user_id',$id)->latest()->get();
         // foreach($orders as $order){
         //     dd($order->id);
         // }

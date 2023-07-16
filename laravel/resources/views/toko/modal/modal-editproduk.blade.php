@@ -1,6 +1,3 @@
-<td class="w-1/12 px-2 md:px-6 py-3">
-  <a data-modal-target="#editproduk-modal{{$item->id}}" data-modal-toggle="editproduk-modal{{$item->id}}" class="block text-white bg-blue-600 hover:bg-blue-700 focus:outline-none font-medium rounded-lg text-xs md:text-sm px-2 py-2 md:px-5 md:py-2.5 text-center">Edit</a>
-</td>
 <!-- Main modal -->
 <div id="editproduk-modal{{$item->id}}" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-8 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative w-full max-w-md max-h-full">

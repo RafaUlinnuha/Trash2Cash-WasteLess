@@ -41,7 +41,9 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
+            'role' => 'required',
             'nama' => 'required',
             'email' => ['required', 'email','unique:users', 'max:225'],
             'no_hp' => ['required', 'min:10', 'max:16'],
@@ -49,10 +51,20 @@ class RegisterController extends Controller
             'confirm_password' => ['required', 'same:password']
         ]);
 
+        $role='';
+        if($request->role == 'Anggota Bank Sampah'){
+            $role='anggota';
+        } elseif($request->role == 'Bank Sampah'){
+            $role='bank_sampah';
+        } else {
+            $role='pembeli';
+        }
+
         $user = User::create([
             'email' => $request->email,
             'password' => bcrypt($request->password),
             'nama' => $request->nama,
+            'role' => $role,
             'no_hp' => $request->no_hp
         ]);
         
@@ -64,6 +76,7 @@ class RegisterController extends Controller
             'user_id' => $user->id
         ]);
 
+        // dd($user);
         return redirect()->route('login.view')->with('status', 'Your Account Has Been Successfully Registered!');
     }
 

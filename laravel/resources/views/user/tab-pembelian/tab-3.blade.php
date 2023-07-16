@@ -1,7 +1,7 @@
 <div x-show="current === 3" class="py-3 mt-4 text-sm md:text-base">
   <?php $kosong = true ?>
     @foreach($orders as $order)
-    @if ($order->status == 'diproses')
+    @if ($order->status == 'diproses' && $order->pembayaran->status != 'belum_bayar' )
     <?php $jumlah=0; $kosong = false ?>
     <div class="shop-2">
       <div class="flex space-x-4 items-center">
