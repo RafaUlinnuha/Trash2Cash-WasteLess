@@ -8,7 +8,7 @@
 
 <nav class="fixed bg-white w-full z-30 border-b">
     <div class="text-xs items-center justify-end space-x-4 font-medium py-1 pr-2 flex bg-[#FEC261]">
-        <a href="#tentang-kami">Tentang Kami</a>
+        <a href="/#tentang-kami">Tentang Kami</a>
         @if(Auth::guest())
             <a href="/login">Masuk ke Bank Sampah</a>
         @elseif(Auth::user()->role == 'anggota')

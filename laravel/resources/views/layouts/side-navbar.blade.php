@@ -5,7 +5,7 @@
 
 <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
     <div class="text-xs items-center justify-end space-x-4 font-medium py-1 pr-2 flex bg-[#FEC261]">
-        <a href="#tentang-kami">Tentang Kami</a>
+        <a href="/#tentang-kami">Tentang Kami</a>
         @if($user->role == 'anggota')
         <a href="/home-page">Kunjungi Marketplace</a>
         @endif

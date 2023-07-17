@@ -17,7 +17,7 @@
                 @include('layouts.side-navbar')
             @elseif(Request::is('profil','profil/*'))
                 @include('layouts.profil-navbar')
-            @elseif (Request::is('/', 'login', 'register', 'artikel/*'))
+            @elseif (Request::is('/', 'login', 'register', 'artikel-*'))
                 @include('layouts.landing-navbar')
             @else
                 @include('layouts.marketplace-navbar')
@@ -45,9 +45,9 @@
                                 <img src="{{ asset('img/logo white.png') }}">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 space-y-1 md:space-y-0 mb-4 text-sm font-medium text-white text-left md:text-center">
-                                <a href="#tentang-kami" class="hover:text-gray-900">Tentang Kami</a>
-                                <a href="#layanan" class="hover:text-gray-900">Layanan</a>
-                                <a href="#jenis-sampah" class="hover:text-gray-900">Jenis Sampah</a>
+                                <a href="/#tentang-kami" class="hover:text-gray-900">Tentang Kami</a>
+                                <a href="/#layanan" class="hover:text-gray-900">Layanan</a>
+                                <a href="/#jenis-sampah" class="hover:text-gray-900">Jenis Sampah</a>
                             </div>
                         </div>
                         <div>

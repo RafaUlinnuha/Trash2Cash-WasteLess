@@ -78,9 +78,6 @@ class AwalSeeder extends Seeder
             'kode_pos' => '12345',
             'user_id' => $id,
         ]);
-        Order::create([
-            'user_id' =>$id
-        ]);
         Keranjang::create([
             'user_id' => $id
         ]);
@@ -102,9 +99,6 @@ class AwalSeeder extends Seeder
             'kode_pos' => '12345',
             'user_id' => $id,
         ]);
-        Order::create([
-            'user_id' =>$id
-        ]);
         Keranjang::create([
             'user_id' => $id
         ]);
@@ -125,9 +119,6 @@ class AwalSeeder extends Seeder
             'provinsi' => 'Jawa Barat',
             'kode_pos' => '12345',
             'user_id' => $id,
-        ]);
-        Order::create([
-            'user_id' =>$id
         ]);
         Keranjang::create([
             'user_id' => $id
@@ -399,9 +390,6 @@ class AwalSeeder extends Seeder
             'kode_pos' => '12345',
             'user_id' => $id,
         ]);
-        Order::create([
-            'user_id' =>$id
-        ]);
         Keranjang::create([
             'user_id' => $id
         ]);
@@ -423,9 +411,6 @@ class AwalSeeder extends Seeder
             'kode_pos' => '12345',
             'user_id' => $id,
         ]);
-        Order::create([
-            'user_id' =>$id
-        ]);
         Keranjang::create([
             'user_id' => $id
         ]);
@@ -446,9 +431,6 @@ class AwalSeeder extends Seeder
             'provinsi' => 'Jawa Barat',
             'kode_pos' => '12345',
             'user_id' => $id,
-        ]);
-        Order::create([
-            'user_id' =>$id
         ]);
         Keranjang::create([
             'user_id' => $id
