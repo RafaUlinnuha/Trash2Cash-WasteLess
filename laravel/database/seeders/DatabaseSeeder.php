@@ -24,46 +24,46 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            KategoriSampahSeeder::class,
+            AwalSeeder::class,
         ]);
 
-        $user = User::factory(3)
-        ->has(AlamatUser::factory()->state([
-            'provinsi' => 'Jawa Barat',
-            'kota' => 'Sumedang',
-            'kecamatan' => 'Jatinangor',
-        ]))
-        ->has(MetodePembayaran::factory())
-        ->create([ 
-            'role' => 'anggota',
-        ])
+        // $user = User::factory(3)
+        // ->has(AlamatUser::factory()->state([
+        //     'provinsi' => 'Jawa Barat',
+        //     'kota' => 'Sumedang',
+        //     'kecamatan' => 'Jatinangor',
+        // ]))
+        // ->has(MetodePembayaran::factory())
+        // ->create([ 
+        //     'role' => 'anggota',
+        // ])
         
-        ;
+        // ;
         
-        $user = User::factory(3)
-        ->has(AlamatUser::factory()->state([
-            'provinsi' => 'Jawa Barat',
-            'kota' => 'Sumedang',
-            'kecamatan' => 'Jatinangor',
-        ]))
-        ->has(MetodePembayaran::factory())
-        ->has(Produk::factory()->count(4))
-        ->create([
-            'role' => 'bank_sampah',
-        ])
-        ;
+        // $user = User::factory(3)
+        // ->has(AlamatUser::factory()->state([
+        //     'provinsi' => 'Jawa Barat',
+        //     'kota' => 'Sumedang',
+        //     'kecamatan' => 'Jatinangor',
+        // ]))
+        // ->has(MetodePembayaran::factory())
+        // ->has(Produk::factory()->count(4))
+        // ->create([
+        //     'role' => 'bank_sampah',
+        // ])
+        // ;
         
-        $user = User::factory(3)
-        ->has(AlamatUser::factory()->state([
-            'provinsi' => 'Jawa Barat',
-            'kota' => 'Sumedang',
-            'kecamatan' => 'Jatinangor',
-        ]))
-        ->has(MetodePembayaran::factory())
-        ->has(Keranjang::factory())
-        ->create([
-            'role' => 'pembeli',
-        ])
-        ;
+        // $user = User::factory(3)
+        // ->has(AlamatUser::factory()->state([
+        //     'provinsi' => 'Jawa Barat',
+        //     'kota' => 'Sumedang',
+        //     'kecamatan' => 'Jatinangor',
+        // ]))
+        // ->has(MetodePembayaran::factory())
+        // ->has(Keranjang::factory())
+        // ->create([
+        //     'role' => 'pembeli',
+        // ])
+        // ;
     }
 }
