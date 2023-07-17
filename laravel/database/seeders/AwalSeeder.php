@@ -454,5 +454,24 @@ class AwalSeeder extends Seeder
             'user_id' => $id
         ]);
 
+        //ADMIN
+        $id= fake()->uuid();
+        User::create([
+            'id' => $id,
+            'nama' => 'ADMIN',
+            'email' => 'admin1@mail.com',
+            'no_hp' => '082123456791',
+            'role' => 'admin',
+            'password' => Hash::make('password12'),
+        ]);
+        AlamatUser::create([
+            'alamat' => 'Jl Ciseke 10',
+            'kecamatan' => 'Jatinangor',
+            'kota' => 'Sumedang',
+            'provinsi' => 'Jawa Barat',
+            'kode_pos' => '12345',
+            'user_id' => $id,
+        ]);
+
     }
 }
