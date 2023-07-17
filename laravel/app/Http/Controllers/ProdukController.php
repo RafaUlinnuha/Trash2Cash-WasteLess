@@ -109,7 +109,6 @@ class ProdukController extends Controller
         $request->validate([
             'nama' => ['required'],
             'nama_sub_kategori' => ['required'],
-            'deskripsi' => ['required'],
             'jumlah' => ['required','numeric', 'min:1'],
             'harga' => ['numeric'],
             'gambar' => ['required','image','mimes:jpeg,png'],
