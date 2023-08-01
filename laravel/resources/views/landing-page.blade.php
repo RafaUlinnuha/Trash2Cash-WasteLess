@@ -16,7 +16,7 @@
     </div>
 </section>
 <section id="layanan">
-    <div class="layanan mt-24">
+    <div class="layanan pt-24">
         <h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Layanan</h1>
         <div class="grid grid-cols-1 md:grid-cols-3 md:gap-4 xl:gap-8">
             <div class="pendataan">
@@ -32,7 +32,7 @@
     </div>
 </section>
 <section id="jenis-sampah">
-    <div class="jenis-sampah mt-24">
+    <div class="jenis-sampah pt-24">
         <h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Jenis Sampah</h1>
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 xl:gap-8">
             <div class="plastik">

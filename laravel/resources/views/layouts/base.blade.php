@@ -26,12 +26,12 @@
 
             @if (Request::is('admin', 'admin/*', 'anggota', 'anggota/*', 'bank-sampah/*'))
                 <div class="p-4 sm:ml-64 mb-64">
-                    <div class="p-4 mt-20">
+                    <div class="p-4 pt-20">
                         @yield('content')
                     </div>
                 </div>
             @else
-                <div class="mt-24 md:mt-32 px-6 lg:px-24 mb-auto">
+                <div class="pt-24 md:pt-32 px-6 lg:px-24 mb-auto">
                     @yield('content')
                 </div>
             @endif
