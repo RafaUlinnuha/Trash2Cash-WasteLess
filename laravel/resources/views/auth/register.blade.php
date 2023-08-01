@@ -8,7 +8,7 @@
             <span class="i-mdi-people-group bg-[#6C894A] w-16 h-10 -mb-[6.6px]"></span>
         </div>
         <div class="bg-[#FF8833] max-h-full rounded-3xl px-6 md:px-8 pt-8 pb-8">
-            <h1 class="text-center mb-8 font-bold text-lg lg:text-2xl text-white">Welcome to WasteLess!</h1>
+            <h1 class="text-center mb-8 font-bold text-lg lg:text-xl text-white">Welcome to WasteLess!</h1>
             <h1 class="mb-2 font-semibold text-sm lg:text-lg text-white">Daftar Sebagai:</h1>
             <div class="gap-2 grid grid-rows-3">
                 <button data-modal-target="register-modal" data-role="Bank Sampah" data-modal-toggle="register-modal" class="modal-button bg-[#6C894A] hover:bg-[#ABB955] items-center flex hover:text-[#6C894A] text-white p-4 rounded-lg transition duration-300" type="submit">

@@ -4,7 +4,7 @@
  
 @section('content')
 
-<h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Penjualan</h1>    
+<h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left mt-8">Penjualan</h1>    
 <!-- Modal toggle -->
 <div class="text-right">
     <button data-modal-target="addproduk-modal" data-modal-toggle="addproduk-modal" class="mt-6 md:mt-0 px-2 md:px-8 py-2 font-medium text-sm text-center text-white bg-[#8092C1] hover:bg-blue-800 rounded-full md:rounded-lg transition ease-in-out delay-150 duration-300" type="button">

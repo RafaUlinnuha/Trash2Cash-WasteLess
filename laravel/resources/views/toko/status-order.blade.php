@@ -3,7 +3,7 @@
 @section('title', 'Status Order | ')
  
 @section('content')
-<h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Status Order</h1> 
+<h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left mt-8">Status Order</h1> 
 <div class="w-full">
     <div x-data="{ current: 1 }">
       <div class="flex overflow-x-auto border-b-2 mt-8 text-xs md:text-base">

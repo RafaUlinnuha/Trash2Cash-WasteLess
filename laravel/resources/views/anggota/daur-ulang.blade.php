@@ -3,7 +3,7 @@
 @section('title', 'Daur Ulang | ')
  
 @section('content')
-<h1 class="text-xl md:text-2xl lg:text-4xl font-semibold text-center md:text-left mb-4">Setor Daur Ulang</h1>
+<h1 class="mt-8 text-xl md:text-2xl lg:text-4xl font-semibold text-center md:text-left mb-4">Setor Daur Ulang</h1>
 <button data-modal-target="addsampah-modal" data-modal-toggle="addsampah-modal" class=" md:mt-0 px-2 md:px-8 py-2 font-medium text-sm text-center hover:bg-[#FF8833] border-2 border-[#FF8833] text-[#FF8833] hover:text-neutral-50 rounded-2xl transition ease-in-out delay-150 hover:scale-110 duration-300" type="button">
     <span class="i-material-symbols-add flex md:hidden"></span>  
     <span class="md:flex hidden">Tambah Setoran</span>
