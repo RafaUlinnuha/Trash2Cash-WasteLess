@@ -42,7 +42,7 @@ Route::get('/artikel-sampah-kertas', function () {
     // Tambahkan route lain yang ingin diakses oleh guest, anggota, dan pembeli di sini
     Route::get('/home-page', [ProdukController::class, 'index'])->name('home-page');
 
-    Route::get('/kategori/{kategori_slug}', [ProdukController::class, 'perKategori']);
+    Route::get('/kategori/{kategori_slug}', [ProdukController::class, 'perKategori'])->name('kategori');
 
     Route::get('/semua-kategori', [ProdukController::class, 'semuaKategori'])->name('semua-kategori');
     Route::get('/detail-produk', function () {
