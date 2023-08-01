@@ -21,7 +21,7 @@
     $currentMonth = date('n');
 @endphp
 
-<h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left">Pendapatan</h1>
+<h1 class="text-3xl lg:text-4xl font-semibold text-center md:text-left mt-8">Pendapatan</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mt-8">
         <div class="flex-row flex-wrap text-center items-center p-4 md:p-8 border border-gray-200 rounded-lg shadow-md space-y-4">
             <h1 class="text-base md:text-xl font-medium">Total Pendapatan Keseluruhan</h1>

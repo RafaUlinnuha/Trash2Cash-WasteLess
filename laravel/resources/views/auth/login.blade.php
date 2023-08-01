@@ -10,7 +10,7 @@
         <form action = "{{route('login.post')}}" method="POST" class="bg-[#FF8833] max-h-full rounded-3xl px-6 md:px-8 pt-8 pb-8">
             @csrf
             <div class="mb-8 text-center md:text-lg">
-                <span class="text-white font-semibold md:font-bold">Welcome to WasteLess</span>
+                <span class="text-center mb-8 font-bold text-lg lg:text-xl text-white">Welcome to WasteLess!</span>
             </div>
             @if (Session::has('error'))
             <div class="flex p-4 mb-4 text-red-800 rounded-lg bg-red-50" role="alert">
